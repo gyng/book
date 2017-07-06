@@ -24,6 +24,7 @@
 
 *not encryption*
 
+
 ---
 
 ## Braille
@@ -74,7 +75,7 @@ EGL  EWS
 . --. .-.. / . .-- ...
 ```
 * Same characters, different encodings, different lengths
-* The **code point** (電 $=$ 7193) is not the **encoding** (morse)
+* The ***code point*** (電 $=$ 7193) is not the ***encoding*** (morse)
 
 ---
 
@@ -157,8 +158,8 @@ sleep 3 && echo $'\a'
 
 * Latin-centric
 * Everybody else came up with their own encodings
-* Mojibake (<ruby>文字 <rt>moji</rt></ruby><ruby>化け<rt>bake</rt></ruby>): JIS, Shift-JIS, EUC, and Unicode
 * Alternative ASCII sets cause problems with interchange
+* Mojibake (<ruby>文字 <rt>moji</rt></ruby><ruby>化け<rt>bake</rt></ruby>): JIS, Shift-JIS, EUC, and Unicode
 * No emoji, only smilies :-(
 
 ---
@@ -255,7 +256,7 @@ http://www.unicode.org/reports/tr51/tr51-12.html#Emoji_Counts
 * `U+0000..U+FFFF` is Plane 0, Basic Multilingual Plane (BMP)
 * Each plane encodes up to $2^{16} = 65536$ code points
 * Commonly used characters
-* Language "detection"
+* Language “detection”
 
 ---
 
@@ -344,7 +345,7 @@ http://www.unicode.org/reports/tr51/tr51-12.html#Emoji_Counts
 
 ## Han unification
 
-* Maps Chinese, Japanese, Korean (CJK) characters into unified set
+* Maps common Chinese, Japanese, Korean (CJK) characters into unified set
   ![](/Users/gyng/w/unicode/i/diff.png)
 * Different countries have different standards
 
@@ -424,6 +425,8 @@ http://unicode.org/reports/tr51/
 
 ![](/Users/gyng/w/unicode/i/emojigun.jpg)
 
+<span style="font-size: 96px">👦🔫</span>
+
 ---
 
 ![](/Users/gyng/w/unicode/i/emoji.png)
@@ -496,7 +499,7 @@ EarthWeb commercial, 2001 http://www.unicode.org/history/EarthwebCommercial.avi
 
 * Configure your text editor
 * Magic comments for some languages
-### Ruby <= 1.9.x
+### Ruby $\leq$ 1.9.x
 ```ruby
 # encoding: UTF-8
 ```
@@ -506,7 +509,7 @@ EarthWeb commercial, 2001 http://www.unicode.org/history/EarthwebCommercial.avi
 # -*- coding: utf-8 -*-
 ```
 
-### C <= C99
+### C $\leq$ C99
 ```
 Good luck
 ```
@@ -603,13 +606,13 @@ soup = BeautifulSoup(html, fromEncoding='Shift_JIS')
 
 * Harder than you think
 * What is the uppercase form of
-  `ß < U+00DF LATIN SMALL LETTER SHARP S >`?
+  `ß U+00DF LATIN SMALL LETTER SHARP S`?
 
 ---
 
 ## Case conversion
 
-* German
+* 🇩🇪 German
 * `ß` upcases to `SS`
 
 ---
@@ -630,14 +633,14 @@ soup = BeautifulSoup(html, fromEncoding='Shift_JIS')
 ## Does your favourite programming language work?
 ### 🔥 JavaScript (Firefox 53)
 ```javascript
->> "ß".toLocaleUpperCase('de-DE');
-"ß"
+>> 'ß'.toLocaleUpperCase('de-DE');
+'ß'
 ```
 
 ### 🔮 JavaScript (Chrome 59)
 ```javascript
->> "ß".toLocaleUpperCase('de-DE');
-"SS"
+>> 'ß'.toLocaleUpperCase('de-DE');
+'SS'
 ```
 
 ---
@@ -678,7 +681,7 @@ u'\xdf' # ß
 ```java
 public class UppercaseThis {
     public static void main(String[] args) {
-        System.out.println("\u00DF".toUpperCase());
+        System.out.println("\u00df".toUpperCase());
     }
 }
 
@@ -955,17 +958,19 @@ FREE 🍕!
 ## Ill-formed sequences and encoding mismatches
 
 Can crash your program
-* Python 2
+* 🐍 Python 2
 
   ```
-  >>> "\x81".decode("utf-8")
-  UnicodeDecodeError: 'utf8' codec can't decode byte 0x81 in position 0: unexpected code byte
+  >>> '\x81'.decode('utf-8')
+  # UnicodeDecodeError: 'utf8' codec can't decode byte 
+  # 0x81 in position 0: unexpected code byte
   ```
   
-* Ruby 1.9
+* 💎 Ruby 1.9
   ```ruby
-  puts "hello ümlaut".encode("ISO-8859-1") + "hello ümlaut"
-  # incompatible character encodings: ISO-8859-1 and UTF-8 (Encoding::CompatibilityError)
+  p 'ümlaut'.encode('ISO-8859-1') + 'ümlaut'
+  # incompatible character encodings: ISO-8859-1 and
+  # UTF-8 (Encoding::CompatibilityError)
   
   # or sometimes: invalid multibyte char (US-ASCII)
   ```
