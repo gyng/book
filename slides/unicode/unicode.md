@@ -7,7 +7,7 @@
 # Unicode and its 🕳🍁s: normalisation, Han unification and m͢ore
 
 ###### 2017
-###### https://github.com/gyng/slides/tree/master/slides/unicode
+###### https://github.com/gyng/tree/master/slides/unicode
 
 ---
 
@@ -122,7 +122,7 @@ https://youtu.be/MikoF6KZjm0?t=289
 
 * 0&ndash;31 are control characters `NUL` `CR` `LF` `DEL` etc.
 * 32&ndash;126 are punctuation, numerals and letters
-* <code>&#x2423;</code> in bianry: `0100000` $=20$
+* <code>&#x2423;</code> in binary: `0100000` $=20$
 * `A` in binary: `1000001` $= 65$
 * `a` in binary: `1100001` $= 65 + 32 = 97$
 * Alternative: IBM’s EBCDIC (also 1963)
@@ -224,15 +224,19 @@ http://www.unicode.org/history/movie/UniMovie-large.mov
 
 ---
 
-## Unicode 10.0
+## Unicode 10.0 (2017 June 20)
 
 >Unicode 10.0 adds 8,518 characters, for a total of 136,690 characters
 
 http://www.unicode.org/versions/Unicode10.0.0/
 
->2666 emoji
+>56 emoji (2,666 total)
 
 http://www.unicode.org/reports/tr51/tr51-12.html#Emoji_Counts
+
+>Bitcoin sign
+
+*&hellip;and more*
 
 ---
 
@@ -259,7 +263,7 @@ http://www.unicode.org/reports/tr51/tr51-12.html#Emoji_Counts
 
 * Early UTF-16 was fixed-width (UCS-2)
 * 2 or 4 bytes per character
-* 2 bytes for characters in Basic Multilingual Plane (BMP)
+* 2 bytes for characters in BMP
   * Can be more efficient than UTF-8 for CJK (2B vs 3B)
 * Surrogate pairs have to be handled for code points outside BMP
 
@@ -352,6 +356,14 @@ http://www.unicode.org/reports/tr51/tr51-12.html#Emoji_Counts
 <ruby>`芦`<rt>ashi</rt></ruby> Ashi·da, given name vs Ashi·ya, old place name
   ![](/Users/gyng/w/unicode/i/sentence.png)
   
+---
+
+## Han unification
+
+> CJK Extension F contains mostly rare characters, but also includes a number of personal and placename characters important for government specifications in Japan, in particular.
+ 
+CJK Extension F was added in Unicode 10.0 (2017)
+
 ---
 
 ## Han unification
@@ -515,10 +527,15 @@ Good luck
 
 ## Read in text with the right encoding
 
-Especially when web scraping
+Especially when parsing HTML
 ```ruby
 # Nokogiri
-doc = Nokogiri.XML('<foo><bar /><foo>', nil, 'EUC-JP')
+doc = Nokogiri.XML(html, nil, 'EUC-JP')
+```
+
+```python
+# Beautiful Soup
+soup = BeautifulSoup(html, fromEncoding='Shift_JIS')
 ```
 
 ---
@@ -569,6 +586,15 @@ doc = Nokogiri.XML('<foo><bar /><foo>', nil, 'EUC-JP')
 * In Turkish?
   `ı U+0131` → `I U+0069`
   `i U+0069` → `İ U+0130`
+
+---
+
+## Case conversion
+
+* What is the uppercase form of `i`?
+* In Turkish?
+  `ı U+0131` → `I U+0069`
+  `i U+0069` → `İ U+0130`
 * In Turkish/English mixed text?
 
 ---
@@ -591,7 +617,7 @@ doc = Nokogiri.XML('<foo><bar /><foo>', nil, 'EUC-JP')
 ## Case conversion
 
 * `ß` upcases to `SS`
-* …or `U+1E9E ẞ LATIN CAPITAL LETTER SHARP S
+* …or `U+1E9E ẞ LATIN CAPITAL LETTER SHARP S`
 
 ---
 
@@ -668,7 +694,7 @@ SS
 
 ---
 
-## Set HTML encoding
+## Set HTML `charset`
 
 ```html
 <!doctype html>
@@ -741,16 +767,15 @@ https://source.typekit.com/source-han-serif
 ## String sorting and equality
 
 * Use a locale-aware comparison
-  ```
-  >> ["Aa", "Äa", "Äb", "Ab"].sort();
-  Array [ "Aa", "Ab", "Äa", "Äb" ]
+  ```javascript
+  >> ['Aa', 'Äa', 'Äb', 'Ab'].sort();
+     ['Aa', 'Ab', 'Äa', 'Äb']
   ```
   
-  ```
-  >> ["Aa", "Äa", "Äb", "Ab"].sort((a, b) => {
-  >>   a.localeCompare(b, 'de')
-  >> });
-  Array [ "Aa", "Äa", "Ab", "Äb" ]
+  ```javascript
+  >> ['Aa', 'Äa', 'Äb', 'Ab']
+  >>   .sort(a, b => a.localeCompare(b, 'de'));
+     ['Aa', 'Äa', 'Ab', 'Äb']
   ```
 
 [MDN: String.prototype.localeCompare()](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String/localeCompare)
@@ -761,18 +786,18 @@ https://source.typekit.com/source-han-serif
 
 * What if you want to match `e` and `é`?
 * What about all the different whitespace characters?
-* What if I want to match one character but my character is combined? `é` $\neq$ `e` $+$ `´`
-* What about matching lowercase characters with `\l`?
+* What if I want to match one character `/^.$/` but my character is combined? `é` $\neq$ `e` $+$ `´`
 * What about matching non-Latin characters?
 
 ---
 
 ## Regex
 
-* Use Regex right, with a good-enough Regex engine
+* Use Regex right
+* Use a good-enough Regex engine
 * Make sure `\w` `\d` `\s` are Unicode-aware
 * Make sure your Regex engine does [case-folding](ftp://ftp.unicode.org/Public/UNIDATA/CaseFolding.txt)
-* Match by Unicode
+* Match by Unicode (Perl)
   ```
   \N{}  Named or numbered (Unicode) character or sequence.
   \o{}  Octal escape sequence.
@@ -789,9 +814,8 @@ https://source.typekit.com/source-han-serif
 * You can use Regex ranges with code points
 * You might be able to match by Regex classes (Perl, Rust)
   ```rust
-  let re = Regex::new(r"[\pN\p{Greek}\p{Cherokee}]+").unwrap();
-  let mat = re.find("abcΔᎠβⅠᏴγδⅡxyz").unwrap();
-  assert_eq!((mat.start(), mat.end()), (3, 23));
+  let re = Regex::new(r"[\p{Greek}]+").unwrap();
+                         👆 
   ```
 
 ---
@@ -846,21 +870,20 @@ Read *Unicode Security Considerations*
 ## Restrict passwords and user names to ASCII
 
 * For logistical reasons (customer support)
-* Not sure if Unicode normalisation of passwords will cause problems
+* Unicode normalisation of passwords can cause problems
 * Equivalent characters
-  `e` $+$ ` ́` vs `é`
-* Basic Auth can fail in browsers
-* Unless your users are not English-speaking
+  `e` $+$ ` ́` $\neq$ `é`
+* Basic authentication can fail in different browsers
 
 ---
 
 ## Sanitise text input
 
 * Difficult problem
-* "Unicode injection": RTL, combining characters, wide characters
+* “Unicode injection”: RTL, combining characters, wide characters
 * `﷽` is one (1!) character
   `U+FDFD ARABIC LIGATURE BISMILLAH AR-RAHMAN AR-RAHEEM `
-* Z̤̲̙̙͎̥̝A͎̣͔̙͘L̥̻̗̳̻̳̳͢G͉̖̯͓̞̩̦O̹̹̺!̙͈͎̞̬ 
+* Z̤̲̙̙͎̥̝A͎̣͔̙͘L̥̻̗̳̻̳̳͢G͉̖̯͓̞̩̦O̹̹̺!̙͈͎̞̬
 * 25 different whitespace characters
 
 https://en.wikipedia.org/wiki/Whitespace_character#Unicode
@@ -975,6 +998,7 @@ Solution: use languages/libraries which handle Unicode strings right
 ← 2
 
 > 1 + 1&#894;
+       👆
 ← 🚨 SyntaxError: illegal character 🚨
 </pre>
 
