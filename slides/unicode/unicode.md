@@ -7,7 +7,7 @@
 # Unicode and its 🕳🍁s: normalisation, Han unification and m͢ore
 
 ###### 2017
-###### https://github.com/gyng/tree/master/slides/unicode
+###### https://github.com/gyng/slides/tree/master/slides/unicode
 
 ---
 
