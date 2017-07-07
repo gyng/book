@@ -7,6 +7,7 @@
 # Unicode and its 🕳🍁s: normalisation, Han unification and m͢ore
 
 ###### 2017
+
 ###### https://github.com/gyng/tree/master/slides/unicode
 
 ---
@@ -18,12 +19,12 @@
 > 1 + 1&#894;
 ← 🚨 SyntaxError: illegal character 🚨
 </pre>
+
 ---
 
 # Encodings
 
 *not encryption*
-
 
 ---
 
@@ -74,6 +75,7 @@ M   O   R   S  E          C    O   D  E
 EGL  EWS
 . --. .-.. / . .-- ...
 ```
+
 * Same characters, different encodings, different lengths
 * The ***code point*** (電 $=$ 7193) is not the ***encoding*** (morse)
 
@@ -137,6 +139,7 @@ https://youtu.be/MikoF6KZjm0?t=289
   * `#` → `£` on UK teletypes
   * `\` → `¥` in Japan (Shift-JIS)
   * `\` → `₩` in Korea (EUC-KR)
+
 ---
 
 ## ASCII Highlights
@@ -160,7 +163,7 @@ sleep 3 && echo $'\a'
 * Everybody else came up with their own encodings
 * Alternative ASCII sets cause problems with interchange
 * Mojibake (<ruby>文字 <rt>moji</rt></ruby><ruby>化け<rt>bake</rt></ruby>): JIS, Shift-JIS, EUC, and Unicode
-* No emoji, only smilies :-(
+* No emoji, only emoticons :-(
 
 ---
 
@@ -370,7 +373,7 @@ CJK Extension F was added in Unicode 10.0 (2017)
 ## Han unification
 
 * Lose round-trip conversion compatibility with character sets which have variants
-* Can use the Unicode variation selector
+* Can use Unicode variation selectors
 
   `U+E0101 VARIATION-SELECTOR-18`
 
@@ -409,6 +412,8 @@ http://unicode.org/reports/tr37/
 
 * 絵 (e ≅ picture) + 文字 (moji ≅ written character)
 * Early emoji were created by Japanese telcos
+* 2008: Gmail, iPhone
+* 2010: Unicode 6
 * 🈲 🈳 🈴 🈵 🈶 🈷️ 🈸 🈹 🈺 🆖 🆗 🉑 🈁 🈂️ 🌊 🎌 🎏
 
 http://unicode.org/reports/tr51/
@@ -459,7 +464,8 @@ http://unicode.org/reports/tr51/
 
 ---
 
-![](i/1000px-Flag_of_South_Georgia_and_the_South_Sandwich_Islands.svg.png)
+![](i/vomiting_emoji.png)
+https://xkcd.com/1813/
 
 ---
 
@@ -543,33 +549,6 @@ soup = BeautifulSoup(html, fromEncoding='Shift_JIS')
 
 ---
 
-## String length
-
-* JavaScript
-  ```
-  >> '💩'.length
-  2
-  >> '💩'.split().length
-  1
-  ```
-
-* Python 3
-  ```
-  >>> len(u'💩')
-  2
-  >>> len(u'💩'.split())
-  1
-  ```
-* Rust
-  ```
-  fn main() {
-    println!("{}", "💩".len()) // 4
-    println!("{}", "💩".chars().count()) // 1
-  }
-  ```
-
----
-
 ## Case conversion
 
 * What is the uppercase form of `i`?
@@ -587,8 +566,8 @@ soup = BeautifulSoup(html, fromEncoding='Shift_JIS')
 
 * What is the uppercase form of `i`?
 * In Turkish?
-  `ı U+0131` → `I U+0069`
-  `i U+0069` → `İ U+0130`
+  `ı` → `I`
+  `i` → `İ`
 
 ---
 
@@ -596,8 +575,8 @@ soup = BeautifulSoup(html, fromEncoding='Shift_JIS')
 
 * What is the uppercase form of `i`?
 * In Turkish?
-  `ı U+0131` → `I U+0069`
-  `i U+0069` → `İ U+0130`
+  `ı` → `I`
+  `i` → `İ`
 * In Turkish/English mixed text?
 
 ---
@@ -622,6 +601,8 @@ soup = BeautifulSoup(html, fromEncoding='Shift_JIS')
 * `ß` upcases to `SS`
 * …or `U+1E9E ẞ LATIN CAPITAL LETTER SHARP S`
 
+http://unicode.org/faq/casemap_charprop.html
+
 ---
 
 ## Case conversion
@@ -631,13 +612,16 @@ soup = BeautifulSoup(html, fromEncoding='Shift_JIS')
 ---
 
 ## Does your favourite programming language work?
+
 ### 🔥 JavaScript (Firefox 53)
+
 ```javascript
 >> 'ß'.toLocaleUpperCase('de-DE');
 'ß'
 ```
 
 ### 🔮 JavaScript (Chrome 59)
+
 ```javascript
 >> 'ß'.toLocaleUpperCase('de-DE');
 'SS'
@@ -647,13 +631,15 @@ soup = BeautifulSoup(html, fromEncoding='Shift_JIS')
 
 ## Does your favourite programming language work?
 
-### 🐍🐍 Python 2
+### 🐍² Python 2
+
 ```python
 >>> u'ß'.upper()
 u'\xdf' # ß
 ```
 
-### 🐍🐍🐍 Python 3
+### 🐍³ Python 3
+
 ```python
 >>> 'ß'.upper()
 'SS'
@@ -664,12 +650,14 @@ u'\xdf' # ß
 ## Does your favourite programming language work?
 
 ### 💎 Ruby 2.3
+
 ```ruby
 > "\u{00df}".upcase
 => "ß"
 ```
 
 ### 💎 Ruby 2.4
+
 ```ruby
 > "\u{00df}".upcase
 => "SS"
@@ -677,7 +665,10 @@ u'\xdf' # ß
 
 ---
 
+## Does your favourite programming language work?
+
 ### ☕ Java
+
 ```java
 public class UppercaseThis {
     public static void main(String[] args) {
@@ -689,6 +680,7 @@ SS
 ```
 
 ### ⚙️ Rust
+
 ```rust
 fn main() { println!("{}", "ß".to_uppercase()); }
 
@@ -723,7 +715,6 @@ SS
 ```
 
 ![](i/unification.png)
-
 
 ---
 
@@ -785,6 +776,104 @@ https://source.typekit.com/source-han-serif
 
 ---
 
+## String length
+
+Problems arise when your string contains
+  * combining marks
+  * surrogate pairs (UTF-16)
+
+---
+
+## String length &mdash; combined characters
+
+```
+>> 'café'.length
+5
+
+>> 'café'.normalize().length
+4
+```
+
+```
+>> 'ユニコード'.length
+5
+
+>> 'ユニコート\u3099'.normalize().length
+5
+```
+
+Should generally work for combined characters
+
+---
+
+## String length &mdash; surrogate pairs
+
+`💩 U+1F4A9 PILE OF POO`
+
+* UTF-8
+  `F0 9F 92 A9`
+
+* Surrogate pairs (UTF-16)
+  `D83D DCA9`
+
+---
+
+## Does your favourite programming language work?
+
+### 🔥 JavaScript
+
+```
+>> '💩'.length
+2
+>> [...'💩'].length
+1
+```
+
+### 🐍² Python 2
+
+```python
+>>> len(u'💩')
+2
+```
+
+### 🐍³ Python 3
+
+```python
+>>> len('💩')
+1
+```
+
+---
+
+## Does your favourite programming language work?
+
+### 💎 Ruby
+
+```ruby
+>> '💩'.length
+1
+```
+
+### ☕ Java
+  
+```java
+System.out.println("💩".length());
+// 2
+
+// use java.text.BreakIterator
+```
+  
+### ⚙️ Rust
+
+```rust
+fn main() {
+  println!("{}", "💩".len()) // 4
+  println!("{}", "💩".chars().count()) // 1
+}
+```
+
+---
+
 ## Regex
 
 * What if you want to match `e` and `é`?
@@ -801,19 +890,16 @@ https://source.typekit.com/source-han-serif
 * Make sure `\w` `\d` `\s` are Unicode-aware
 * Make sure your Regex engine does [case-folding](ftp://ftp.unicode.org/Public/UNIDATA/CaseFolding.txt)
 * Match by Unicode (Perl)
-  ```
-  \N{}  Named or numbered (Unicode) character or sequence.
-  \o{}  Octal escape sequence.
-  ```
+  * `\N{}` Named or numbered (Unicode) char or sequence
+  * `\o{}` Octal escape sequence.
 
 ---
 
 ## Regex
 
 * In Perl, you can use `\X`
-  ```text
-  \X  Unicode "extended grapheme cluster".  Not in [].
-  ```
+  * `\X` Unicode "extended grapheme cluster".  Not in [].
+
 * You can use Regex ranges with code points
 * You might be able to match by Regex classes (Perl, Rust)
   ```rust
@@ -824,10 +910,10 @@ https://source.typekit.com/source-han-serif
 ---
 
 ## Emoji
-* New emoji/combinations might not be supported
+* Combinations or new emoji might not be supported
   * `🤮 U+1F92E FACE VOMITTING` (Emoji 5.0, 2017)
-  * `🤷‍♂️ U+1F937 SHRUG + U+2642 MALE` (Emoji 4.0, 2016)
-  * `🐱🐉 Ninja Cat riding T-Rex` (Windows 10)
+  * `🤷‍♂️ <U+1F937 SHRUG, U+2642 MALE>` (Emoji 4.0, 2016)
+  * `🐱🐉 Ninja Cat riding T-Rex` (Windows 10 only)
     ![](/Users/gyng/w/slides/slides/unicode/i/trexcat.png)
 
 ---
@@ -889,7 +975,7 @@ Read *Unicode Security Considerations*
 * Z̤̲̙̙͎̥̝A͎̣͔̙͘L̥̻̗̳̻̳̳͢G͉̖̯͓̞̩̦O̹̹̺!̙͈͎̞̬
 * 25 different whitespace characters
 
-https://en.wikipedia.org/wiki/Whitespace_character#Unicode
+https://github.com/minimaxir/big-list-of-naughty-strings
 
 ---
 
@@ -958,17 +1044,17 @@ FREE 🍕!
 ## Ill-formed sequences and encoding mismatches
 
 Can crash your program
-* 🐍 Python 2
+* 🐍² Python 2
 
-  ```
+  ```python
   >>> '\x81'.decode('utf-8')
-  # UnicodeDecodeError: 'utf8' codec can't decode byte 
+  # UnicodeDecodeError: 'utf8' codec can't decode byte
   # 0x81 in position 0: unexpected code byte
   ```
   
 * 💎 Ruby 1.9
   ```ruby
-  p 'ümlaut'.encode('ISO-8859-1') + 'ümlaut'
+  'ü'.encode('ISO-8859-1') + 'ü'
   # incompatible character encodings: ISO-8859-1 and
   # UTF-8 (Encoding::CompatibilityError)
   
@@ -1014,3 +1100,16 @@ Solution: use languages/libraries which handle Unicode strings right
 [A list of similar characters](https://github.com/rust-lang/rust/blob/master/src/libsyntax/parse/lexer/unicode_chars.rs)
 
 ---
+
+## Resources
+
+* [Unicode publications](http://www.unicode.org/publications/)
+* [Unicode technical reports](http://www.unicode.org/reports/)
+* [Unicode data files](http://www.unicode.org/onlinedat/online.html)
+* [Unicode public files](http://unicode.org/Public/)
+* [Emoji charts](http://www.unicode.org/emoji/charts/index.html)
+* [Emoji slides](http://www.unicode.org/emoji/slides.html)
+* [Unicode character inspector](https://apps.timwhitlock.info/unicode/inspect)
+* [Big List of Naughty Strings](https://github.com/minimaxir/big-list-of-naughty-strings)
+* [Personal names around the world](https://www.w3.org/International/questions/qa-personal-names)
+* [Falsehoods Programmers Believe About Phone Numbers](https://github.com/googlei18n/libphonenumber/blob/master/FALSEHOODS.md)
