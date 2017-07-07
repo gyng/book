@@ -774,7 +774,7 @@ How can I display (CJK/my own) characters not encoded in Unicode?
 
 ## Unencoded characters
 
-* Source Han and Noto CJK have glyphs for *biáng*!
+* Source Han Serif has a glyph for *biáng*!
 * Uses Unicode and font features to combine existing glyphs
 	* Ideographic Description Characters
 	* OpenType's `ccmp` (Glyph Composition/Decomposition)
