@@ -8,7 +8,7 @@
 
 ###### 2017
 
-###### https://github.com/gyng/tree/master/slides/unicode
+###### https://github.com/gyng/book/tree/master/slides/unicode
 
 ---
 
