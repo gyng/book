@@ -356,10 +356,12 @@ http://www.unicode.org/reports/tr51/tr51-12.html#Emoji_Counts
 
 ## Han unification
 
-* Variants can be significant
+* Variants can be significant (names)
 <ruby>`芦`<rt>ashi</rt></ruby> Ashi·da, given name vs Ashi·ya, old place name
   ![](i/sentence.png)
-  
+* Educational software
+* People get 😡 over the differences
+
 ---
 
 ## Han unification
@@ -465,6 +467,7 @@ http://unicode.org/reports/tr51/
 ---
 
 ![](i/vomiting_emoji.png)
+
 https://xkcd.com/1813/
 
 ---
@@ -489,7 +492,11 @@ EarthWeb commercial, 2001 http://www.unicode.org/history/EarthwebCommercial.avi
 
 ---
 
-# 👨‍💻 Necessary but not necessarily sufficient programmer knowledge 👩‍💻
+# 👨‍💻
+# Necessary
+# but not necessarily sufficient
+# programmer knowledge
+# 👩‍💻
 
 ---
 
@@ -505,19 +512,19 @@ EarthWeb commercial, 2001 http://www.unicode.org/history/EarthwebCommercial.avi
 
 * Configure your text editor
 * Magic comments for some languages
-### Ruby $\leq$ 1.9.x
+### 💎 Ruby $\leq$ 1.9.x
 ```ruby
 # encoding: UTF-8
 ```
 
-### Python 2
+### 🐍² Python 2
 ```python
 # -*- coding: utf-8 -*-
 ```
 
-### C $\leq$ C99
+### 💾 C $\leq$ C99
 ```
-Good luck
+/* Dear future programmer: Good luck 👍 */
 ```
 
 ---
@@ -702,6 +709,14 @@ SS
 
 ---
 
+## Use variation selectors as needed
+
+`U+E0101 VARIATION-SELECTOR-18`
+
+![](i/vs.png)
+
+---
+
 ## Use `lang` in HTML as needed
 
 ```html
@@ -751,7 +766,7 @@ How can I display (CJK/my own) characters not encoded in Unicode?
   `⿰⿱⿲⿳⿴⿵⿶⿷⿸⿹⿺⿻ U+2FF0..U+2FFF`
   `⿰書史` for <img src="i/100px-Saw_sawndip.svg.png" style="transform: translateY(7px)" height="32px" />
 * Use fonts which have the unencoded glyph either
-  * as existing codepoints (Wingdings 🕴👽👓✇)
+  * as an existing character (Wingdings 🕴👽👓✇)
   * in Private Use Area
   * as a combined sequence
 
@@ -759,7 +774,7 @@ How can I display (CJK/my own) characters not encoded in Unicode?
 
 ## Unencoded characters
 
-* Source Han Serif and Noto Serif CJK have glyphs for *biáng*!
+* Source Han and Noto CJK have glyphs for *biáng*!
 * Uses Unicode and font features to combine existing glyphs
 	* Ideographic Description Characters
 	* OpenType's `ccmp` (Glyph Composition/Decomposition)
@@ -791,14 +806,14 @@ What *⿺辶⿳穴⿲月⿱⿲幺言幺⿲長馬長刂心⿺辶⿳穴⿲月⿱�
 ## String sorting
 
 * Sorting strings is hard!
-  ```
+  ```javascript
   >> 'é' > 'f'
   true
   ```
 
 * A-ha! Can we use normalisation for this?
 
-  ```
+  ```javascript
   >> 'café'.normalize('NFKD')
   'cafe ́'
   ```
@@ -842,7 +857,7 @@ Problems arise when your string contains
 
 ## String length &mdash; combined characters
 
-```
+```javascript
 >> 'café'.length
 5
 
@@ -850,7 +865,7 @@ Problems arise when your string contains
 4
 ```
 
-```
+```javascript
 >> 'ユニコード'.length
 5
 
@@ -864,11 +879,10 @@ Should generally work for combined characters
 
 ## String length &mdash; surrogate pairs
 
-`💩 U+1F4A9 PILE OF POO`
+What's the length of `💩 U+1F4A9 PILE OF POO`?
 
 * UTF-8
   `F0 9F 92 A9`
-
 * Surrogate pairs (UTF-16)
   `D83D DCA9`
 
@@ -878,7 +892,7 @@ Should generally work for combined characters
 
 ### 🔥 JavaScript
 
-```
+```javascript
 >> '💩'.length
 2
 >> [...'💩'].length
@@ -922,10 +936,11 @@ System.out.println("💩".length());
 ### ⚙️ Rust
 
 ```rust
-fn main() {
-  println!("{}", "💩".len()) // 4
-  println!("{}", "💩".chars().count()) // 1
-}
+println!("{}", "💩".len());
+// 4
+
+println!("{}", "💩".chars().count());
+// 1
 ```
 
 ---
