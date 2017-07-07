@@ -41,7 +41,7 @@
 
 ## “Ancient” encodings
 
-![](/Users/gyng/w/unicode/i/imsf.gif)
+![](i/imsf.gif)
 
 ---
 
@@ -59,7 +59,7 @@ M   O   R   S  E          C    O   D  E
 
 ## “Ancient” encodings &mdash; Chinese telegraph code
 
-![](/Users/gyng/w/unicode/i/chinesemorse.jpg)
+![](i/chinesemorse.jpg)
 
 ---
 
@@ -105,7 +105,7 @@ http://www.catb.org/esr/faqs/things-every-hacker-once-knew/
 
 ---
 
-[![](/Users/gyng/w/unicode/i/tty.jpg)](https://youtu.be/MikoF6KZjm0?t=289)
+[![](i/tty.jpg)](https://youtu.be/MikoF6KZjm0?t=289)
 https://youtu.be/MikoF6KZjm0?t=289
 
 ---
@@ -175,7 +175,7 @@ sleep 3 && echo $'\a'
 
 ---
 
-![](/Users/gyng/w/unicode/i/encodings.png)
+![](i/encodings.png)
 
 ---
 
@@ -302,7 +302,7 @@ http://www.unicode.org/reports/tr51/tr51-12.html#Emoji_Counts
   * ancient scripts
 *  `U+F8FF` (`⇧`-`⌥`-`k`)
 * Ubuntu has `U+E0FF` and `U+F200`
-  ![](/Users/gyng/w/unicode/i/ubuntu.png)
+  ![](i/ubuntu.png)
 
 ---
 
@@ -346,7 +346,7 @@ http://www.unicode.org/reports/tr51/tr51-12.html#Emoji_Counts
 ## Han unification
 
 * Maps common Chinese, Japanese, Korean (CJK) characters into unified set
-  ![](/Users/gyng/w/unicode/i/diff.png)
+  ![](i/diff.png)
 * Different countries have different standards
 
 ---
@@ -355,7 +355,7 @@ http://www.unicode.org/reports/tr51/tr51-12.html#Emoji_Counts
 
 * Variants can be significant
 <ruby>`芦`<rt>ashi</rt></ruby> Ashi·da, given name vs Ashi·ya, old place name
-  ![](/Users/gyng/w/unicode/i/sentence.png)
+  ![](i/sentence.png)
   
 ---
 
@@ -374,7 +374,7 @@ CJK Extension F was added in Unicode 10.0 (2017)
 
   `U+E0101 VARIATION-SELECTOR-18`
 
-  ![](/Users/gyng/w/unicode/i/vs.png)
+  ![](i/vs.png)
 
 http://www.unicode.org/ivd/
 http://unicode.org/reports/tr37/
@@ -385,7 +385,7 @@ http://unicode.org/reports/tr37/
 
 * Vertical text
 * RTL mark
-  ![](/Users/gyng/w/unicode/i/rl.png)
+  ![](i/rl.png)
 
 *Unicode Bidirectional Algorithm* @ http://unicode.org/reports/tr9/
 *Unicode Vertical Text Layout* @ http://www.unicode.org/reports/tr50/
@@ -417,19 +417,19 @@ http://unicode.org/reports/tr51/
 
 ## Can be represented differently
 
-![](/Users/gyng/w/unicode/i/emoji-examples.png)
+![](i/emoji-examples.png)
 
 * This is a problem
 
 ---
 
-![](/Users/gyng/w/unicode/i/emojigun.jpg)
+![](i/emojigun.jpg)
 
 <span style="font-size: 96px">👦🔫</span>
 
 ---
 
-![](/Users/gyng/w/unicode/i/emoji.png)
+![](i/emoji.png)
 
 ---
 
@@ -459,7 +459,7 @@ http://unicode.org/reports/tr51/
 
 ---
 
-![](/Users/gyng/w/unicode/i/1000px-Flag_of_South_Georgia_and_the_South_Sandwich_Islands.svg.png)
+![](i/1000px-Flag_of_South_Georgia_and_the_South_Sandwich_Islands.svg.png)
 
 ---
 
@@ -722,7 +722,7 @@ SS
 <span lang="vi-nom">刃</span>
 ```
 
-![](/Users/gyng/w/unicode/i/unification.png)
+![](i/unification.png)
 
 
 ---
@@ -732,7 +732,7 @@ SS
 * Google’s Noto/Noto CJK has great support
 * Another is Adobe’s Source Han
 
-![](/Users/gyng/w/unicode/i/image03.png)
+![](i/image03.png)
 
 * Note that this is the same code point, `述 U+8FF0`
 
@@ -835,7 +835,7 @@ https://source.typekit.com/source-han-serif
 ## Emoji
 
 * Let it be
-  ![](/Users/gyng/w/unicode/i/cat.png)
+  ![](i/cat.png)
 * Replace emoji with images (GitHub, Twitter)
   * https://github.com/twitter/twemoji
 * Use (coloured) emoji fonts
@@ -843,7 +843,7 @@ https://source.typekit.com/source-han-serif
 
 ---
 
-![](/Users/gyng/w/unicode/i/emojione.png)
+![](i/emojione.png)
 
 ---
 
@@ -897,7 +897,7 @@ https://en.wikipedia.org/wiki/Whitespace_character#Unicode
 
 Visit [`https://www.xn--80ak6aa92e.com/`](https://www.xn--80ak6aa92e.com) in your browser
 
-![](/Users/gyng/w/unicode/i/idnattack.png)
+![](i/idnattack.png)
 
 https://www.xudongz.com/blog/2017/idn-phishing/
 
