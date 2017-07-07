@@ -125,7 +125,7 @@ https://youtu.be/MikoF6KZjm0?t=289
 
 * 0&ndash;31 are control characters `NUL` `CR` `LF` `DEL` etc.
 * 32&ndash;126 are punctuation, numerals and letters
-* <code>&#x2423;</code> in binary: `0100000` $=20$
+* <code>&#x2423;</code> in binary: `0100000` $=32$
 * `A` in binary: `1000001` $= 65$
 * `a` in binary: `1100001` $= 65 + 32 = 97$
 * Alternative: IBM’s EBCDIC (also 1963)
