@@ -732,6 +732,62 @@ https://source.typekit.com/source-han-serif
 
 ---
 
+## Unencoded characters
+
+How can I display (CJK/my own) characters not encoded in Unicode?
+
+![](i/biang-pair.jpg)
+
+*biáng*, from *biángbiáng面*, a noodle dish from Shaanxi, China
+
+[Coming to a Unicode version soon?](http://www.unicode.org/L2/L2015/15225-uax45-addition.pdf)
+
+---
+
+## Unencoded characters
+
+* Use an image (SVG preferably)
+* Use Ideographic Description Sequences
+  `⿰⿱⿲⿳⿴⿵⿶⿷⿸⿹⿺⿻ U+2FF0..U+2FFF`
+  `⿰書史` for <img src="i/100px-Saw_sawndip.svg.png" style="transform: translateY(7px)" height="32px" />
+* Use fonts which have the unencoded glyph either
+  * as existing codepoints (Wingdings 🕴👽👓✇)
+  * in Private Use Area
+  * as a combined sequence
+
+---
+
+## Unencoded characters
+
+* Source Han Serif and Noto Serif CJK have glyphs for *biáng*!
+* Uses Unicode and font features to combine existing glyphs
+	* Ideographic Description Characters
+	* OpenType's `ccmp` (Glyph Composition/Decomposition)
+	* Ligatures `liga`
+
+https://blogs.adobe.com/CCJKType/2014/03/ids-opentype.html
+
+---
+
+## Unencoded characters
+
+![](i/ids-glyphs-1800.jpg)
+
+```
+⿺ 辶⿳穴⿰月⿰⿲⿱幺長⿱言馬⿱幺長刂心 (traditional)
+⿺ 辶⿳穴⿰月⿰⿲⿱幺长⿱言马⿱幺长刂心 (simplified)
+```
+
+https://blogs.adobe.com/CCJKType/2017/04/designing-implementing-biang.html
+
+---
+
+<img src="i/1280px-Biang_Biang_Mian.jpg" height='500px' />
+
+What *⿺辶⿳穴⿲月⿱⿲幺言幺⿲長馬長刂心⿺辶⿳穴⿲月⿱⿲幺言幺⿲長馬長刂心面* looks like
+
+---
+
 ## String sorting
 
 * Sorting strings is hard!
