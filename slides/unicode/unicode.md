@@ -774,7 +774,7 @@ How can I display (CJK/my own) characters not encoded in Unicode?
 
 ## Unencoded characters
 
-* Source Han Serif has a glyph for *biáng*!
+* Source Han and Noto have glyphs for *biáng*!
 * Uses Unicode and font features to combine existing glyphs
 	* Ideographic Description Characters
 	* OpenType's `ccmp` (Glyph Composition/Decomposition)
@@ -793,6 +793,7 @@ https://blogs.adobe.com/CCJKType/2014/03/ids-opentype.html
 ⿺ 辶⿳穴⿰月⿰⿲⿱幺长⿱言马⿱幺长刂心 (simplified)
 ```
 
+If you want to try it out, copy this instead (extra space between first two characters taken out): `⿺辶⿳穴⿰月⿰⿲⿱幺長⿱言馬⿱幺長刂心`
 https://blogs.adobe.com/CCJKType/2017/04/designing-implementing-biang.html
 
 ---
