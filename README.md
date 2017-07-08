@@ -1,6 +1,6 @@
 # book
 
-Things I have committed to bits
+Bits I have committed to bytes
 
 ## 2017
 
