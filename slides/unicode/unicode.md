@@ -1023,6 +1023,7 @@ println!("{}", "💩".chars().count());
   * https://github.com/twitter/twemoji
 * Use (coloured) emoji fonts
   * https://github.com/eosrei/emojione-color-font
+  * https://github.com/googlei18n/noto-emoji
 
 ---
 
