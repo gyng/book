@@ -851,9 +851,10 @@ What *⿺辶⿳穴⿲月⿱⿲幺言幺⿲長馬長刂心⿺辶⿳穴⿲月⿱�
 * Sometimes
 
   ```
-  >> 'ユニコード'.normalize('NFKD')
-  'ユニコート"'
+  >> '한국어'.normalize('NFKD')
+  "ᄒ ᅡ ᆫ ᄀ ᅮ ᆨ ᄋ ᅥ"
   ```
+  <small>*spaces manually added*</small>
 
 [MDN: String.prototype.normalize()](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String/normalize)
 
