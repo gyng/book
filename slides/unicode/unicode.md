@@ -1011,7 +1011,7 @@ println!("{}", "💩".chars().count());
   * `🤮 U+1F92E FACE VOMITTING` (Emoji 5.0, 2017)
   * `🤷‍♂️ <U+1F937 SHRUG, U+2642 MALE>` (Emoji 4.0, 2016)
   * `🐱🐉 Ninja Cat riding T-Rex` (Windows 10 only)
-    ![](/Users/gyng/w/slides/slides/unicode/i/trexcat.png)
+    ![](i/trexcat.png)
 
 ---
 
