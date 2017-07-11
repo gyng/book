@@ -12,6 +12,12 @@
 
 ---
 
+1. [Some background](#encodings)
+2. [Unicode and UTF-$x$](#unicode)
+3. [Programmer pitfalls](#necessary)
+
+---
+
 <pre>
 > 1 + 1;
 ← 2
@@ -22,7 +28,7 @@
 
 ---
 
-# Encodings
+# [Encodings](#encodings)
 
 *not encryption*
 
@@ -270,6 +276,7 @@ http://www.unicode.org/reports/tr51/tr51-12.html#Emoji_Counts
 * 2 bytes for characters in BMP
   * Can be more efficient than UTF-8 for CJK (2B vs 3B)
 * Surrogate pairs have to be handled for code points outside BMP
+  * Byte-order matters
 
 ---
 
@@ -283,6 +290,24 @@ http://www.unicode.org/reports/tr51/tr51-12.html#Emoji_Counts
 ## UTF-32
 
 * `A` now takes up 4 bytes
+
+---
+
+## SCSU
+
+*But wait! There’s more!*
+
+### 🗜 Standard Compression Scheme for Unicode 🗜
+
+http://www.unicode.org/reports/tr6/
+
+---
+
+## SCSU
+
+![](i/tr6.gif)
+
+* Do not use it*
 
 ---
 
@@ -1115,6 +1140,20 @@ FREE 🍕!
 
 ## Ill-formed sequences and encoding mismatches
 
+* MySQL $\lt$ 5.53 (2010) UTF-8
+
+  ```
+  Incorrect string value: ‘\xF0\x9F\x91\xBD…’ for column ‘data’ at row 1
+  ```
+
+  `👽 U+1F47D EXTRATERRESTRIAL ALIEN`
+
+https://mathiasbynens.be/notes/mysql-utf8mb4
+
+---
+
+## Ill-formed sequences and encoding mismatches
+
 Can crash your program
 * 🐍² Python 2
 
@@ -1182,6 +1221,7 @@ Solution: use languages/libraries which handle Unicode strings right
 * [Emoji charts](http://www.unicode.org/emoji/charts/index.html)
 * [Emoji slides](http://www.unicode.org/emoji/slides.html)
 * [Unicode character inspector](https://apps.timwhitlock.info/unicode/inspect)
+* [UTF-8 decoder](http://software.hixie.ch/utilities/cgi/unicode-decoder/utf8-decoder)
 * [Big List of Naughty Strings](https://github.com/minimaxir/big-list-of-naughty-strings)
 * [Personal names around the world](https://www.w3.org/International/questions/qa-personal-names)
 * [Falsehoods Programmers Believe About Phone Numbers](https://github.com/googlei18n/libphonenumber/blob/master/FALSEHOODS.md)
