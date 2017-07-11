@@ -148,6 +148,10 @@ https://youtu.be/MikoF6KZjm0?t=289
 
 ---
 
+![](i/lain.jpg)
+
+---
+
 ## ASCII Highlights
 
 ### Control characters
