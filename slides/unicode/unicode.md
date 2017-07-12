@@ -531,9 +531,16 @@ EarthWeb commercial, 2001 http://www.unicode.org/history/EarthwebCommercial.avi
 
 ## Recognise garbled text as mojibake
 
-```text
-ÉGÉìÉRÅ[ÉfÉBÉìÉOÇÕìÔÇµÇ≠Ç»Ç¢
-```
+* You might be able to recover the content be changing the character set
+* UTF-8 seen using KOI8-R, a Cyrillic character set
+  ```text
+  п я─п╟п╨п╬п╥я▐п╠я─я▀
+  ```
+
+  UTF-8
+  ```text
+  Библиотека
+  ```
 
 ---
 
@@ -572,7 +579,7 @@ EarthWeb commercial, 2001 http://www.unicode.org/history/EarthwebCommercial.avi
 
 ## Read in text with the right encoding
 
-Especially when parsing HTML
+Especially when parsing HTML or XML
 ```ruby
 # Nokogiri
 doc = Nokogiri.XML(html, nil, 'EUC-JP')
@@ -582,6 +589,37 @@ doc = Nokogiri.XML(html, nil, 'EUC-JP')
 # Beautiful Soup
 soup = BeautifulSoup(html, fromEncoding='Shift_JIS')
 ```
+
+---
+
+## Set HTML `charset`
+
+```html
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+  </head>
+</html>
+```
+
+---
+
+## Use `lang` in HTML as needed
+
+```html
+<html lang="en">
+  <body>
+    <span lang="zh-Hans">刃</span>
+    <span lang="zh-Hant">刃</span>
+    <span lang="ja">刃</span>
+    <span lang="ko">刃</span>
+    <span lang="vi">刃</span>
+  </body>
+</html>
+```
+
+![](i/unification.png)
 
 ---
 
@@ -725,19 +763,6 @@ SS
 
 ---
 
-## Set HTML `charset`
-
-```html
-<!doctype html>
-<html>
-  <head>
-    <meta charset="UTF-8">
-  </head>
-</html>
-```
-
----
-
 ## Use variation selectors as needed
 
 `U+E0101 VARIATION-SELECTOR-18`
@@ -746,33 +771,33 @@ SS
 
 ---
 
-## Use `lang` in HTML as needed
+## Use a correct font for the language outside HTML
 
-```html
-<html lang="en">
+* Google’s Noto/Noto CJK has great support
+* Similarly, Adobe’s Source Han
 
-<span lang="zh-Hans">刃</span>
-<span lang="zh-Hant">刃</span>
-<span lang="ja">刃</span>
-<span lang="ko">刃</span>
-<span lang="vi-nom">刃</span>
-```
-
-![](i/unification.png)
+https://www.google.com/get/noto/help/cjk/
+https://source.typekit.com/source-han-serif
 
 ---
 
 ## Use a correct font for the language outside HTML
 
-* Google’s Noto/Noto CJK has great support
-* Another is Adobe’s Source Han
+### Glyph variations
 
 ![](i/image03.png)
 
-* Note that this is the same code point, `述 U+8FF0`
+`述 U+8FF0` in S. Chinese, T. Chinese, Japanese and Korean
+*Noto Serif CJK*
 
-https://www.google.com/get/noto/help/cjk/
-https://source.typekit.com/source-han-serif
+---
+
+## Use a correct font for the language outside HTML
+
+### Vertical text
+
+![](i/vertical-jp.png)
+*Noto Serif CJK*
 
 ---
 
@@ -790,7 +815,7 @@ How can I display (CJK/my own) characters not encoded in Unicode?
 
 ## Unencoded characters
 
-* Use an image (SVG preferably)
+* Use an image
 * Use Ideographic Description Sequences
   `⿰⿱⿲⿳⿴⿵⿶⿷⿸⿹⿺⿻ U+2FF0..U+2FFF`
   `⿰書史` for <img src="i/100px-Saw_sawndip.svg.png" style="transform: translateY(7px)" height="32px" />
@@ -841,12 +866,20 @@ What *⿺辶⿳穴⿲月⿱⿲幺言幺⿲長馬長刂心⿺辶⿳穴⿲月⿱�
   true
   ```
 
+---
+
+## String sorting
+
 * A-ha! Can we use normalisation for this?
 
   ```javascript
   >> 'café'.normalize('NFKD')
   'cafe ́'
   ```
+
+---
+
+## String sorting
 
 * Sometimes
 
@@ -878,11 +911,32 @@ What *⿺辶⿳穴⿲月⿱⿲幺言幺⿲長馬長刂心⿺辶⿳穴⿲月⿱�
 
 ---
 
+## String searching
+
+* How do I search for `café` by typing `cafe`, or `cafe ́`?
+
+---
+
+## String searching
+
+* Not easy!
+* Locale-aware comparisons
+* Unicode-aware regex
+* Read *Unicode Demystified: A Practical Programmer's Guide to the Encoding Standard* by *Richard Gillam*
+
+---
+
 ## String length
 
 Problems arise when your string contains
   * combining marks
   * surrogate pairs (UTF-16)
+
+---
+
+## String length &mdash; combined characters
+
+What's the length of `café`?
 
 ---
 
@@ -904,7 +958,7 @@ Problems arise when your string contains
 5
 ```
 
-Should generally work for combined characters
+Should generally work for combined characters 🎉
 
 ---
 
@@ -963,7 +1017,7 @@ System.out.println("💩".length());
 
 // use java.text.BreakIterator
 ```
-  
+
 ### ⚙️ Rust
 
 ```rust
@@ -1106,7 +1160,7 @@ http://www.unicode.org/reports/tr46/
 
 ---
 
-## Unicode in URLs 🤔
+## Free pizza!
 
 ```text
 Title: Free Pizza Fridays!
@@ -1135,6 +1189,10 @@ Visit https://tech.gov.sg⧸free.pizza to claim a FREE 🍕!
 
 🍕 `sg⧸free.pizza` 🍕
 
+---
+
+## Unicode in URLs
+
 Solution: Use Punycode
 
 ```text
@@ -1144,15 +1202,25 @@ FREE 🍕!
 
 ---
 
+## Click [here]() for one neat trick to ruin bad software!
+
+* MySQL UTF-8
+
+  What happens when you insert valid UTF-8 into a `VARCHAR CHARACTER SET utf8` column?
+
+  `👽 U+1F47D EXTRATERRESTRIAL ALIEN`
+
+---
+
 ## Ill-formed sequences and encoding mismatches
 
-* MySQL $\lt$ 5.53 (2010) UTF-8
+* MySQL $\lt$ 5.5.3 (2010) UTF-8
 
   ```
   Incorrect string value: ‘\xF0\x9F\x91\xBD…’ for column ‘data’ at row 1
   ```
 
-  `👽 U+1F47D EXTRATERRESTRIAL ALIEN`
+  In MySQL, use `utfmb4` ($\geq$ 5.5.3, 2010)
 
 https://mathiasbynens.be/notes/mysql-utf8mb4
 
@@ -1220,6 +1288,8 @@ Solution: use languages/libraries which handle Unicode strings right
 
 ## Resources
 
+<small>
+
 * [Unicode publications](http://www.unicode.org/publications/)
 * [Unicode technical reports](http://www.unicode.org/reports/)
 * [Unicode data files](http://www.unicode.org/onlinedat/online.html)
@@ -1231,3 +1301,6 @@ Solution: use languages/libraries which handle Unicode strings right
 * [Big List of Naughty Strings](https://github.com/minimaxir/big-list-of-naughty-strings)
 * [Personal names around the world](https://www.w3.org/International/questions/qa-personal-names)
 * [Falsehoods Programmers Believe About Phone Numbers](https://github.com/googlei18n/libphonenumber/blob/master/FALSEHOODS.md)
+* *Unicode Demystified: A Practical Programmer's Guide to the Encoding Standard* by *Richard Gillam*
+
+</small>
