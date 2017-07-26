@@ -12,6 +12,14 @@
 
 ---
 
+# Unicode and its 糞香s: normalisation, Han unification and mﾍ｢ore
+
+###### 2017 (Shift-JIS edition)
+
+###### https://github.com/gyng/book/tree/master/slides/unicode
+
+---
+
 1. [Some background](#encodings)
 2. [Unicode and UTF-$x$](#unicode)
 3. [Programmer pitfalls](#necessary)
@@ -22,7 +30,7 @@
 > 1 + 1;
 ← 2
 
-> 1 + 1&#894;
+> 1 + 1;
 ← 🚨 SyntaxError: illegal character 🚨
 </pre>
 
@@ -90,23 +98,23 @@ EGL  EWS
 ## ASCII
 
 ```
-Dec Hex    Dec Hex    Dec Hex  Dec Hex  Dec Hex  Dec Hex   Dec Hex   Dec Hex
-  0 00 NUL  16 10 DLE  32 20    48 30 0  64 40 @  80 50 P   96 60 `  112 70 p
-  1 01 SOH  17 11 DC1  33 21 !  49 31 1  65 41 A  81 51 Q   97 61 a  113 71 q
-  2 02 STX  18 12 DC2  34 22 "  50 32 2  66 42 B  82 52 R   98 62 b  114 72 r
-  3 03 ETX  19 13 DC3  35 23 #  51 33 3  67 43 C  83 53 S   99 63 c  115 73 s
-  4 04 EOT  20 14 DC4  36 24 $  52 34 4  68 44 D  84 54 T  100 64 d  116 74 t
-  5 05 ENQ  21 15 NAK  37 25 %  53 35 5  69 45 E  85 55 U  101 65 e  117 75 u
-  6 06 ACK  22 16 SYN  38 26 &  54 36 6  70 46 F  86 56 V  102 66 f  118 76 v
-  7 07 BEL  23 17 ETB  39 27 '  55 37 7  71 47 G  87 57 W  103 67 g  119 77 w
-  8 08 BS   24 18 CAN  40 28 (  56 38 8  72 48 H  88 58 X  104 68 h  120 78 x
-  9 09 HT   25 19 EM   41 29 )  57 39 9  73 49 I  89 59 Y  105 69 i  121 79 y
- 10 0A LF   26 1A SUB  42 2A *  58 3A :  74 4A J  90 5A Z  106 6A j  122 7A z
- 11 0B VT   27 1B ESC  43 2B +  59 3B ;  75 4B K  91 5B [  107 6B k  123 7B {
- 12 0C FF   28 1C FS   44 2C ,  60 3C <  76 4C L  92 5C \  108 6C l  124 7C |
- 13 0D CR   29 1D GS   45 2D -  61 3D =  77 4D M  93 5D ]  109 6D m  125 7D }
- 14 0E SO   30 1E RS   46 2E .  62 3E >  78 4E N  94 5E ^  110 6E n  126 7E ~
- 15 0F SI   31 1F US   47 2F /  63 3F ?  79 4F O  95 5F _  111 6F o  127 7F DEL
+   00 NUL    20      40 @    60 `
+   01 SOH    21 !    41 A    61 a
+   02 STX    22 "    42 B    62 b
+   03 ETX    23 #    43 C    63 c
+   04 EOT    24 $    44 D    64 d
+   05 ENQ    25 %    45 E    65 e
+   06 ACK    26 &    46 F    66 f
+   07 BEL    27 '    47 G    67 g
+   08 BS     28 (    48 H    68 h
+   09 HT     29 )    49 I    69 i
+   0A LF     2A *    4A J    6A j
+   0B VT     2B +    4B K    6B k
+   0C FF     2C ,    4C L    6C l
+   0D CR     2D -    4D M    6D m
+   0E SO     2E .    4E N    6E n
+   0F SI     2F /    4F O    6F o
+   ⋮         ⋮        ⋮       ⋮
 ```
 
 http://www.catb.org/esr/faqs/things-every-hacker-once-knew/
@@ -129,7 +137,7 @@ https://youtu.be/MikoF6KZjm0?t=289
 
 ## ASCII
 
-* 0&ndash;31 are control characters `NUL` `CR` `LF` `DEL` etc.
+* 0&ndash;31 are control characters `NUL` `CR` `LF` `DEL`
 * 32&ndash;126 are punctuation, numerals and letters
 * <code>&#x2423;</code> in binary: `0100000` $=32$
 * `A` in binary: `1000001` $= 65$
@@ -159,10 +167,44 @@ https://youtu.be/MikoF6KZjm0?t=289
 * `CR` Moves the print head to the left margin
 * `LF` Scrolls down one line
 * `DEL` Backspace and delete
+* `ETX` `^C` (SIGINT)
+* `EOT` `^D`
 * `BEL` Rings the (physical) bell
 
 ```
 sleep 3 && echo $'\a'
+```
+
+---
+
+# `man ascii` and Unix/Linux control codes
+
+```
+Oct   Dec   Hex   Char                      Hex   Char
+────────────────────────────────────────────────────────
+000   0     00    NUL '\0' (null character) 40    @
+001   1     01    SOH (start of heading)    41    A
+002   2     02    STX (start of text)       42    B
+003   3     03    ETX (end of text)         43    C 👈
+004   4     04    EOT (end of transmission) 44    D 👈
+005   5     05    ENQ (enquiry)             45    E
+006   6     06    ACK (acknowledge)         46    F
+007   7     07    BEL '\a' (bell)           47    G
+010   8     08    BS  '\b' (backspace)      48    H 👈
+011   9     09    HT  '\t' (horizontal tab) 49    I
+012   10    0A    LF  '\n' (new line)       4A    J
+⋮
+```
+
+---
+
+## What’s the problem with ASCII?
+
+---
+
+```
+ASCII
+^
 ```
 
 ---
@@ -217,6 +259,12 @@ http://www.unicode.org/history/earlyyears.html
 
 The first Unicode TV interview (1991)
 http://www.unicode.org/history/unicodeMOV.mov
+
+---
+
+The VP of Unicode made
+* three statements
+* three inaccuracies (in 2017)
 
 ---
 
@@ -287,7 +335,6 @@ http://www.unicode.org/reports/tr51/tr51-12.html#Emoji_Counts
 ## UTF-32
 
 * 32 bits ought to be enough for anybody
-* Problem solved?
 
 ---
 
@@ -319,8 +366,10 @@ http://www.unicode.org/reports/tr6/
 
 * Variable-width
 * `1100XXXX` `10XXXXXX`
-* `1110XXXX` `10XXXXXX` `10XXXXXX`
-* `1111110X` `10XXXXXX` `10XXXXXX` `10XXXXXX` `10XXXXXX` `10XXXXXX`
+* ```
+  1110XXXX 10XXXXXX 10XXXXXX
+   ^^
+  ```
 * First byte specifies number of continuation bytes
 
 ---
@@ -396,7 +445,7 @@ http://www.unicode.org/reports/tr6/
 ## Han unification
 
 > CJK Extension F contains mostly rare characters, but also includes a number of personal and placename characters important for government specifications in Japan, in particular.
- 
+
 CJK Extension F was added in Unicode 10.0 (2017)
 
 ---
@@ -404,6 +453,13 @@ CJK Extension F was added in Unicode 10.0 (2017)
 ## Han unification
 
 * Lose round-trip conversion compatibility with character sets which have variants
+
+https://support.microsoft.com/en-us/help/170559/prb-conversion-problem-between-shift-jis-and-unicode
+
+---
+
+## Han unification
+
 * Can use Unicode variation selectors
 
   `U+E0101 VARIATION-SELECTOR-18`
@@ -441,7 +497,7 @@ http://unicode.org/reports/tr37/
 
 ## Emoji
 
-* 絵 (e ≅ picture) + 文字 (moji ≅ written character)
+* <ruby>絵 <rt>e</rt></ruby> (≅ picture) $+$ <ruby>文字 <rt>moji</rt></ruby>(≅ written character)
 * Early emoji were created by Japanese telcos
 * 2008: Gmail, iPhone
 * 2010: Unicode 6
@@ -495,11 +551,6 @@ http://unicode.org/reports/tr51/
 
 ---
 
-![](i/vomiting_emoji.png)
-
-https://xkcd.com/1813/
-
----
 
 ## Variation selectors
 
@@ -794,10 +845,16 @@ https://source.typekit.com/source-han-serif
 
 ## Use a correct font for the language outside HTML
 
-### Vertical text
+### Vertical text support
 
 ![](i/vertical-jp.png)
 *Noto Serif CJK*
+
+https://helpx.adobe.com/photoshop/user-guide.html?topic=/photoshop/morehelp/text.ug.js
+
+---
+
+![](i/dbs.jpg)
 
 ---
 
@@ -1015,7 +1072,8 @@ What's the length of `💩 U+1F4A9 PILE OF POO`?
 System.out.println("💩".length());
 // 2
 
-// use java.text.BreakIterator
+// This margin is too small to contain the solution
+// Use java.text.BreakIterator
 ```
 
 ### ⚙️ Rust
@@ -1076,13 +1134,13 @@ println!("{}", "💩".chars().count());
 
 ## Emoji
 
-* Let it be
-  ![](i/cat.png)
 * Replace emoji with images (GitHub, Twitter)
   * https://github.com/twitter/twemoji
 * Use (coloured) emoji fonts
   * https://github.com/eosrei/emojione-color-font
   * https://github.com/googlei18n/noto-emoji
+* Let it be
+  ![](i/cat.png)
 
 ---
 
@@ -1202,13 +1260,21 @@ FREE 🍕!
 
 ---
 
-## Click [here]() for one neat trick to ruin bad software!
+## [Click here]() for one neat trick to ruin bad software!
 
 * MySQL UTF-8
 
-  What happens when you insert valid UTF-8 into a `VARCHAR CHARACTER SET utf8` column?
+  What happens when the *valid* UTF-8 string
 
-  `👽 U+1F47D EXTRATERRESTRIAL ALIEN`
+  ```text
+  👽 U+1F47D EXTRATERRESTRIAL ALIEN
+  ```
+
+  is inserted into a column of
+
+  ```sql
+  VARCHAR CHARACTER SET utf8
+  ```
 
 ---
 
@@ -1217,7 +1283,8 @@ FREE 🍕!
 * MySQL $\lt$ 5.5.3 (2010) UTF-8
 
   ```
-  Incorrect string value: ‘\xF0\x9F\x91\xBD…’ for column ‘data’ at row 1
+  Incorrect string value: ‘\xF0\x9F\x91\xBD…’ for
+  column ‘data’ at row 1
   ```
 
   In MySQL, use `utfmb4` ($\geq$ 5.5.3, 2010)
