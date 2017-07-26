@@ -1,4 +1,4 @@
-<!-- As I discovered way too late, Marp cannot render emoji in exported PDFs https://github.com/yhatt/marp/issues/57 -->
+<!-- As I discovered way too late, Marp cannot render emoji in exported PDFs on OSX https://github.com/yhatt/marp/issues/57 -->
 
 <!-- $theme: default -->
 
@@ -132,6 +132,7 @@ https://youtu.be/MikoF6KZjm0?t=289
 * American Standard Code for Information Interchange
 * 7-bit (8<sup>th</sup> bit used for parity)
 * $2^7 = 128$ possible values
+* Has a method to its madness!
 
 ---
 
@@ -139,10 +140,12 @@ https://youtu.be/MikoF6KZjm0?t=289
 
 * 0&ndash;31 are control characters `NUL` `CR` `LF` `DEL`
 * 32&ndash;126 are punctuation, numerals and letters
-* <code>&#x2423;</code> in binary: `0100000` $=32$
-* `A` in binary: `1000001` $= 65$
-* `a` in binary: `1100001` $= 65 + 32 = 97$
-* Alternative: IBM’s EBCDIC (also 1963)
+* <code>&#x2423;</code> in binary: `0100000` $=$ 32 $=$ 0x20
+* `A` in binary: `1000001` $=$ 65 $=$ 0x41
+* `a` in binary: `1100001` $=$ 97 $=$ 0x61
+    * $=$ 65 $+$ 32
+	* $=$ 0x41 $+$ 0x20
+	* $=$ `1000001 | 0100000`
 
 ---
 
@@ -177,28 +180,28 @@ sleep 3 && echo $'\a'
 
 ---
 
-# `man ascii` and Unix/Linux control codes
+# ASCII ⇔ Unix/Linux *control* codes
 
 ```
-Oct   Dec   Hex   Char                      Hex   Char
-────────────────────────────────────────────────────────
-000   0     00    NUL '\0' (null character) 40    @
-001   1     01    SOH (start of heading)    41    A
-002   2     02    STX (start of text)       42    B
-003   3     03    ETX (end of text)         43    C 👈
-004   4     04    EOT (end of transmission) 44    D 👈
-005   5     05    ENQ (enquiry)             45    E
-006   6     06    ACK (acknowledge)         46    F
-007   7     07    BEL '\a' (bell)           47    G
-010   8     08    BS  '\b' (backspace)      48    H 👈
-011   9     09    HT  '\t' (horizontal tab) 49    I
-012   10    0A    LF  '\n' (new line)       4A    J
-⋮
+   Hex   Char                      Hex   Char
+───────────────────────────────────────────────
+   00    NUL '\0' (null character) 40    @
+   01    SOH (start of heading)    41    A
+   02    STX (start of text)       42    B
+   03    ETX (end of text)         43    C 👈
+   04    EOT (end of transmission) 44    D 👈
+   05    ENQ (enquiry)             45    E
+   06    ACK (acknowledge)         46    F
+   07    BEL '\a' (bell)           47    G
+   08    BS  '\b' (backspace)      48    H 👈
+   09    HT  '\t' (horizontal tab) 49    I
+   ⋮
 ```
+`man ascii`
 
 ---
 
-## What’s the problem with ASCII?
+## So, what’s the problem with ASCII?
 
 ---
 
@@ -262,7 +265,7 @@ http://www.unicode.org/history/unicodeMOV.mov
 
 ---
 
-The VP of Unicode made
+In that video, the VP of Unicode made:
 * three statements
 * three inaccuracies (in 2017)
 
@@ -304,11 +307,9 @@ http://www.unicode.org/reports/tr51/tr51-12.html#Emoji_Counts
 
 ## Unicode terminology
 
-* Scalar value `€` `U+20AC EURO SIGN`
+* Scalar value `€ U+20AC EURO SIGN`
 * Range `U+0000..U+FFFF`
-* Sequence  `É` `< U+0045 LATIN CAPITAL LETTER E, U+0301 COMBINING ACUTE ACCENT >`
-* **Code points are not encoding**
-* **Unicode is not an encoding, but a standard**
+* Sequence  `É <U+0045 LATIN CAPITAL LETTER E, U+0301 COMBINING ACUTE ACCENT>`
 
 ---
 
@@ -317,7 +318,16 @@ http://www.unicode.org/reports/tr51/tr51-12.html#Emoji_Counts
 * `U+0000..U+FFFF` is Plane 0, Basic Multilingual Plane (BMP)
 * Each plane encodes up to $2^{16} = 65536$ code points
 * Commonly used characters
-* Language “detection”
+
+---
+
+## Standard
+
+Unicode
+
+## Encoding
+
+UTF-8, UTF-16, UTF-32, UCS-2, UCS-4
 
 ---
 
@@ -364,19 +374,36 @@ http://www.unicode.org/reports/tr6/
 
 ## UTF-8
 
-* Variable-width
-* `1100XXXX` `10XXXXXX`
-* ```
-  1110XXXX 10XXXXXX 10XXXXXX
-   ^^
+* Variable width
+
+* Single-byte (Same as ASCII, 7-bits)
   ```
-* First byte specifies number of continuation bytes
+  00100100
+  └ Is single-byte
+  ```
+  $=$ 36 $=$ 0x24 = `$ U+0024 DOLLAR SIGN`
 
 ---
 
-## Reserved space
+## UTF-8
 
-* `U+nFFFE`, `U+nFFFF`: reserved space for developers
+* Multi-byte
+  ```
+  1110aaaa 10bbbbbb 10cccccc
+  │├┘      ├┘       ├┘
+  ││       └ Is continuation byte
+  ││
+  │└ 2 continuation bytes
+  └ Is multi-byte
+  ```
+* First byte specifies number of continuation bytes
+* Encoded character is `aaaabbbb` `bbcccccc`
+
+---
+
+## Private use areas
+
+* `U+E000..U+F8FF`, `U+F0000..U+FFFFD`, `U+100000..U+10FFFD`
 * Suggested for internal use
   * data processing
   * artificial scripts
@@ -392,8 +419,8 @@ http://www.unicode.org/reports/tr6/
 * Modify other characters
   `e` $+$ ` ́` $=$ `é`
   
-  `e U+0065 LATIN SMALL LETTER E`
-  ` ́ U+0301 COMBINING ACUTE ACCENT`
+  `<e U+0065 LATIN SMALL LETTER E,`
+  ` ́ U+0301 COMBINING ACUTE ACCENT>`
 
 * Precomposed `é`
   `é U+00E9 LATIN SMALL LETTER E WITH ACUTE`
@@ -529,12 +556,12 @@ http://unicode.org/reports/tr51/
 
 <div style="font-size: 96px">
 
-👨 $+$ 👩  $+$ 👦 $=$ 👨‍👩‍👦
+👨 $+$ 👩 $+$ 👦 $=$ 👨‍👩‍👦
 
 👪 $\neq$ 👨‍👩‍👦
 </div>
 
-`U+1F46A` vs combined character
+`👪 U+1F46A FAMILY` vs combined character
 
 ---
 
@@ -550,7 +577,6 @@ http://unicode.org/reports/tr51/
 ```
 
 ---
-
 
 ## Variation selectors
 
@@ -582,7 +608,7 @@ EarthWeb commercial, 2001 http://www.unicode.org/history/EarthwebCommercial.avi
 
 ## Recognise garbled text as mojibake
 
-* You might be able to recover the content be changing the character set
+* Maybe able to recover content by swapping character sets
 * UTF-8 seen using KOI8-R, a Cyrillic character set
   ```text
   п я─п╟п╨п╬п╥я▐п╠я─я▀
@@ -900,11 +926,10 @@ https://blogs.adobe.com/CCJKType/2014/03/ids-opentype.html
 ![](i/ids-glyphs-1800.jpg)
 
 ```
-⿺ 辶⿳穴⿰月⿰⿲⿱幺長⿱言馬⿱幺長刂心 (traditional)
-⿺ 辶⿳穴⿰月⿰⿲⿱幺长⿱言马⿱幺长刂心 (simplified)
+⿺辶⿳穴⿰月⿰⿲⿱幺長⿱言馬⿱幺長刂心 (traditional)
+⿺辶⿳穴⿰月⿰⿲⿱幺长⿱言马⿱幺长刂心 (simplified)
 ```
 
-If you want to try it out, copy this instead (extra space between first two characters taken out): `⿺辶⿳穴⿰月⿰⿲⿱幺長⿱言馬⿱幺長刂心`
 https://blogs.adobe.com/CCJKType/2017/04/designing-implementing-biang.html
 
 ---
@@ -1100,7 +1125,6 @@ println!("{}", "💩".chars().count());
 ## Regex
 
 * Use Regex right
-* Use a good-enough Regex engine
 * Make sure `\w` `\d` `\s` are Unicode-aware
 * Make sure your Regex engine does [case-folding](ftp://ftp.unicode.org/Public/UNIDATA/CaseFolding.txt)
 * Match by Unicode (Perl)
@@ -1112,7 +1136,7 @@ println!("{}", "💩".chars().count());
 ## Regex
 
 * In Perl, you can use `\X`
-  * `\X` Unicode "extended grapheme cluster".  Not in [].
+  > `\X` Unicode "extended grapheme cluster".  Not in [].
 
 * You can use Regex ranges with code points
 * You might be able to match by Regex classes (Perl, Rust)
@@ -1198,7 +1222,24 @@ https://github.com/minimaxir/big-list-of-naughty-strings
 
 Visit [`https://www.xn--80ak6aa92e.com/`](https://www.xn--80ak6aa92e.com) in your browser
 
+---
+
+## Unicode in URLs
+
 ![](i/idnattack.png)
+
+---
+
+## Unicode in URLs
+
+`https://www.аррӏе.com/`
+
+|||
+-|-
+`а` | `U+0430 CYRILLIC SMALL LETTER A`
+`р` | `U+0440 CYRILLIC SMALL LETTER ER`
+`ӏ` | `U+04CF CYRILLIC SMALL LETTER PALOCHKA`
+`е` | `U+0435 CYRILLIC SMALL LETTER IE`
 
 https://www.xudongz.com/blog/2017/idn-phishing/
 
@@ -1227,7 +1268,7 @@ To: You
 
 Happy Friday!
 
-Visit https://tech.gov.sg⧸free.pizza to claim a FREE 🍕!
+Visit https://tech.gov.sg⁄free.pizza to claim a FREE 🍕!
 
 FYNAP
 - HR
@@ -1238,23 +1279,23 @@ FYNAP
 
 ## Unicode in URLs
 
-`⧸ U+29F8 BIG SOLIDUS`
+`⁄ U+2044 FRACTION SLASH`
 
 ```text
-Visit https://tech.gov.sg⧸free.pizza to claim a FREE 🍕!
+Visit https://tech.gov.sg⁄free.pizza to claim a FREE 🍕!
                          👆
 ```
 
-🍕 `sg⧸free.pizza` 🍕
+🍕 `sg⁄free.pizza` 🍕
 
 ---
 
 ## Unicode in URLs
 
-Solution: Use Punycode
+Solution: Use Punycode where/when it makes sense to
 
 ```text
-Visit https://tech.gov.xn--sgfree-jx4d.pizza to claim a
+Visit https://tech.gov.xn--sgfree-qq0c.pizza to claim a
 FREE 🍕!
 ```
 
@@ -1282,7 +1323,7 @@ FREE 🍕!
 
 * MySQL $\lt$ 5.5.3 (2010) UTF-8
 
-  ```
+  ```text
   Incorrect string value: ‘\xF0\x9F\x91\xBD…’ for
   column ‘data’ at row 1
   ```
@@ -1295,7 +1336,6 @@ https://mathiasbynens.be/notes/mysql-utf8mb4
 
 ## Ill-formed sequences and encoding mismatches
 
-Can crash your program
 * 🐍² Python 2
 
   ```python
@@ -1313,7 +1353,7 @@ Can crash your program
   # or sometimes: invalid multibyte char (US-ASCII)
   ```
 
-Solution: use languages/libraries which handle Unicode strings right
+Solution: use languages/libraries which handle Unicode right
 
 ---
 
@@ -1332,7 +1372,7 @@ Solution: use languages/libraries which handle Unicode strings right
   18
   ```
 
-Solution: use languages/libraries which handle Unicode strings right
+Solution: use languages/libraries which handle Unicode right
 
 ---
 
@@ -1368,6 +1408,6 @@ Solution: use languages/libraries which handle Unicode strings right
 * [Big List of Naughty Strings](https://github.com/minimaxir/big-list-of-naughty-strings)
 * [Personal names around the world](https://www.w3.org/International/questions/qa-personal-names)
 * [Falsehoods Programmers Believe About Phone Numbers](https://github.com/googlei18n/libphonenumber/blob/master/FALSEHOODS.md)
-* *Unicode Demystified: A Practical Programmer's Guide to the Encoding Standard* by *Richard Gillam*
+* *Unicode Demystified: A Practical Programmer's Guide to the Encoding Standard* by Richard Gillam
 
 </small>
