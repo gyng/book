@@ -1145,6 +1145,8 @@ println!("{}", "💩".chars().count());
                          👆 
   ```
 
+http://www.unicode.org/reports/tr18/
+
 ---
 
 ## Emoji
@@ -1397,6 +1399,7 @@ Solution: use languages/libraries which handle Unicode right
 
 <small>
 
+* [The Unicode Standard, v10.0 &ndash; Core Specification](http://www.unicode.org/versions/Unicode10.0.0/UnicodeStandard-10.0.pdf)
 * [Unicode publications](http://www.unicode.org/publications/)
 * [Unicode technical reports](http://www.unicode.org/reports/)
 * [Unicode data files](http://www.unicode.org/onlinedat/online.html)
