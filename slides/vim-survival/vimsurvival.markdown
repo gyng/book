@@ -72,7 +72,14 @@ vim is modal!
 	53g
 	2w
 	dw
-		
+	d2w
+
+1. The quick brown
+2. fox jumps over
+3. the lazy dog
+4. Jackdaws love my
+5. big sphinx of quartz
+
 Double operator
 
 	dd - delete to end of line
