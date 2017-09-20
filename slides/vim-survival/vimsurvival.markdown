@@ -155,3 +155,6 @@ foobar
 	CTRL+W to tab
 	:q to close
 
+## Learn basics
+
+	vimtutor
