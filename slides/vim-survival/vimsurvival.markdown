@@ -1,0 +1,157 @@
+# Enough *vim* to survive
+
+## Exiting vim
+
+	<ESC> :q!
+
+## Noob method
+
+	i
+	arrow keys
+	backspace
+	<ESC>
+	:w
+	:q
+
+## Save our eyes (and hands?)
+
+	:set number
+	:syntax on
+	:set mouse=a
+
+## Moving around
+
+To move the cursor, press the h,j,k,l keys as indicated.
+
+	     ^
+	     k		    Hint:  The h key is at the left and moves left.
+       < h	 l >		   The l key is at the right and moves right.
+	     j			   The j key looks like a down arrow.
+	     v
+
+	w - move to next word
+	b - move to previous word
+	e - move to end of current word
+
+	$ - move to end of line
+	0 - move to start of line (or ^)
+
+	CTRL+D - Page down
+	CTRL+U - Page up
+
+	G - End of file
+	g - goto
+
+## Basic editing
+
+	i - insert mode
+	v - visual mode
+	d - delete
+	ESC - get out (CTRL+C more ergonomic)
+	c - change
+	y - yank (copy)
+	p - put (paste)
+
+	u - undo
+	CTRL+R - redo
+
+
+## Modal
+
+vim is modal!
+
+	i - insert
+	R - Replace
+	v - visual (visible motion)
+
+## Mental model (ha ha)
+
+[OPERATOR?] [COUNT/MOTION]
+
+	5j
+	53g
+	2w
+	dw
+		
+Double operator
+
+	dd - delete to end of line
+	yy - yank to end of line
+	cc - change to end of line
+	gg - go to start of file
+
+## Search
+
+Save more eyes `:set hls`
+
+Foobar
+
+	/foobar
+
+foobar
+
+	n - next
+	N - previous
+
+	/foobar/i
+
+## Replace (substitute)
+
+	:s/foobar/barbaz/
+
+	/c - confirm
+	/g - global
+	/i - insensitive
+
+	:s/barbaz/qixqux/igc
+
+# Cool
+
+## Commands
+
+	:! - command
+	:!ls
+
+	:r - paste from file
+	:r !date
+
+## Indent
+
+	= - indent
+	gg=G
+
+## Split window
+
+	:vsplit
+	:hide
+	CTRL+W
+
+## Tabs
+
+	:tab
+	gt - go to previous tab
+	gT - go to next tab
+
+## Settings
+
+	.vimrc
+
+## Multiline cursor
+
+	CTRL+V (visual-block)
+	Select
+	I<text>ESC
+
+	abc 123
+	def 234 
+	ghi 456 789
+	jkl 000
+
+## File browser
+
+	:Vexplore
+	:Sex
+	
+	CTRL+W to tab
+	:q to close
+
