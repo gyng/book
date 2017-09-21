@@ -96,6 +96,14 @@ Double operator
 	cc - change to end of line
 	gg - go to start of file
 
+## Menu commands
+
+	:s
+	:r
+	:set
+
+Treat these as "menu" commands (eg. command palette)
+
 ## Search
 
 Save more eyes `:set hls`
