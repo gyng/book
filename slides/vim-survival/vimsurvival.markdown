@@ -129,6 +129,7 @@ foobar
 	:!ls
 
 	:r - paste from file
+	:r cube.txt
 	:r !date
 
 ## Indent
