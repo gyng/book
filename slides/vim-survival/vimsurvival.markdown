@@ -1,4 +1,4 @@
-# Enough *vim* to survive
+# vim survival guide
 
 ## Exiting vim
 
@@ -23,11 +23,11 @@
 
 To move the cursor, press the h,j,k,l keys as indicated.
 
-	     ^
-	     k		    Hint:  The h key is at the left and moves left.
-       < h	 l >		   The l key is at the right and moves right.
-	     j			   The j key looks like a down arrow.
-	     v
+ 	      ^
+ 	      k		    Hint:  The h key is at the left and moves left.
+	< h       l >		   The l key is at the right and moves right.
+	      j			   The j key looks like a down arrow.
+	      v
 
 	w - move to next word
 	b - move to previous word
@@ -38,6 +38,9 @@ To move the cursor, press the h,j,k,l keys as indicated.
 
 	CTRL+D - Page down
 	CTRL+U - Page up
+
+	CTRL+I - go forward jump
+	CTRL+O - go back a jump
 
 	G - End of file
 	g - goto
@@ -55,6 +58,8 @@ To move the cursor, press the h,j,k,l keys as indicated.
 	u - undo
 	CTRL+R - redo
 
+	>> - indent right
+	<< - indent left
 
 ## Modal
 
@@ -66,13 +71,17 @@ vim is modal!
 
 ## Mental model (ha ha)
 
-[OPERATOR?] [COUNT/MOTION]
+	[OPERATOR?] [COUNT/MOTION]
+
+Using this logic, figure these out:
 
 	5j
-	53g
+	53G
 	2w
+	cw
 	dw
 	d2w
+	3dd
 
 1. The quick brown
 2. fox jumps over
@@ -82,8 +91,8 @@ vim is modal!
 
 Double operator
 
-	dd - delete to end of line
 	yy - yank to end of line
+	dd - delete to end of line
 	cc - change to end of line
 	gg - go to start of file
 
@@ -155,6 +164,10 @@ foobar
 	jkl 000
 
 ## File browser
+
+	:!ls
+
+or
 
 	:Vexplore
 	:Sex
