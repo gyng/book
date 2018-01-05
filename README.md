@@ -4,7 +4,7 @@ Bits I have committed to bytes
 
 ## 2018
 
-* [A *New* Approach To The Teaching of Modern Algorithms](slides/sleep)
+* [A New Approach To Fizzbuzz](slides/sleep)
 
 ## 2017
 
