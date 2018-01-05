@@ -18,7 +18,7 @@
 
 # Claim
 
-* Revolutionary breakthrough in diactic technique
+* Revolutionary breakthrough in fizzbuzz technique
 
 ---
 
@@ -113,9 +113,9 @@ fizzbuzz
 ```
 ---
 
-# Corollary
+# Prior art
 
-* This diactic approach applied to the same class of algorithms
+* This approach has been applied to other algorithms
 
 ---
 
@@ -138,9 +138,9 @@ wait
 
 ---
 
-# Corollary 1.1 Sleepsort
+# Human sleepsort
 
-* O(1) Sleepsort proof
+* Sleepsort proof
 
   (live demo)
 
