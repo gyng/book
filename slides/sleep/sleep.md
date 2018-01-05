@@ -1,12 +1,10 @@
 <style type="text/css">
     html, body, div, p { font-family: monospace }
-    pre { font-size: 10px !important; }
+    pre.small { font-size: 10px !important; }
 </style>
 
 
-# A *New* Approach To The Teaching of Modern Algorithms
-
-*SIGSHWNTEL 2018*
+# A New Approach To Fizzbuzz
 
 ---
 
@@ -24,6 +22,15 @@
 
 ---
 
+# Traditional Fizzbuzz
+
+* Print numbers from 0 to 100
+* Multiples of 3: print `fizz` instead
+* Multiples of 5: print `buzz` instead
+* Multiples of 3 and 5: print `fizzbuzz` instead
+
+---
+
 # Proof
 
 Agents = { Counter, Fizzer, Buzzer }
@@ -35,44 +42,39 @@ Agents = { Counter, Fizzer, Buzzer }
 # Proof (code)
 
 * Fearless concurrency
-```rust
-use std::io::stdio::flush;
-use std::io::timer::sleep;
-use std::thread::Thread;
-use std::time::duration::Duration;
+
+<pre class="small">
+use std::thread;
+use std::time::Duration;
 
 fn main() {
-    let counter = Thread::spawn(|| -> () {
-        let mut i = 0u;
+    let counter = thread::spawn(|| {
+        let mut i = 0u64;
         loop {
             i = i + 1;
             print!("\n{}", i);
-            flush();
-            sleep(Duration::seconds(1));
+            thread::sleep(Duration::from_secs(1));
         }
     });
 
-    let fizzbuzz = Thread::spawn(|| -> () {
+    let fizzbuzz = thread::spawn(|| {
         loop {
+            thread::sleep(Duration::from_secs(15));
             print!("\rfizzbuzz");
-            flush();
-            sleep(Duration::seconds(15));
         }
     });
 
-    let buzz = Thread::spawn(|| -> () {
+    let buzz = thread::spawn(|| {
         loop {
+            thread::sleep(Duration::from_secs(5));
             print!("\rbuzz");
-            flush();
-            sleep(Duration::seconds(5));
         }
     });
 
-    let fizz = Thread::spawn(|| -> () {
+    let fizz = thread::spawn(|| {
         loop {
+            thread::sleep(Duration::from_secs(3));
             print!("\rfizz");
-            flush();
-            sleep(Duration::seconds(3));
         }
     });
 
@@ -81,13 +83,58 @@ fn main() {
     let _ = buzz.join();
     let _ = fizz.join();
 }
-```
+</pre>
 
+---
+
+# Proof (code)
+
+```
+➜  code git:(master) ✗ cargo run --release
+   Compiling code v0.1.0
+    Finished release [optimized] target(s) in 0.82 secs
+     Running `target/release/code`
+
+1
+21
+fizz
+4
+buzz
+fizz
+7
+8
+fizz
+buzz
+11
+fizz
+13
+14
+fizzbuzz
+```
 ---
 
 # Corollary
 
 * This diactic approach applied to the same class of algorithms
+
+---
+
+# "Genius sorting algorithm"
+
+```
+#!/bin/bash
+
+function f() {
+    sleep "$1"
+    echo "$1"
+}
+while [ -n "$1" ]
+do
+    f "$1" &
+    shift
+done
+wait
+```
 
 ---
 
