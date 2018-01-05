@@ -33,7 +33,7 @@
 
 # Proof
 
-Agents = { Counter, Fizzer, Buzzer }
+Agents = { Counter, Fizzer, Buzzer, Fizzbuzzer }
 
 (live demo)
 
@@ -96,7 +96,7 @@ fn main() {
      Running `target/release/code`
 
 1
-21
+2
 fizz
 4
 buzz
