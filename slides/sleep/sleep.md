@@ -152,3 +152,16 @@ Figure 3: Original “Genius sorting algorithm”.
 # Q.E.D.
 
 ∎
+
+---
+
+# Funding for future work
+
+* Integrate *Fluxcapacitor*<sup>1</sup> to optimise real execution time. 
+
+  ```text
+  $ time ./fluxcapacitor -- sleep 12
+  real    0m0.057s
+  ```
+
+<small>1. https://github.com/majek/fluxcapacitor</small>
