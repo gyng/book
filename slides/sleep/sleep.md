@@ -9,21 +9,22 @@
 
 ---
 
-# Introduction
+# 1. Introduction
 
 * Agent-based modelling ☑
 * Parallel computation ☑
 * Scheduling algorithms ☑
+* Microservices ☑
 
 ---
 
-# Claim
+# 1.1 Claim
 
 * Revolutionary breakthrough in fizzbuzz technique
 
 ---
 
-# Traditional Fizzbuzz
+# 2. Traditional Fizzbuzz
 
 * Print numbers from 0 to 100
 * Multiples of 3: print `fizz` instead
@@ -32,13 +33,13 @@
 
 ---
 
-# Proof
+# 2.1 Proof
 
 Agents = { Counter, Fizzer, Buzzer, Fizzbuzzer }
 
 ---
 
-# Proof (code)
+# 2.1 Proof (code)
 
 * Fearless concurrency
 
@@ -86,7 +87,7 @@ fn main() {
 
 ---
 
-# Proof (code)
+# 2.1 Proof (code)
 
 ```
 ➜  code git:(master) ✗ cargo run --release
@@ -112,13 +113,13 @@ fizzbuzz
 ```
 ---
 
-# Prior art
+# 3. Prior art
 
 * This approach has been applied to other algorithms
 
 ---
 
-# "Genius sorting algorithm"
+# 3.1 "Genius sorting algorithm"
 
 ```
 #!/bin/bash
@@ -137,7 +138,7 @@ wait
 
 ---
 
-# Human sleepsort
+# 3.2 Human sleepsort
 
 * Sleepsort proof
 
