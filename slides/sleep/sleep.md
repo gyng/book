@@ -1,6 +1,7 @@
 <style type="text/css">
-    html, body, div, p { font-family: monospace }
+    html, body, div, p { font-family: CMU Serif, monospace }
     pre.small { font-size: 10px !important; }
+    pre, code { font-family: CMU Typewriter Text !important }
 </style>
 
 
@@ -34,8 +35,6 @@
 # Proof
 
 Agents = { Counter, Fizzer, Buzzer, Fizzbuzzer }
-
-(live demo)
 
 ---
 
@@ -141,8 +140,6 @@ wait
 # Human sleepsort
 
 * Sleepsort proof
-
-  (live demo)
 
 ---
 
