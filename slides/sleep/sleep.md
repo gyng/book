@@ -84,6 +84,7 @@ fn main() {
     let _ = fizz.join();
 }
 </pre>
+<small>Figure 1: A memory-safe and concurrent program.</small>
 
 ---
 
@@ -111,6 +112,9 @@ fizz
 14
 fizzbuzz
 ```
+
+<small>Figure 2: Output from the program in Fig. 1.</small>
+
 ---
 
 # 3. Prior art
@@ -119,7 +123,7 @@ fizzbuzz
 
 ---
 
-# 3.1 "Genius sorting algorithm"
+# 3.1 “Genius sorting algorithm”
 
 ```
 #!/bin/bash
@@ -135,6 +139,7 @@ do
 done
 wait
 ```
+Figure 3: Original “Genius sorting algorithm”.
 
 ---
 
