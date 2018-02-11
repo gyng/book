@@ -1004,7 +1004,23 @@ What *⿺辶⿳穴⿲月⿱⿲幺言幺⿲長馬長刂心⿺辶⿳穴⿲月⿱�
 * Not easy!
 * Locale-aware comparisons
 * Unicode-aware regex
+
+---
+
+## String searching (proper)
+
 * Read *Unicode Demystified: A Practical Programmer's Guide to the Encoding Standard* by *Richard Gillam*
+* Read http://unicode.org/reports/tr10/#Searching
+
+---
+
+## Asymmetric searching
+
+|query|matches|
+|-|-|
+|resume|resume, Resume, RESUME, résumé, rèsumè, Résumé, …|
+|résumé|résumé, Résumé, RÉSUMÉ, …|
+|けんこ|けんこ, ケンコ, げんこ, けんご, ゲンコ, ケンゴ, …|
 
 ---
 
