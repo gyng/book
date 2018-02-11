@@ -1394,6 +1394,18 @@ Solution: use languages/libraries which handle Unicode right
 
 ---
 
+## OS/locale filenames
+
+* Beware simple filename sanitisation, especially on Windows
+* Normalization of paths
+  `ｃ：＼ｗｉｎｄｏｗｓ` becomes `c:\windows`
+* Character mappings
+  `¥` is mapped to `\` on a Japanese-language Windows system
+
+<small>https://msdn.microsoft.com/en-us/library/dd374047(v=vs.85).aspx</small>
+
+---
+
 <pre>
 > 1 + 1;
 ← 2
