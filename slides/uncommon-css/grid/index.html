@@ -1,0 +1,44 @@
+<html>
+<style>
+    .grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-auto-rows: 5vh;
+        grid-gap: 10px;
+    }
+
+    .grid > div {
+        height: 100%;
+    }
+
+    .one {
+        grid-column: 1 / 3;
+        background-color: blue;
+    }
+
+    .two {
+        grid-column: 2 / 4;
+        background-color: red;
+    }
+
+    .three {
+        grid-column: 1 / 2;
+        grid-row: 2 / 4;
+        background-color: green;
+    }
+
+    .four {
+        grid-column: 3 / 4;
+        grid-row: 3 / 5;
+        background-color: yellow;
+    }
+</style>
+
+<div class="grid" style>
+    <div class="one">one</div>
+    <div class="two">two</div>
+    <div class="three">three</div>
+    <div class="four">yellow</div>
+</div>
+
+</html>

@@ -1,0 +1,41 @@
+<html>
+<style>
+    @keyframes party {
+        0% {
+            border-image: repeating-linear-gradient(45deg, #f33, #3bf, #f33 30px) 10;
+        }
+
+        25% {
+            border-image: repeating-linear-gradient(45deg, #f33, #3bf, #f33 30px) 20;
+        }
+
+        50% {
+            border-image: repeating-linear-gradient(45deg, #f33, #3bf, #f33 30px) 30;
+        }
+
+        75% {
+            border-image: repeating-linear-gradient(45deg, #f33, #3bf, #f33 30px) 20;
+        }
+
+        100% {
+            border-image: url(../res/pic0.jpg);
+        }
+    }
+
+    .box {
+        animation: 1.5s party infinite;
+        width: 200px;
+        border: 30px solid;
+        padding: 20px;
+    }
+</style>
+
+<div class="box">
+    <marquee>
+        <img src="../res/pic0.jpg" />
+    </marquee>
+</div>
+
+
+
+</html>
