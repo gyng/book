@@ -197,7 +197,7 @@ Crosshair
 </section>
 <section id="columns-first-" class="level1">
 <h1><code>columns</code>, <code>:first-*</code></h1>
-<div class="sourceCode" id="cb2"><pre class="sourceCode css"><code class="sourceCode css"><a class="sourceLine" id="cb2-1" data-line-number="1">p { <span class="kw">columns</span>: <span class="dv">3</span> <span class="dv">auto</span> };</a>
+<div class="sourceCode" id="cb2"><pre class="sourceCode css"><code class="sourceCode css"><a class="sourceLine" id="cb2-1" data-line-number="1">p { <span class="kw">columns</span>: <span class="dv">3</span> <span class="dv">auto</span>; }</a>
 <a class="sourceLine" id="cb2-2" data-line-number="2">p<span class="in">:first-line</span> { <span class="kw">font-family</span>: <span class="st">&#39;Vollkorn SC&#39;</span>; }</a></code></pre></div>
 <div class="box" style="max-height: 50%;" id="col">
 <p style="columns: 3 auto; font-size: 14px; overflow: hidden;">
@@ -230,7 +230,7 @@ Call me Ishmael. Some years ago—never mind how long precisely—having little 
 <div class="sourceCode" id="cb4"><pre class="sourceCode css"><code class="sourceCode css"><a class="sourceLine" id="cb4-1" data-line-number="1">p {</a>
 <a class="sourceLine" id="cb4-2" data-line-number="2">    <span class="kw">text-align</span>: <span class="dv">justify</span></a>
 <a class="sourceLine" id="cb4-3" data-line-number="3">    text-justify: distribute;</a>
-<a class="sourceLine" id="cb4-4" data-line-number="4">};</a></code></pre></div>
+<a class="sourceLine" id="cb4-4" data-line-number="4">}</a></code></pre></div>
 <div class="box" style="max-height: 50%;" id="col">
 <p style="columns: 3 auto; font-size: 14px; overflow: hidden; text-align: justify; text-justify: distribute;">
 Call me Ishmael. Some years ago—never mind how long precisely—having little or no money in my purse, and nothing particular to interest me on shore, I thought I would sail about a little and see the watery part of the world. It is a way I have of driving off the spleen and regulating the circulation. Whenever I find myself growing grim about the mouth; whenever it is a damp, drizzly November in my soul; whenever I find myself involuntarily pausing before coffin warehouses, and bringing up the rear of every funeral I meet; and especially whenever my hypos get such an upper hand of me, that it requires a strong moral principle to prevent me from deliberately stepping into the street, and methodically knocking people’s hats off—then, I account it high time to get to sea as soon as I can. This is my substitute for pistol and ball. With a philosophical flourish Cato throws himself upon his sword; I quietly take to the ship. There is nothing surprising in this. If they but knew it, almost all men in their degree, some time or other, cherish very nearly the same feelings towards the ocean with me.</p>
@@ -347,12 +347,24 @@ Wikipedia, the free encyclopedia 维基百科，自由的百科全书
 <p><img src="res/emp.png" /></p>
 <hr />
 </section>
+<section id="text-emphasis" class="level1">
+<h1><code>text-emphasis</code></h1>
+<div class="sourceCode" id="cb13"><pre class="sourceCode css"><code class="sourceCode css"><a class="sourceLine" id="cb13-1" data-line-number="1">emp {</a>
+<a class="sourceLine" id="cb13-2" data-line-number="2">    <span class="co">/* text-emphasis-color: red; */</span></a>
+<a class="sourceLine" id="cb13-3" data-line-number="3">    <span class="kw">text-emphasis-style</span>: <span class="st">&quot;🔥&quot;</span>;</a>
+<a class="sourceLine" id="cb13-4" data-line-number="4">}</a></code></pre></div>
+<div class="box">
+<emp style="text-emphasis-color: #555; text-emphasis-style: '🔥';">Call me Ishmael. Some years ago—never mind how long precisely—having <ruby>🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥<rt>🔥🔥🔥🔥🔥🔥🔥🤔🤔🤔🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥</rt></ruby>  Whenever I find myself growing grim about the mouth; whenever it is a damp, drizzly November in my soul; </emp>
+</div>
+
+<hr />
+</section>
 <section id="vertical-numerals" class="level1">
 <h1>Vertical numerals</h1>
 <p>Tate-chu-yoko (縦中横)</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode css"><code class="sourceCode css"><a class="sourceLine" id="cb13-1" data-line-number="1">p, li<span class="in">::</span>marker {</a>
-<a class="sourceLine" id="cb13-2" data-line-number="2">    <span class="kw">text-combine-upright</span>: digits <span class="dv">4</span>;</a>
-<a class="sourceLine" id="cb13-3" data-line-number="3">}</a></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode css"><code class="sourceCode css"><a class="sourceLine" id="cb14-1" data-line-number="1">p, li<span class="in">::</span>marker {</a>
+<a class="sourceLine" id="cb14-2" data-line-number="2">    <span class="kw">text-combine-upright</span>: digits <span class="dv">4</span>;</a>
+<a class="sourceLine" id="cb14-3" data-line-number="3">}</a></code></pre></div>
 <p><img src="res/emp.png" /></p>
 <hr />
 </section>
@@ -386,13 +398,13 @@ Wikipedia, the free encyclopedia 维基百科，自由的百科全书
 <li>Different rules for different viewing devices</li>
 <li>Responsive design</li>
 </ul>
-<div class="sourceCode" id="cb14"><pre class="sourceCode css"><code class="sourceCode css"><a class="sourceLine" id="cb14-1" data-line-number="1"><span class="im">@supports</span> (display: flex) {</a>
-<a class="sourceLine" id="cb14-2" data-line-number="2">  <span class="im">@media</span> <span class="dv">screen</span> and (<span class="kw">min-width</span>: <span class="dv">900px</span>) {</a>
-<a class="sourceLine" id="cb14-3" data-line-number="3">    article {</a>
-<a class="sourceLine" id="cb14-4" data-line-number="4">      <span class="kw">display</span>: flex;</a>
-<a class="sourceLine" id="cb14-5" data-line-number="5">    }</a>
-<a class="sourceLine" id="cb14-6" data-line-number="6">  }</a>
-<a class="sourceLine" id="cb14-7" data-line-number="7">}</a></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode css"><code class="sourceCode css"><a class="sourceLine" id="cb15-1" data-line-number="1"><span class="im">@supports</span> (display: flex) {</a>
+<a class="sourceLine" id="cb15-2" data-line-number="2">  <span class="im">@media</span> <span class="dv">screen</span> and (<span class="kw">min-width</span>: <span class="dv">900px</span>) {</a>
+<a class="sourceLine" id="cb15-3" data-line-number="3">    article {</a>
+<a class="sourceLine" id="cb15-4" data-line-number="4">      <span class="kw">display</span>: flex;</a>
+<a class="sourceLine" id="cb15-5" data-line-number="5">    }</a>
+<a class="sourceLine" id="cb15-6" data-line-number="6">  }</a>
+<a class="sourceLine" id="cb15-7" data-line-number="7">}</a></code></pre></div>
 <hr />
 </section>
 <section id="print-css" class="level1">
@@ -409,30 +421,30 @@ Wikipedia, the free encyclopedia 维基百科，自由的百科全书
 <section id="media-print" class="level1">
 <h1><code>@media print</code></h1>
 <p>Apply selectors to your webpage in print</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode css"><code class="sourceCode css"><a class="sourceLine" id="cb15-1" data-line-number="1"><span class="im">@media</span> <span class="dv">print</span> {</a>
-<a class="sourceLine" id="cb15-2" data-line-number="2">    section {</a>
-<a class="sourceLine" id="cb15-3" data-line-number="3">        <span class="kw">height</span>: <span class="dv">100%</span>;</a>
-<a class="sourceLine" id="cb15-4" data-line-number="4">        <span class="kw">page-break-after</span>: <span class="dv">always</span>;</a>
-<a class="sourceLine" id="cb15-5" data-line-number="5">        <span class="kw">font-size</span>: <span class="dv">16px</span>;</a>
-<a class="sourceLine" id="cb15-6" data-line-number="6">        <span class="kw">color</span>: <span class="dv">black</span>;</a>
-<a class="sourceLine" id="cb15-7" data-line-number="7">    }</a>
-<a class="sourceLine" id="cb15-8" data-line-number="8">}</a></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode css"><code class="sourceCode css"><a class="sourceLine" id="cb16-1" data-line-number="1"><span class="im">@media</span> <span class="dv">print</span> {</a>
+<a class="sourceLine" id="cb16-2" data-line-number="2">    section {</a>
+<a class="sourceLine" id="cb16-3" data-line-number="3">        <span class="kw">height</span>: <span class="dv">100%</span>;</a>
+<a class="sourceLine" id="cb16-4" data-line-number="4">        <span class="kw">page-break-after</span>: <span class="dv">always</span>;</a>
+<a class="sourceLine" id="cb16-5" data-line-number="5">        <span class="kw">font-size</span>: <span class="dv">16px</span>;</a>
+<a class="sourceLine" id="cb16-6" data-line-number="6">        <span class="kw">color</span>: <span class="dv">black</span>;</a>
+<a class="sourceLine" id="cb16-7" data-line-number="7">    }</a>
+<a class="sourceLine" id="cb16-8" data-line-number="8">}</a></code></pre></div>
 <hr />
 </section>
 <section id="page" class="level1">
 <h1><code>@page</code></h1>
 <p><a href="https://drafts.csswg.org/css-page-3/#at-page-rule">W3C</a> ·  <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/%40page">MDN</a></p>
 <p>Selectors for the printed page <em><strong>itself</strong></em></p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode css"><code class="sourceCode css"><a class="sourceLine" id="cb16-1" data-line-number="1"><span class="im">@page</span> { <span class="co">/* size: A4 landscape; */</span> }</a>
-<a class="sourceLine" id="cb16-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb16-3" data-line-number="3"><span class="co">/* cover */</span></a>
-<a class="sourceLine" id="cb16-4" data-line-number="4"><span class="im">@page</span>:first { <span class="kw">font-size</span>: <span class="dv">192px</span>; }</a>
-<a class="sourceLine" id="cb16-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb16-6" data-line-number="6"><span class="co">/* verso */</span></a>
-<a class="sourceLine" id="cb16-7" data-line-number="7"><span class="im">@page</span>:<span class="dv">left</span> { <span class="kw">margin</span>: <span class="dv">5cm</span> <span class="dv">10cm</span> <span class="dv">5cm</span> <span class="dv">5cm</span>; }</a>
-<a class="sourceLine" id="cb16-8" data-line-number="8"></a>
-<a class="sourceLine" id="cb16-9" data-line-number="9"><span class="co">/* recto */</span></a>
-<a class="sourceLine" id="cb16-10" data-line-number="10"><span class="im">@page</span>:<span class="dv">right</span> { <span class="kw">margin</span>: <span class="dv">5cm</span> <span class="dv">5cm</span> <span class="dv">5cm</span> <span class="dv">10cm</span>; }</a></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode css"><code class="sourceCode css"><a class="sourceLine" id="cb17-1" data-line-number="1"><span class="im">@page</span> { <span class="co">/* size: A4 landscape; */</span> }</a>
+<a class="sourceLine" id="cb17-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb17-3" data-line-number="3"><span class="co">/* cover */</span></a>
+<a class="sourceLine" id="cb17-4" data-line-number="4"><span class="im">@page</span>:first { <span class="kw">font-size</span>: <span class="dv">192px</span>; }</a>
+<a class="sourceLine" id="cb17-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb17-6" data-line-number="6"><span class="co">/* verso */</span></a>
+<a class="sourceLine" id="cb17-7" data-line-number="7"><span class="im">@page</span>:<span class="dv">left</span> { <span class="kw">margin</span>: <span class="dv">5cm</span> <span class="dv">10cm</span> <span class="dv">5cm</span> <span class="dv">5cm</span>; }</a>
+<a class="sourceLine" id="cb17-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb17-9" data-line-number="9"><span class="co">/* recto */</span></a>
+<a class="sourceLine" id="cb17-10" data-line-number="10"><span class="im">@page</span>:<span class="dv">right</span> { <span class="kw">margin</span>: <span class="dv">5cm</span> <span class="dv">5cm</span> <span class="dv">5cm</span> <span class="dv">10cm</span>; }</a></code></pre></div>
 <hr />
 </section>
 <section id="url-lang-dir" class="level1">
@@ -474,17 +486,48 @@ Wikipedia, the free encyclopedia 维基百科，自由的百科全书
 <h1>::spelling-error, ::grammar-error</h1>
 <hr />
 </section>
-<section id="first-letter-first-line-placeholder-selection" class="level1">
-<h1>::first-letter, ::first-line, ::placeholder, ::selection</h1>
+<section id="placeholder" class="level1">
+<h1><code>::placeholder</code></h1>
+<div class="sourceCode" id="cb18"><pre class="sourceCode css"><code class="sourceCode css"><a class="sourceLine" id="cb18-1" data-line-number="1">input<span class="in">::</span>placeholder {</a>
+<a class="sourceLine" id="cb18-2" data-line-number="2">    <span class="kw">color</span>: <span class="dv">red</span>;</a>
+<a class="sourceLine" id="cb18-3" data-line-number="3">}</a></code></pre></div>
+<div class="box">
+<input id="placeholderer" style="font-size: 300%; width: 100%;" placeholder="placeholderer">
+</div>
+
+<hr />
+</section>
+<section id="selection" class="level1">
+<h1><code>::selection</code></h1>
+<div class="sourceCode" id="cb19"><pre class="sourceCode css"><code class="sourceCode css"><a class="sourceLine" id="cb19-1" data-line-number="1">p<span class="in">::selection</span> {</a>
+<a class="sourceLine" id="cb19-2" data-line-number="2">    <span class="kw">background</span>: <span class="dv">black</span>;</a>
+<a class="sourceLine" id="cb19-3" data-line-number="3">    <span class="kw">color</span>: <span class="dv">white</span>;</a>
+<a class="sourceLine" id="cb19-4" data-line-number="4">    <span class="kw">text-shadow</span>: <span class="dv">1em</span> <span class="dv">1em</span> <span class="dv">2em</span> <span class="fu">rgba</span>(<span class="dv">255</span>, <span class="dv">215</span>, <span class="dv">0</span>, <span class="dv">1</span>);</a>
+<a class="sourceLine" id="cb19-5" data-line-number="5">}</a></code></pre></div>
+<div class="box">
+<p id="selectioner">
+Call me Ishmael. Some years ago—never mind how long precisely—having little or no money in my purse, and nothing particular to interest me on shore, I thought I would sail about a little and see the watery part of the world.
+</p>
+</div>
+
 <hr />
 </section>
 <section id="different-units" class="level1">
 <h1>Different units</h1>
 <hr />
 </section>
-<section id="background-size-object-fit" class="level1">
-<h1>background-size, object-fit</h1>
-<p>object-fit less common than background-size</p>
+<section id="contain-and-cover" class="level1">
+<h1><code>contain</code> and <code>cover</code></h1>
+<div class="sourceCode" id="cb20"><pre class="sourceCode css"><code class="sourceCode css"><a class="sourceLine" id="cb20-1" data-line-number="1"><span class="pp">#bg</span> { <span class="kw">background-size</span>: cover; }</a>
+<a class="sourceLine" id="cb20-2" data-line-number="2"><span class="pp">#img1</span> { <span class="kw">object-fit</span>: cover; }</a>
+<a class="sourceLine" id="cb20-3" data-line-number="3"><span class="pp">#img2</span> { <span class="kw">object-fit</span>: contain; }</a>
+<a class="sourceLine" id="cb20-4" data-line-number="4"><span class="pp">#img3</span> { <span class="kw">object-fit</span>: unset; }</a></code></pre></div>
+<div class="box" style="flex-direction: row; justify-content: space-evenly; background: url(res/pic1.jpg) no-repeat; background-size: cover;">
+    <img src="res/pic0.jpg" style="height: 100%; width: 20%; border: solid 1px red; object-fit: cover;" />
+    <img src="res/pic0.jpg" style="height: 100%; width: 20%; border: solid 1px red; object-fit: contain;" />
+    <img src="res/pic0.jpg" style="height: 100%; width: 20%; border: solid 1px red;" />
+</div>
+
 <hr />
 </section>
 <section id="import" class="level1">
@@ -498,24 +541,16 @@ Wikipedia, the free encyclopedia 维基百科，自由的百科全书
 </ul>
 <hr />
 </section>
-<section id="scrollbar" class="level1">
-<h1>scrollbar</h1>
-<hr />
-</section>
-<section id="border-iamge-border-style" class="level1">
-<h1>border-iamge, border-style</h1>
-<hr />
-</section>
-<section id="caption-side" class="level1">
-<h1>caption-side</h1>
-<hr />
-</section>
-<section id="rrggbbaa-colors-different-colors" class="level1">
-<h1>#RRGGBBAA colors, different colors</h1>
-<hr />
-</section>
 <section id="pointer-events" class="level1">
 <h1>pointer-events</h1>
+<p>Change interaction z-order without changing presentation</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode css"><code class="sourceCode css"><a class="sourceLine" id="cb21-1" data-line-number="1">button { <span class="kw">pointer-events</span>: <span class="dv">none</span>; }</a></code></pre></div>
+<div class="box">
+<button style="pointer-events: none; font-size: 300%;">Click me!</button>
+<button style="font-size: 300%;">Click me!</button>
+<video autoplay loop src="res/vid.webm" style="pointer-events: none; mix-blend-mode: screen; position: absolute;">
+</div>
+
 <hr />
 </section>
 <section id="3x3-css-transformations-cool-demo" class="level1">

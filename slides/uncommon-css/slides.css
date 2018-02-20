@@ -72,6 +72,40 @@ iframe {
   margin: 0 0.05em 0.05em 0;
 }
 
+#placeholderer {
+  background-color: black;
+  caret-color: red;
+  color: white;
+  padding: 20px;
+}
+
+#placeholderer::placeholder {
+  color: red;
+}
+
+@keyframes selectcolor {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+#selectioner::-moz-selection {
+  background-color: #000000ff;
+  color: white;
+  text-shadow: 1em 1em 2em rgba(255, 215, 0, 1), 0 0 1em rgba(255, 215, 0, 1),
+    0 0 0.2em rgba(255, 215, 0, 1);
+}
+
+#selectioner::selection {
+  background-color: #000000ff;
+  color: white;
+  text-shadow: 1em 1em 2em rgba(255, 215, 0, 1), 0 0 1em rgba(255, 215, 0, 1),
+    0 0 0.2em rgba(255, 215, 0, 1);
+}
+
 @media print {
   section {
     height: 100%;

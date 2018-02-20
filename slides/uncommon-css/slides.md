@@ -121,7 +121,7 @@ Limited support
 # `columns`, `:first-*`
 
 ```css
-p { columns: 3 auto };
+p { columns: 3 auto; }
 p:first-line { font-family: 'Vollkorn SC'; }
 ```
 
@@ -160,7 +160,7 @@ Call me Ishmael. Some years ago—never mind how long precisely—having little 
 p {
     text-align: justify
     text-justify: distribute;
-};
+}
 ```
 
 <div class="box" style="max-height: 50%;" id="col">
@@ -303,6 +303,21 @@ Wikipedia, the free encyclopedia 维基百科，自由的百科全书
 ```
 
 ![](res/emp.png)
+
+---
+
+# `text-emphasis`
+
+```css
+emp {
+    /* text-emphasis-color: red; */
+    text-emphasis-style: "🔥";
+}
+```
+
+<div class="box">
+<emp style="text-emphasis-color: #555; text-emphasis-style: '🔥';">Call me Ishmael. Some years ago—never mind how long precisely—having <ruby>🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥<rt>🔥🔥🔥🔥🔥🔥🔥🤔🤔🤔🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥</rt></ruby>  Whenever I find myself growing grim about the mouth; whenever it is a damp, drizzly November in my soul; </emp>
+</div>
 
 ---
 
@@ -456,7 +471,35 @@ Frosted glass effect?
 
 ---
 
-# ::first-letter, ::first-line, ::placeholder, ::selection
+# `::placeholder`
+
+```css
+input::placeholder {
+    color: red;
+}
+```
+
+<div class="box">
+<input id="placeholderer" style="font-size: 300%; width: 100%;" placeholder="placeholderer">
+</div>
+
+---
+
+# `::selection`
+
+```css
+p::selection {
+    background: black;
+    color: white;
+    text-shadow: 1em 1em 2em rgba(255, 215, 0, 1);
+}
+```
+
+<div class="box">
+<p id="selectioner">
+Call me Ishmael. Some years ago—never mind how long precisely—having little or no money in my purse, and nothing particular to interest me on shore, I thought I would sail about a little and see the watery part of the world.
+</p>
+</div>
 
 ---
 
@@ -464,9 +507,20 @@ Frosted glass effect?
 
 ---
 
-# background-size, object-fit
+# `contain` and `cover`
 
-object-fit less common than background-size
+```css
+#bg { background-size: cover; }
+#img1 { object-fit: cover; }
+#img2 { object-fit: contain; }
+#img3 { object-fit: unset; }
+```
+
+<div class="box" style="flex-direction: row; justify-content: space-evenly; background: url(res/pic1.jpg) no-repeat; background-size: cover;">
+    <img src="res/pic0.jpg" style="height: 100%; width: 20%; border: solid 1px red; object-fit: cover;" />
+    <img src="res/pic0.jpg" style="height: 100%; width: 20%; border: solid 1px red; object-fit: contain;" />
+    <img src="res/pic0.jpg" style="height: 100%; width: 20%; border: solid 1px red;" />
+</div>
 
 ---
 
@@ -480,23 +534,19 @@ object-fit less common than background-size
 
 ---
 
-# scrollbar
-
----
-
-# border-iamge, border-style
-
----
-
-# caption-side
-
----
-
-# #RRGGBBAA colors, different colors
-
----
-
 # pointer-events
+
+Change interaction z-order without changing presentation
+
+```css
+button { pointer-events: none; }
+```
+
+<div class="box">
+<button style="pointer-events: none; font-size: 300%;">Click me!</button>
+<button style="font-size: 300%;">Click me!</button>
+<video autoplay loop src="res/vid.webm" style="pointer-events: none; mix-blend-mode: screen; position: absolute;">
+</div>
 
 ---
 
