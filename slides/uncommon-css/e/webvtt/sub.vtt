@@ -1,0 +1,15 @@
+WEBVTT
+
+/* Style blocks cannot use blank lines nor "dash dash greater than" */
+
+NOTE comment blocks can be used between style blocks.
+
+00:00:00.000 --> 00:00:03.000
+WebVTT example
+<ruby><b>Hello</b> <rt>Hi!</rt></ruby> world!
+
+
+NOTE style blocks cannot appear after the first cue.
+
+00:00:03.000 --> 00:00:06.000
+<ruby>Hello <rt>Hi!</rt></ruby> <b>world</b>!

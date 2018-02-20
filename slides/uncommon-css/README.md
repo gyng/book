@@ -1,8 +1,11 @@
 # uncommon-css
 
-## Build
+## Build, Dev
 
 ```
-yarn global add cleaver
-cleaver watch index.md
+brew install entr
+yarn global add live-server
+
+ls slides.md slides.css | entr make slides
+live-server
 ```
