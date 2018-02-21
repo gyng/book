@@ -1,10 +1,4 @@
-## And some HTML
-
-Feb 2018
-
----
-
-## New
+# New
 
 `display: grid`
 
@@ -12,7 +6,7 @@ Feb 2018
 
 ---
 
-## Old
+# Old
 
 `border-image`
 
@@ -21,7 +15,7 @@ Feb 2018
 
 ---
 
-## Useless?
+# Useless?
 
 `caret-color`
 
@@ -30,62 +24,42 @@ Feb 2018
 
 <input type="text" style="caret-color: transparent; font-size: 3em; width: 100%;" placeholder="don’t do this">
 
+---
+
+# Not covering
+
+* ~Box model~
+* ~Floats~
+* ~Flexbox~
+* ~CSS Grid~
+* ~Shadow DOM~
+
+```css
+del {
+    text-decoration-color: red;
+    text-decoration-style: wavy;
+}
+```
 
 ---
 
-# insert good bad ugly edit
+# `cursor`
 
----
+```css
+div { cursor: crosshair; }
+```
 
-#
-
-&vellip;
-<pre style="font-size: 75%">
-text-underline-color	N/A	0.00%
-grid	3	0.00%
-text-line-through-color	N/A	0.00%
-text-line-through-width	N/A	0.00%
-justify-self	3	0.00%
-text-line-through-style	N/A	0.00%
-text-overline-color	N/A	0.00%
-mask-source-type	3	0.00%
-grid-auto-columns	3	0.00%
-grid-auto-rows	3	0.00%
-grid-template-areas	3	0.00%
-text-line-through-mode	N/A	0.00%
-text-overline-mode	N/A	0.00%
-text-overline-style	N/A	0.00%
-text-underline-width	N/A	0.00%
-text-underline-mode	N/A	0.00%
-text-overline-width	N/A	0.00%
-</pre>
-
-[Source](https://docs.google.com/spreadsheets/d/1CxLS8w8GwK-2euVErrqpUUb76PiZa6w5h5EnGsL9KFs/edit#gid=555855884)
-
----
-
-# Cursor
-`cursor: crosshair`
 <div class="box" style="cursor: crosshair">
 Crosshair
 </div>
 
-`cursor: url(...)`
+```css
+div { cursor: url(...); }
+```
 
 <div class="box" id="cursor-animated">
 ?
 </div>
-
----
-
-# Grid
-
----
-
-# Flexbox
-
-* Flexbox is already widespread but
-* `order`
 
 ---
 
@@ -110,24 +84,19 @@ Limited support
 
 ---
 
-# Shadow DOM
-
----
-
-# Typography CSS
-
----
-
 # `columns`, `:first-*`
 
 ```css
 p { columns: 3 auto; }
-p:first-line { font-family: 'Vollkorn SC'; }
+p::first-line { font-variant-caps: small-caps; }
 ```
 
 <div class="box" style="max-height: 50%;" id="col">
-<p style="columns: 3 auto; font-size: 14px; overflow: hidden;">
-Call me Ishmael. Some years ago—never mind how long precisely—having little or no money in my purse, and nothing particular to interest me on shore, I thought I would sail about a little and see the watery part of the world. It is a way I have of driving off the spleen and regulating the circulation. Whenever I find myself growing grim about the mouth; whenever it is a damp, drizzly November in my soul; whenever I find myself involuntarily pausing before coffin warehouses, and bringing up the rear of every funeral I meet; and especially whenever my hypos get such an upper hand of me, that it requires a strong moral principle to prevent me from deliberately stepping into the street, and methodically knocking people’s hats off—then, I account it high time to get to sea as soon as I can. This is my substitute for pistol and ball. With a philosophical flourish Cato throws himself upon his sword; I quietly take to the ship. There is nothing surprising in this. If they but knew it, almost all men in their degree, some time or other, cherish very nearly the same feelings towards the ocean with me.</p>
+
+<div style="font-family: Vollkorn; font-size: 16px; text-align: justify; letter-spacing: 10px; padding: 20px;">MOBY DICK</div>
+
+<p style="font-family: Vollkorn; columns: 3 auto; font-size: 14px; overflow: hidden;">
+Call me Ishmael. Some years ago—never mind how long precisely—having little or no money in my purse, and nothing particular to interest me on shore, I thought I would sail about a little and see the watery part of the world. It is a way I have of driving off the spleen and regulating the circulation. Whenever I find myself growing grim about the mouth; whenever it is a damp, drizzly November in my soul; whenever I find myself involuntarily pausing before coffin warehouses, and bringing up the rear of every funeral I meet; and especially whenever my hypos get such an upper hand of me, that it requires a strong moral principle to prevent me from deliberately stepping into the street, and methodically knocking people’s hats off—then, I account it high time to get to sea as soon as I can. This is my substitute for pistol and ball. With a philosophical flourish Cato throws himself upon his sword; I quietly take to the ship.</p>
 </div>
 
 ---
@@ -135,52 +104,40 @@ Call me Ishmael. Some years ago—never mind how long precisely—having little 
 # `:first-letter`
 
 ```css
-p:first-letter {
+p::first-letter {
     float: left;
     font-size: 700%;
-    background: black;
+    background: url(res/pic2.png);
     color: white;
     padding: 0.1em;
     margin: 0 0.05em 0.05em 0;
-    border: outset 4px gold;
+    border: outset 4px pink;
     text-shadow: 1em 1em 2em rgba(255, 215, 0, 0.5), 0 0 1em rgba(255, 215, 0, 0.5), 0 0 0.2em rgba(255, 215, 0, 0.5), 1px 1px 0 #ecdc25, -1px -1px 0 #90582e, 1px -1px 0 #ecdc25, -1px 1px 0 #90582e, 3px 3px 5px #333;
 }
 ```
 
 <div class="box" style="max-height: 50%;" id="col2">
+
+<div style="font-family: Vollkorn; font-size: 16px; text-align: justify; letter-spacing: 10px; padding: 20px;">MOBY DICK</div>
+
 <p style="font-family: Vollkorn; columns: 3 auto; font-size: 14px; overflow: hidden;">
-Call me Ishmael. Some years ago—never mind how long precisely—having little or no money in my purse, and nothing particular to interest me on shore, I thought I would sail about a little and see the watery part of the world. It is a way I have of driving off the spleen and regulating the circulation. Whenever I find myself growing grim about the mouth; whenever it is a damp, drizzly November in my soul; whenever I find myself involuntarily pausing before coffin warehouses, and bringing up the rear of every funeral I meet; and especially whenever my hypos get such an upper hand of me, that it requires a strong moral principle to prevent me from deliberately stepping into the street, and methodically knocking people’s hats off—then, I account it high time to get to sea as soon as I can. This is my substitute for pistol and ball. With a philosophical flourish Cato throws himself upon his sword; I quietly take to the ship. There is nothing surprising in this. If they but knew it, almost all men in their degree, some time or other, cherish very nearly the same feelings towards the ocean with me.</p>
-</div>
-
----
-
-# `text-justify`
-
-```css
-p {
-    text-align: justify
-    text-justify: distribute;
-}
-```
-
-<div class="box" style="max-height: 50%;" id="col">
-<p style="columns: 3 auto; font-size: 14px; overflow: hidden; text-align: justify; text-justify: distribute;">
-Call me Ishmael. Some years ago—never mind how long precisely—having little or no money in my purse, and nothing particular to interest me on shore, I thought I would sail about a little and see the watery part of the world. It is a way I have of driving off the spleen and regulating the circulation. Whenever I find myself growing grim about the mouth; whenever it is a damp, drizzly November in my soul; whenever I find myself involuntarily pausing before coffin warehouses, and bringing up the rear of every funeral I meet; and especially whenever my hypos get such an upper hand of me, that it requires a strong moral principle to prevent me from deliberately stepping into the street, and methodically knocking people’s hats off—then, I account it high time to get to sea as soon as I can. This is my substitute for pistol and ball. With a philosophical flourish Cato throws himself upon his sword; I quietly take to the ship. There is nothing surprising in this. If they but knew it, almost all men in their degree, some time or other, cherish very nearly the same feelings towards the ocean with me.</p>
-</div>
-
+Call me Ishmael. Some years ago—never mind how long precisely—having little or no money in my purse, and nothing particular to interest me on shore, I thought I would sail about a little and see the watery part of the world. It is a way I have of driving off the spleen and regulating the circulation. Whenever I find myself growing grim about the mouth; whenever it is a damp, drizzly November in my soul; whenever I find myself involuntarily pausing before coffin warehouses, and bringing up the rear of every funeral I meet; and especially whenever my hypos get such an upper hand of me, that it requires a strong moral principle to prevent me from deliberately stepping into the street, and methodically knocking people’s hats off—then, I account it high time to get to sea as soon as I can. This is my substitute for pistol and ball. With a philosophical flourish Cato throws himself upon his sword; I quietly take to the ship. There is nothing surprising in this.</p>
 
 ---
 
 # `unicode-range`
 
-* Useful for fonts without tabular figures
-* Custom emoji fonts
+* Fonts without uppercase or tabular numerals
+    - <span style="font-family: Georgia">Most commonly, Georgia: 1234567890</span>
+* Non-Latin fonts with ugly Latin letters
+* Add custom emoji to a font
 
 ```css
 @font-face {
     font-family: ComicNumerals;
     src: local(Comic Sans MS), local(Chalkboard);
-    unicode-range: U+30-39; /* ASCII 0-9 */
+    /* ASCII 0-9, A-Z */
+    unicode-range: U+30-39, U+41-5A;
 }
 ```
 
@@ -192,8 +149,6 @@ Nineteen Eighty-Four, often published as 1984, is a dystopian novel published in
 
 # `font-feature-settings`
 
-<link href="https://fonts.googleapis.com/css?family=Vollkorn:400,400i" rel="stylesheet">
-
 Toggles *OpenType* features in fonts
 
 ```css
@@ -201,7 +156,7 @@ p { font-feature-settings: "liga" on; }
 ```
 
 <div class="box" style="font-family: Vollkorn; font-size: 150%; font-feature-settings: 'liga' on;">
-fjords iffy affiliate fizz
+The iffy fjords afflict fit affiliates
 </div>
 
 ```css
@@ -209,20 +164,65 @@ p { font-feature-settings: "liga" off; }
 ```
 
 <div class="box" style="font-family: Vollkorn; font-size: 150%; font-feature-settings: 'liga' off;">
-fjords iffy affiliate fizz
+<p>The <ruby>i<emp style="text-decoration: underline red;">ff</emp>y<rt>calt</rt></ruby> fjords a<emp style="text-decoration: underline red;">ff</emp>lict fit affiliates</p>
 </div>
 
-# `font-feature-settings`
+---
 
-<!-- Scam warning: Google Fonts split up Vollkorn -->
-<link href="https://fonts.googleapis.com/css?family=Vollkorn+SC" rel="stylesheet">
+# `font-variant-caps`
 
 ```css
-p { font-feature-settings: "scmp"; }
+p { font-feature-settings: "smcp"; }
+p { font-variant-caps: small-caps; }
 ```
 
-<div class="box" style="font-family: Vollkorn SC; font-size: 150%;">
+<div class="box" style="font-family: Vollkorn; font-size: 150%; font-feature-settings: 'smcp' on;">
 <p>Small Caps</p> <p>Aa Bb Cc Dd Ee Ff</p> <p>US nato asean <span style="font-family: Vollkorn">9</span>am&ndash;<span style="font-family: Vollkorn">17</span>pm</p>
+</div>
+
+---
+
+# `font-variant-numeric`
+
+```css
+p { font-feature-settings: 'ss17'; }
+```
+
+<div class="box" style="font-family: 'Vollkorn'; font-size: 150%; font-feature-settings: 'ss17';">
+<p>22&zwnj;1/2 <span class="rul"><ruby>22&zwnj;1&frasl;2<rt>&amp;zwnj; &amp;frasl;</rt></ruby></span> 1984&ndash;2048 787</p>
+</div>
+
+```css
+p { font-feature-settings: 'zero', 'tnum', 'lnum'; }
+p { font-variant-numeric: slashed-zero tabular-nums lining-nums; }
+```
+
+<div class="box" style="font-family: 'Vollkorn'; font-size: 150%; font-feature-settings: 'zero', 'tnum', 'lnum';">
+22&zwnj;1/2 22&zwnj;1&frasl;2 1984&ndash;2048 787
+</div>
+
+---
+
+# `ordn`
+
+```css
+p { font-feature-settings: 'ordn' off; }
+```
+
+<div class="box" style="font-family: SourceSansPro; font-size: 150%; font-feature-settings: 'ordn' off;">
+1st 2nd 3rd 4th 2st 3th 4dogs 5 cats
+</div>
+
+```css
+p { font-feature-settings: 'ordn'; }
+```
+
+<div class="box" style="font-family: SourceSansPro; font-size: 150%; font-feature-settings: 'ordn';">
+<p class="pesticide"><span>1</span><span>st</span> 2nd 3rd 4th 2st 3th 4dogs 5 cats</p>
+</div>
+
+<div class="box" style="font-family: SourceSansPro; font-size: 150%; font-feature-settings: 'ordn';">
+<p class="pesticide"><ruby><span>1</span><sup>st</sup>  <rt><code>&lt;sup></code></rt></ruby> <span>2</span><sup>nd</sup> <span>3</span><sup>rd</sup></p>
 </div>
 
 ---
@@ -232,13 +232,17 @@ p { font-feature-settings: "scmp"; }
 Useful settings
 
 * `liga` Required Ligatuers
+* `dlig` Discretionary ligatures
 * `smcp` Small Caps
+* `calt` Contextual Alternates
 * `dlig` Discretionary Ligatures
 * `tnum` Tabular Figures
 * `zero` Slashed Zero
 * `swsh` Swash
+* `frac` Fractions
+* `ordn` Ordinals
 
-[Feature list](https://www.microsoft.com/typography/otspec/featurelist.htm)
+[Feature list](https://helpx.adobe.com/typekit/using/open-type-syntax.html)
 
 ---
 
@@ -316,14 +320,14 @@ emp {
 ```
 
 <div class="box">
-<emp style="text-emphasis-color: #555; text-emphasis-style: '🔥';">Call me Ishmael. Some years ago—never mind how long precisely—having <ruby>🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥<rt>🔥🔥🔥🔥🔥🔥🔥🤔🤔🤔🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥</rt></ruby>  Whenever I find myself growing grim about the mouth; whenever it is a damp, drizzly November in my soul; </emp>
+<emp style="font-family: Vollkorn; text-emphasis-color: #555; text-emphasis-style: '🔥';">Call me Ishmael. Some years ago—never mind how long precisely—having <ruby>🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥<rt>🔥🔥🔥🔥🔥🔥🔥🤔🤔🤔🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥</rt></ruby> Ishmael. Some years ago— </emp>
 </div>
 
 ---
 
-# Vertical numerals
+# `text-combine-upright`
 
-Tate-chu-yoko (縦中横)
+Vertical numerals, aka tate-chu-yoko (縦中横)
 
 ```css
 p, li::marker {
@@ -340,26 +344,6 @@ p, li::marker {
 ![](res/Tateyoko.png)
 
 If the font supports it, setting the writing mode enables vertical punctuation
-
----
-
-# Just one more thing&hellip;
-
----
-
-# &hellip;for you to be annoyed by
-
----
-
-# A sour taste?
-
-![](res/cawfee.png)
-
----
-
-# Living, Breathing Asia?
-
-![](res/dbs.jpg)
 
 ---
 
@@ -429,19 +413,15 @@ Selectors for the printed page ***itself***
 
 ---
 
-# url(), lang(), dir()
+# `position: sticky;`
 
----
+```css
+p { position: sticky; }
+```
 
-# isolation
+<iframe src="e/sticky/index.html"></iframe>
 
----
-
-# position: sticky
-
-Show the example here
-
-https://developer.mozilla.org/en-US/docs/Web/CSS/position
+[MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/position)
 
 ---
 
@@ -467,20 +447,16 @@ Frosted glass effect?
 
 ---
 
-# ::spelling-error, ::grammar-error
-
----
-
 # `::placeholder`
 
 ```css
 input::placeholder {
-    color: red;
+    color: gold;
 }
 ```
 
 <div class="box">
-<input id="placeholderer" style="font-size: 300%; width: 100%;" placeholder="placeholderer">
+<input id="placeholderer" style="font-size: 300%; width: 100%;" placeholder="*****">
 </div>
 
 ---
@@ -489,21 +465,15 @@ input::placeholder {
 
 ```css
 p::selection {
-    background: black;
-    color: white;
-    text-shadow: 1em 1em 2em rgba(255, 215, 0, 1);
+    background-color: black;
 }
 ```
 
 <div class="box">
 <p id="selectioner">
-Call me Ishmael. Some years ago—never mind how long precisely—having little or no money in my purse, and nothing particular to interest me on shore, I thought I would sail about a little and see the watery part of the world.
+Call me Ishmael. Some years ago—never mind how long precisely—having little or no money in my purse, and nothing particular to interest me on shore, I thought I would sail about a little and see the watery part of the world. It is a way I have of driving off the spleen and regulating the circulation.
 </p>
 </div>
-
----
-
-# Different units
 
 ---
 
@@ -524,37 +494,42 @@ Call me Ishmael. Some years ago—never mind how long precisely—having little 
 
 ---
 
-# @import
-
----
-
-# Selectors
-
-* List all, then drill down
-
----
-
-# pointer-events
-
-Change interaction z-order without changing presentation
-
-```css
-button { pointer-events: none; }
-```
-
-<div class="box">
-<button style="pointer-events: none; font-size: 300%;">Click me!</button>
-<button style="font-size: 300%;">Click me!</button>
-<video autoplay loop src="res/vid.webm" style="pointer-events: none; mix-blend-mode: screen; position: absolute;">
-</div>
-
----
-
 # 3x3 css transformations, cool demo!
 
 ---
 
-# scroll-behaviour, overscroll-behavior
+# `scroll-behaviour`
+
+```css
+body {
+    scroll-behavior: smooth;
+    scroll-snap-type: mandatory;
+    scroll-snap-points-y: repeat(100vh);
+}
+```
+
+<iframe src="e/scroll-behavior/index.html"></iframe>
+
+---
+
+# `overscroll-behavior`
+
+```css
+body {
+    overscroll-behavior: none;
+}
+```
+
+Disable native overscroll behavior
+
+<div class="box">
+<div style="display: flex; width: 100%;">
+<video autoplay loop src="res/drawer-glow.mp4"></video>
+<video autoplay loop src="res/drawer-noglow.mp4"></video>
+</div>
+</div>
+
+[Chrome article on `overscroll-behavior`](https://developers.google.com/web/updates/2017/11/overscroll-behavior)
 
 ---
 

@@ -1,3 +1,22 @@
+@font-face {
+    font-family: Vollkorn;
+    src: url("res/Vollkorn-Regular.otf") format("opentype");
+}
+
+@font-face {
+    font-family: SourceSansPro;
+    src: url("res/SourceSansPro-Regular.otf") format("opentype");
+}
+
+.pesticide,
+.pesticide * {
+    outline: solid 1px red;
+}
+
+.rul {
+    text-decoration: underline red;
+}
+
 html,
 body {
   height: 100%;
@@ -14,20 +33,45 @@ section {
   flex-direction: column;
 }
 
+section > *, {
+    flex: 2;
+    min-height: 2.4em;
+}
+
+section > h1 {
+    flex: none;
+}
+
+
+div.sourcecode {
+    min-height: 1em;
+    max-height: 30vh;
+    overflow-x: auto !important;
+}
+
+code {
+    cursor: text;
+}
+
+del {
+    text-decoration-color: red;
+    text-decoration-style: wavy;
+}
+
 hr {
   display: none;
 }
 
 .box,
 iframe {
-  flex: 1;
+  flex: 2;
   border: solid 1px black;
   margin-bottom: 15px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 20px;
+  padding: 15px;
 }
 
 @keyframes anicursor {
@@ -46,41 +90,44 @@ iframe {
 @font-face {
   font-family: ComicNumerals;
   src: local(Comic Sans MS), local(Chalkboard);
-  unicode-range: U+30-39;
+  unicode-range: U+30-39, U+41-5A;
 }
 
 #unicoder {
   font-family: ComicNumerals, serif;
 }
 
-#col p:first-line {
+#col p::first-line {
   margin-left: 0;
-  font-family: "Vollkorn SC";
+  font-variant-caps: small-caps;
 }
 
-#col2 p:first-letter {
+#col2 p::first-letter {
   float: left;
   font-size: 700%;
-  background: black;
+  background: url(res/pic2.png);
   color: white;
-  border: outset 4px gold;
+  border: outset 4px pink;
   text-shadow: 1em 1em 2em rgba(255, 215, 0, 0.5),
     0 0 1em rgba(255, 215, 0, 0.5), 0 0 0.2em rgba(255, 215, 0, 0.5),
     1px 1px 0 #ecdc25, -1px -1px 0 #90582e, 1px -1px 0 #ecdc25,
     -1px 1px 0 #90582e, 3px 3px 5px #333;
-  padding: 0.1em;
-  margin: 0 0.05em 0.05em 0;
+  padding: 0.2em 0.1em 0.1em;
+  margin: 0 0.1em 0.05em 0;
+  line-height: 0.8em;
 }
 
 #placeholderer {
+  font-family: monospace;
   background-color: black;
-  caret-color: red;
+  caret-color: gold;
   color: white;
+  text-shadow: 0 0 0.25em rgba(255, 215, 0, 1), 0 0 0.1em rgba(255, 215, 0, 1);
   padding: 20px;
 }
 
 #placeholderer::placeholder {
-  color: red;
+  color: gold;
 }
 
 @keyframes selectcolor {
@@ -124,4 +171,8 @@ iframe {
 
 @page:first {
   font-size: 192px;
+}
+
+*::backdrop {
+    background-color: red;
 }
