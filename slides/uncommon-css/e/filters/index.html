@@ -1,0 +1,77 @@
+<html>
+<style>
+    @keyframes party {
+        0% {
+            border-image: repeating-linear-gradient(45deg, #f33, #3bf, #f33 30px) 10;
+        }
+
+        25% {
+            border-image: repeating-linear-gradient(45deg, #f33, #3bf, #f33 30px) 20;
+        }
+
+        50% {
+            border-image: repeating-linear-gradient(45deg, #f33, #3bf, #f33 30px) 30;
+        }
+
+        75% {
+            border-image: repeating-linear-gradient(45deg, #f33, #3bf, #f33 30px) 20;
+        }
+
+        100% {
+            border-image: url(../../res/pic0.jpg);
+        }
+    }
+
+    html, body {
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        display: flex;
+        width: 100%;
+        height: 100%;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .bg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-image: url(../../res/pic2.png);
+        background-size: cover;
+        filter: blur(10px);
+    }
+
+    .bg-noblur {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-image: url(../../res/pic2.png);
+        background-size: cover;
+        background-blend-mode: color;
+        z-index: 120;
+    }
+
+    .box {
+        width: 50vw;
+        height: 50vh;
+        background-color: #444;
+        z-index: 100;
+    }
+</style>
+
+<body>
+    <div class="bg"></div>
+    <div class="bg-noblur"></div>
+<div class="box">
+</div>
+</body>
+
+
+</html>

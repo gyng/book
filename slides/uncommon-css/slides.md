@@ -9,7 +9,6 @@
 # Old
 
 `border-image`
-
 <iframe src="e/border-image/index.html"></iframe>
 (Limited Chrome support)
 
@@ -19,10 +18,10 @@
 
 `caret-color`
 
+<div class="box">
 <input type="text" style="caret-color: red; font-size: 3em; width: 100%;" placeholder="don’t do this?">
-
-
 <input type="text" style="caret-color: transparent; font-size: 3em; width: 100%;" placeholder="don’t do this">
+</div>
 
 ---
 
@@ -246,6 +245,63 @@ Useful settings
 
 ---
 
+# When to use tabular figures
+
+<link href="https://fonts.googleapis.com/css?family=Cabin" rel="stylesheet">
+
+Use tabular and modern numbers for tables & labels
+
+<div class="box" style="flex-direction: row;">
+<table style="font-family: Vollkorn; font-variant-numeric: proportional-nums;">
+<tbody>
+    <tr style="border:none; background-color: transparent;">
+        <td style="border: none;">1811 est.</td>
+        <td style="text-align: right; border: none;">353500.00</td>
+    </tr>
+    <tr style="border:none; background-color: transparent;">
+        <td style="border: none;">1900 est.</td>
+        <td style="text-align: right; border: none;">21464.17</td>
+    </tr>
+        <tr style="border:none; background-color: transparent;">
+        <td style="border: none;">1986 est.</td>
+        <td style="text-align: right; border: none;">617617.76</td>
+    </tr>
+</tbody>
+</table>
+
+<table style="font-family: Vollkorn; font-variant-numeric: tabular-nums lining-nums;">
+<tbody>
+    <tr style="border:none; background-color: transparent;">
+        <td style="border: none;">1816 est.</td>
+        <td style="border: none;">353500.00</td>
+    </tr>
+    <tr style="text-align: right; border:none; background-color: transparent;">
+        <td style="border: none;">1906 est.</td>
+        <td style="border: none;">21464.17</td>
+    </tr>
+        <tr style="text-align: right; border:none; background-color: transparent;">
+        <td style="border: none;">1986 est.</td>
+        <td style="border: none;">617617.76</td>
+    </tr>
+</tbody>
+</table>
+</div>
+
+
+Proportional and old-style are best left in body text
+
+<div class="box">
+<div style="font-family: Vollkorn; font-variant-numeric: tabular-nums lining-nums;">
+    28 February, 2018, 9:30&ndash;14:40
+</div>
+
+<div style="font-family: Vollkorn;">
+    28 February, 2018, 9:30&ndash;14:40
+</div>
+</div>
+
+---
+
 # RTL text
 
 ```css
@@ -425,38 +481,189 @@ p { position: sticky; }
 
 ---
 
-# filters
+# `repeating-linear-gradient`
 
-Frosted glass effect?
+```css
+background: repeating-linear-gradient(45deg,
+            transparent,
+            transparent 10px,
+            #E1002D 10px,
+            #E1002D 20px);
+```
+
+<iframe src="e/repeating-linear-gradient/index.html"></iframe>
 
 ---
 
-# SVG filters
+# ~`filter`~
+
+Very common (CSS)
+
+<div class="box">
+    <img class="filter" src="res/pic0.jpg"></img>
+</div>
+
+---
+
+# `<filter>`
+
+Not very common (SVG)
+
+And quite advanced
+
+[W3C Filters](https://www.w3.org/TR/SVG/filters.html)
+
+```
+feDistantLight
+fePointLight
+feSpotLight
+feBlend
+feColorMatrix
+feComponentTransfer
+feComposite
+feConvolveMatrix
+feDiffuseLighting
+feDisplacementMap
+feFlood
+feGaussianBlur
+feImage
+feMerge
+feMorphology
+feOffset
+feSpecularLighting
+feTile
+feTurbulence
+```
+
+---
+
+# `feDisplacementMap`
+
+SVG filters can be applied to HTML
+
+```xml
+<filter>
+    <feImage
+        result="warp"
+        xlink:href="${displacementMap}"
+    />
+    <feDisplacementMap
+        xChannelSelector="G"
+        yChannelSelector="R"
+        in="SourceGraphic"
+        in2="warp"
+        scale="400"
+    />
+</filter>
+```
+
+---
+
+# `feDisplacementMap`
+
+<iframe src="e/curve/index.html"></iframe>
+
+---
+
+# `feDisplacementMap`
+
+```xml
+<feImage result="warp"
+    xlink:href="${displacementMap}"
+/>
+<feDisplacementMap
+    xChannelSelector="G"
+    yChannelSelector="R"
+    ...
+```
+
+<div class="box" style="flex-direction: row;">
+<img src="res/displacementmap.png"></img>
++
+<code>iframe</code>
+
+</div>
 
 ---
 
 # SVG rules
 
----
-
-# clip-path, mask-clip
+* Whole bunch of SVG-only CSS rules
 
 ---
 
-# List formatting
-
----
-
-# `::placeholder`
+# `clip-path`
 
 ```css
-input::placeholder {
-    color: gold;
+img { clip-path: circle(33%); }
+```
+
+<div class="box">
+<img src="res/pic0.jpg" style="clip-path: circle(33%);" />
+</div>
+
+SVG also has a version of `clip-path`
+
+---
+
+# `clip-path: polygon`
+
+```css
+img { clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%); }
+```
+<div class="box">
+<img src="res/pic0.jpg" class="clippath" />
+</div>
+
+[`clip-path generator`](https://bennettfeely.com/clippy/)
+
+---
+
+# `background-clip`
+
+```css
+p {
+    color: transparent;
+    background: -webkit-linear-gradient(top, black, white);
+    background-clip: text
 }
 ```
 
 <div class="box">
-<input id="placeholderer" style="font-size: 300%; width: 100%;" placeholder="*****">
+<p style="background: -webkit-linear-gradient(top,black,white);
+	background-clip: text;
+    color: transparent; font-family: Vollkorn">
+Call me Ishmael. Some years ago—never mind how long precisely—having little or no money in my purse, and nothing particular to interest me on shore, I thought I would sail about a little and see the watery part of the world. It is a way I have of driving off the spleen and regulating the circulation. 🔥</p>
+</div>
+
+---
+
+# `mask-image`
+
+```css
+img {
+    mask-image: url(res/scanlines.gif);
+    mask-size: cover;
+}
+```
+
+<div class="box" style="flex-direction: row; background: -webkit-linear-gradient(top,rebeccapurple,purple);">
+<img src="res/pic0.jpg" style="mask-image: url(res/wavy.gif); mask-size: cover; mask-mode: luminance; clip-path: circle(50%);" />
+<img src="res/pic0.jpg" style="mask-image: url(res/wavy.gif); mask-size: cover; clip-path: circle(50%);" />
+</div>
+
+SVG also has a version of `mask-image`
+
+---
+
+# `mask-image`
+
+<div class="box" style="flex-direction: row">
+<img src="res/pic0.jpg" />
++
+<img src="res/wavy.gif" />
++
+<div style="background: -webkit-linear-gradient(top,rebeccapurple,purple); width: 50%; height: 50%;"></div>
 </div>
 
 ---
@@ -469,7 +676,7 @@ p::selection {
 }
 ```
 
-<div class="box">
+<div class="box" style="font-family: Vollkorn">
 <p id="selectioner">
 Call me Ishmael. Some years ago—never mind how long precisely—having little or no money in my purse, and nothing particular to interest me on shore, I thought I would sail about a little and see the watery part of the world. It is a way I have of driving off the spleen and regulating the circulation.
 </p>
@@ -494,7 +701,15 @@ Call me Ishmael. Some years ago—never mind how long precisely—having little 
 
 ---
 
-# 3x3 css transformations, cool demo!
+# CSS 3D transforms
+
+* Somewhat common but still cool!
+
+```css
+body { transform: rotateX(45deg) rotateY(45deg); }
+```
+
+<iframe src="e/matrix/index.html"></iframe>
 
 ---
 
@@ -515,9 +730,7 @@ body {
 # `overscroll-behavior`
 
 ```css
-body {
-    overscroll-behavior: none;
-}
+body { overscroll-behavior: none; }
 ```
 
 Disable native overscroll behavior
@@ -543,8 +756,7 @@ These rules are already in your toolbox
 
 ---
 
-# Links
+# Everything is here
 
-https://developer.mozilla.org/en-US/docs/Web/Demos_of_open_web_technologies#CSS
-http://www.voxelcss.com/
-https://a.singlediv.com/
+* https://developer.mozilla.org/en-US/docs/Web/Demos_of_open_web_technologies#CSS
+

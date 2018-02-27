@@ -104,9 +104,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="useless" class="level1">
 <h1>Useless?</h1>
 <p><code>caret-color</code></p>
+<div class="box">
 <input type="text" style="caret-color: red; font-size: 3em; width: 100%;" placeholder="don’t do this?">
-
 <input type="text" style="caret-color: transparent; font-size: 3em; width: 100%;" placeholder="don’t do this">
+</div>
 
 <hr />
 </section>
@@ -288,6 +289,60 @@ The iffy fjords afflict fit affiliates
 <p><a href="https://helpx.adobe.com/typekit/using/open-type-syntax.html">Feature list</a></p>
 <hr />
 </section>
+<section id="when-to-use-tabular-figures" class="level1">
+<h1>When to use tabular figures</h1>
+<link href="https://fonts.googleapis.com/css?family=Cabin" rel="stylesheet">
+
+<p>Use tabular and modern numbers for tables &amp; labels</p>
+<div class="box" style="flex-direction: row;">
+<table style="font-family: Vollkorn; font-variant-numeric: proportional-nums;">
+<tbody>
+    <tr style="border:none; background-color: transparent;">
+        <td style="border: none;">1811 est.</td>
+        <td style="text-align: right; border: none;">353500.00</td>
+    </tr>
+    <tr style="border:none; background-color: transparent;">
+        <td style="border: none;">1900 est.</td>
+        <td style="text-align: right; border: none;">21464.17</td>
+    </tr>
+        <tr style="border:none; background-color: transparent;">
+        <td style="border: none;">1986 est.</td>
+        <td style="text-align: right; border: none;">617617.76</td>
+    </tr>
+</tbody>
+</table>
+
+<table style="font-family: Vollkorn; font-variant-numeric: tabular-nums lining-nums;">
+<tbody>
+    <tr style="border:none; background-color: transparent;">
+        <td style="border: none;">1816 est.</td>
+        <td style="border: none;">353500.00</td>
+    </tr>
+    <tr style="text-align: right; border:none; background-color: transparent;">
+        <td style="border: none;">1906 est.</td>
+        <td style="border: none;">21464.17</td>
+    </tr>
+        <tr style="text-align: right; border:none; background-color: transparent;">
+        <td style="border: none;">1986 est.</td>
+        <td style="border: none;">617617.76</td>
+    </tr>
+</tbody>
+</table>
+</div>
+
+<p>Proportional and old-style are best left in body text</p>
+<div class="box">
+<div style="font-family: Vollkorn; font-variant-numeric: tabular-nums lining-nums;">
+    28 February, 2018, 9:30&ndash;14:40
+</div>
+
+<div style="font-family: Vollkorn;">
+    28 February, 2018, 9:30&ndash;14:40
+</div>
+</div>
+
+<hr />
+</section>
 <section id="rtl-text" class="level1">
 <h1>RTL text</h1>
 <div class="sourceCode" id="cb15"><pre class="sourceCode css"><code class="sourceCode css"><a class="sourceLine" id="cb15-1" data-line-number="1">p {</a>
@@ -427,44 +482,170 @@ Wikipedia, the free encyclopedia 维基百科，自由的百科全书
 <p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/position">MDN</a></p>
 <hr />
 </section>
-<section id="filters" class="level1">
-<h1>filters</h1>
-<p>Frosted glass effect?</p>
+<section id="repeating-linear-gradient" class="level1">
+<h1><code>repeating-linear-gradient</code></h1>
+<div class="sourceCode" id="cb25"><pre class="sourceCode css"><code class="sourceCode css"><a class="sourceLine" id="cb25-1" data-line-number="1">background<span class="in">:</span> repeating-linear-gradient(45deg,</a>
+<a class="sourceLine" id="cb25-2" data-line-number="2">            transparent,</a>
+<a class="sourceLine" id="cb25-3" data-line-number="3">            transparent 10px,</a>
+<a class="sourceLine" id="cb25-4" data-line-number="4">            <span class="pp">#E1002D</span> 10px,</a>
+<a class="sourceLine" id="cb25-5" data-line-number="5">            <span class="pp">#E1002D</span> 20px);</a></code></pre></div>
+<iframe src="e/repeating-linear-gradient/index.html"></iframe>
+
 <hr />
 </section>
-<section id="svg-filters" class="level1">
-<h1>SVG filters</h1>
+<section id="filter" class="level1">
+<h1><del><code>filter</code></del></h1>
+<p>Very common (CSS)</p>
+<div class="box">
+    <img class="filter" src="res/pic0.jpg"></img>
+</div>
+
+<hr />
+</section>
+<section id="filter-1" class="level1">
+<h1><code>&lt;filter&gt;</code></h1>
+<p>Not very common (SVG)</p>
+<p>And quite advanced</p>
+<p><a href="https://www.w3.org/TR/SVG/filters.html">W3C Filters</a></p>
+<pre><code>feDistantLight
+fePointLight
+feSpotLight
+feBlend
+feColorMatrix
+feComponentTransfer
+feComposite
+feConvolveMatrix
+feDiffuseLighting
+feDisplacementMap
+feFlood
+feGaussianBlur
+feImage
+feMerge
+feMorphology
+feOffset
+feSpecularLighting
+feTile
+feTurbulence
+</code></pre>
+<hr />
+</section>
+<section id="fedisplacementmap" class="level1">
+<h1><code>feDisplacementMap</code></h1>
+<p>SVG filters can be applied to HTML</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode xml"><code class="sourceCode xml"><a class="sourceLine" id="cb27-1" data-line-number="1"><span class="kw">&lt;filter&gt;</span></a>
+<a class="sourceLine" id="cb27-2" data-line-number="2">    <span class="kw">&lt;feImage</span></a>
+<a class="sourceLine" id="cb27-3" data-line-number="3"><span class="ot">        result=</span><span class="st">&quot;warp&quot;</span></a>
+<a class="sourceLine" id="cb27-4" data-line-number="4"><span class="ot">        xlink:href=</span><span class="st">&quot;${displacementMap}&quot;</span></a>
+<a class="sourceLine" id="cb27-5" data-line-number="5">    <span class="kw">/&gt;</span></a>
+<a class="sourceLine" id="cb27-6" data-line-number="6">    <span class="kw">&lt;feDisplacementMap</span></a>
+<a class="sourceLine" id="cb27-7" data-line-number="7"><span class="ot">        xChannelSelector=</span><span class="st">&quot;G&quot;</span></a>
+<a class="sourceLine" id="cb27-8" data-line-number="8"><span class="ot">        yChannelSelector=</span><span class="st">&quot;R&quot;</span></a>
+<a class="sourceLine" id="cb27-9" data-line-number="9"><span class="ot">        in=</span><span class="st">&quot;SourceGraphic&quot;</span></a>
+<a class="sourceLine" id="cb27-10" data-line-number="10"><span class="ot">        in2=</span><span class="st">&quot;warp&quot;</span></a>
+<a class="sourceLine" id="cb27-11" data-line-number="11"><span class="ot">        scale=</span><span class="st">&quot;400&quot;</span></a>
+<a class="sourceLine" id="cb27-12" data-line-number="12">    <span class="kw">/&gt;</span></a>
+<a class="sourceLine" id="cb27-13" data-line-number="13"><span class="kw">&lt;/filter&gt;</span></a></code></pre></div>
+<hr />
+</section>
+<section id="fedisplacementmap-1" class="level1">
+<h1><code>feDisplacementMap</code></h1>
+<iframe src="e/curve/index.html"></iframe>
+
+<hr />
+</section>
+<section id="fedisplacementmap-2" class="level1">
+<h1><code>feDisplacementMap</code></h1>
+<div class="sourceCode" id="cb28"><pre class="sourceCode xml"><code class="sourceCode xml"><a class="sourceLine" id="cb28-1" data-line-number="1"><span class="kw">&lt;feImage</span><span class="ot"> result=</span><span class="st">&quot;warp&quot;</span></a>
+<a class="sourceLine" id="cb28-2" data-line-number="2"><span class="ot">    xlink:href=</span><span class="st">&quot;${displacementMap}&quot;</span></a>
+<a class="sourceLine" id="cb28-3" data-line-number="3"><span class="kw">/&gt;</span></a>
+<a class="sourceLine" id="cb28-4" data-line-number="4"><span class="kw">&lt;feDisplacementMap</span></a>
+<a class="sourceLine" id="cb28-5" data-line-number="5"><span class="ot">    xChannelSelector=</span><span class="st">&quot;G&quot;</span></a>
+<a class="sourceLine" id="cb28-6" data-line-number="6"><span class="ot">    yChannelSelector=</span><span class="st">&quot;R&quot;</span></a>
+<a class="sourceLine" id="cb28-7" data-line-number="7">    <span class="er">...</span></a></code></pre></div>
+<div class="box" style="flex-direction: row;">
+<img src="res/displacementmap.png"></img>
++
+<code>iframe</code>
+
+</div>
+
 <hr />
 </section>
 <section id="svg-rules" class="level1">
 <h1>SVG rules</h1>
+<ul>
+<li>Whole bunch of SVG-only CSS rules</li>
+</ul>
 <hr />
 </section>
-<section id="clip-path-mask-clip" class="level1">
-<h1>clip-path, mask-clip</h1>
-<hr />
-</section>
-<section id="list-formatting" class="level1">
-<h1>List formatting</h1>
-<hr />
-</section>
-<section id="placeholder" class="level1">
-<h1><code>::placeholder</code></h1>
-<div class="sourceCode" id="cb25"><pre class="sourceCode css"><code class="sourceCode css"><a class="sourceLine" id="cb25-1" data-line-number="1">input<span class="in">::</span>placeholder {</a>
-<a class="sourceLine" id="cb25-2" data-line-number="2">    <span class="kw">color</span>: gold;</a>
-<a class="sourceLine" id="cb25-3" data-line-number="3">}</a></code></pre></div>
+<section id="clip-path" class="level1">
+<h1><code>clip-path</code></h1>
+<div class="sourceCode" id="cb29"><pre class="sourceCode css"><code class="sourceCode css"><a class="sourceLine" id="cb29-1" data-line-number="1">img { <span class="kw">clip-path</span>: circle(<span class="dv">33%</span>); }</a></code></pre></div>
 <div class="box">
-<input id="placeholderer" style="font-size: 300%; width: 100%;" placeholder="*****">
+<img src="res/pic0.jpg" style="clip-path: circle(33%);" />
+</div>
+
+<p>SVG also has a version of <code>clip-path</code></p>
+<hr />
+</section>
+<section id="clip-path-polygon" class="level1">
+<h1><code>clip-path: polygon</code></h1>
+<div class="sourceCode" id="cb30"><pre class="sourceCode css"><code class="sourceCode css"><a class="sourceLine" id="cb30-1" data-line-number="1">img { <span class="kw">clip-path</span>: polygon(<span class="dv">50%</span> <span class="dv">0%</span>, <span class="dv">61%</span> <span class="dv">35%</span>, <span class="dv">98%</span> <span class="dv">35%</span>, <span class="dv">68%</span> <span class="dv">57%</span>, <span class="dv">79%</span> <span class="dv">91%</span>, <span class="dv">50%</span> <span class="dv">70%</span>, <span class="dv">21%</span> <span class="dv">91%</span>, <span class="dv">32%</span> <span class="dv">57%</span>, <span class="dv">2%</span> <span class="dv">35%</span>, <span class="dv">39%</span> <span class="dv">35%</span>); }</a></code></pre></div>
+<div class="box">
+<img src="res/pic0.jpg" class="clippath" />
+</div>
+
+<p><a href="https://bennettfeely.com/clippy/"><code>clip-path generator</code></a></p>
+<hr />
+</section>
+<section id="background-clip" class="level1">
+<h1><code>background-clip</code></h1>
+<div class="sourceCode" id="cb31"><pre class="sourceCode css"><code class="sourceCode css"><a class="sourceLine" id="cb31-1" data-line-number="1">p {</a>
+<a class="sourceLine" id="cb31-2" data-line-number="2">    <span class="kw">color</span>: <span class="dv">transparent</span>;</a>
+<a class="sourceLine" id="cb31-3" data-line-number="3">    <span class="kw">background</span>: -webkit-linear-gradient(<span class="dv">top</span>, <span class="dv">black</span>, <span class="dv">white</span>);</a>
+<a class="sourceLine" id="cb31-4" data-line-number="4">    <span class="kw">background-clip</span>: <span class="dv">text</span></a>
+<a class="sourceLine" id="cb31-5" data-line-number="5">}</a></code></pre></div>
+<div class="box">
+<p style="background: -webkit-linear-gradient(top,black,white);
+    background-clip: text;
+    color: transparent; font-family: Vollkorn">
+Call me Ishmael. Some years ago—never mind how long precisely—having little or no money in my purse, and nothing particular to interest me on shore, I thought I would sail about a little and see the watery part of the world. It is a way I have of driving off the spleen and regulating the circulation. 🔥</p>
+</div>
+
+<hr />
+</section>
+<section id="mask-image" class="level1">
+<h1><code>mask-image</code></h1>
+<div class="sourceCode" id="cb32"><pre class="sourceCode css"><code class="sourceCode css"><a class="sourceLine" id="cb32-1" data-line-number="1">img {</a>
+<a class="sourceLine" id="cb32-2" data-line-number="2">    <span class="kw">mask-image</span>: <span class="fu">url</span>(res/scanlines<span class="dv">.</span>gif);</a>
+<a class="sourceLine" id="cb32-3" data-line-number="3">    <span class="kw">mask-size</span>: cover;</a>
+<a class="sourceLine" id="cb32-4" data-line-number="4">}</a></code></pre></div>
+<div class="box" style="flex-direction: row; background: -webkit-linear-gradient(top,rebeccapurple,purple);">
+<img src="res/pic0.jpg" style="mask-image: url(res/wavy.gif); mask-size: cover; mask-mode: luminance; clip-path: circle(50%);" />
+<img src="res/pic0.jpg" style="mask-image: url(res/wavy.gif); mask-size: cover; clip-path: circle(50%);" />
+</div>
+
+<p>SVG also has a version of <code>mask-image</code></p>
+<hr />
+</section>
+<section id="mask-image-1" class="level1">
+<h1><code>mask-image</code></h1>
+<div class="box" style="flex-direction: row">
+<img src="res/pic0.jpg" />
++
+<img src="res/wavy.gif" />
++
+<div style="background: -webkit-linear-gradient(top,rebeccapurple,purple); width: 50%; height: 50%;"></div>
 </div>
 
 <hr />
 </section>
 <section id="selection" class="level1">
 <h1><code>::selection</code></h1>
-<div class="sourceCode" id="cb26"><pre class="sourceCode css"><code class="sourceCode css"><a class="sourceLine" id="cb26-1" data-line-number="1">p<span class="in">::selection</span> {</a>
-<a class="sourceLine" id="cb26-2" data-line-number="2">    <span class="kw">background-color</span>: <span class="dv">black</span>;</a>
-<a class="sourceLine" id="cb26-3" data-line-number="3">}</a></code></pre></div>
-<div class="box">
+<div class="sourceCode" id="cb33"><pre class="sourceCode css"><code class="sourceCode css"><a class="sourceLine" id="cb33-1" data-line-number="1">p<span class="in">::selection</span> {</a>
+<a class="sourceLine" id="cb33-2" data-line-number="2">    <span class="kw">background-color</span>: <span class="dv">black</span>;</a>
+<a class="sourceLine" id="cb33-3" data-line-number="3">}</a></code></pre></div>
+<div class="box" style="font-family: Vollkorn">
 <p id="selectioner">
 Call me Ishmael. Some years ago—never mind how long precisely—having little or no money in my purse, and nothing particular to interest me on shore, I thought I would sail about a little and see the watery part of the world. It is a way I have of driving off the spleen and regulating the circulation.
 </p>
@@ -474,10 +655,10 @@ Call me Ishmael. Some years ago—never mind how long precisely—having little 
 </section>
 <section id="contain-and-cover" class="level1">
 <h1><code>contain</code> and <code>cover</code></h1>
-<div class="sourceCode" id="cb27"><pre class="sourceCode css"><code class="sourceCode css"><a class="sourceLine" id="cb27-1" data-line-number="1"><span class="pp">#bg</span> { <span class="kw">background-size</span>: cover; }</a>
-<a class="sourceLine" id="cb27-2" data-line-number="2"><span class="pp">#img1</span> { <span class="kw">object-fit</span>: cover; }</a>
-<a class="sourceLine" id="cb27-3" data-line-number="3"><span class="pp">#img2</span> { <span class="kw">object-fit</span>: contain; }</a>
-<a class="sourceLine" id="cb27-4" data-line-number="4"><span class="pp">#img3</span> { <span class="kw">object-fit</span>: unset; }</a></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode css"><code class="sourceCode css"><a class="sourceLine" id="cb34-1" data-line-number="1"><span class="pp">#bg</span> { <span class="kw">background-size</span>: cover; }</a>
+<a class="sourceLine" id="cb34-2" data-line-number="2"><span class="pp">#img1</span> { <span class="kw">object-fit</span>: cover; }</a>
+<a class="sourceLine" id="cb34-3" data-line-number="3"><span class="pp">#img2</span> { <span class="kw">object-fit</span>: contain; }</a>
+<a class="sourceLine" id="cb34-4" data-line-number="4"><span class="pp">#img3</span> { <span class="kw">object-fit</span>: unset; }</a></code></pre></div>
 <div class="box" style="flex-direction: row; justify-content: space-evenly; background: url(res/pic1.jpg) no-repeat; background-size: cover;">
     <img src="res/pic0.jpg" style="height: 100%; width: 20%; border: solid 1px red; object-fit: cover;" />
     <img src="res/pic0.jpg" style="height: 100%; width: 20%; border: solid 1px red; object-fit: contain;" />
@@ -486,26 +667,30 @@ Call me Ishmael. Some years ago—never mind how long precisely—having little 
 
 <hr />
 </section>
-<section id="3x3-css-transformations-cool-demo" class="level1">
-<h1>3x3 css transformations, cool demo!</h1>
+<section id="css-3d-transforms" class="level1">
+<h1>CSS 3D transforms</h1>
+<ul>
+<li>Somewhat common but still cool!</li>
+</ul>
+<div class="sourceCode" id="cb35"><pre class="sourceCode css"><code class="sourceCode css"><a class="sourceLine" id="cb35-1" data-line-number="1">body { <span class="kw">transform</span>: rotateX(<span class="dv">45deg</span>) rotateY(<span class="dv">45deg</span>); }</a></code></pre></div>
+<iframe src="e/matrix/index.html"></iframe>
+
 <hr />
 </section>
 <section id="scroll-behaviour" class="level1">
 <h1><code>scroll-behaviour</code></h1>
-<div class="sourceCode" id="cb28"><pre class="sourceCode css"><code class="sourceCode css"><a class="sourceLine" id="cb28-1" data-line-number="1">body {</a>
-<a class="sourceLine" id="cb28-2" data-line-number="2">    <span class="kw">scroll-behavior</span>: smooth;</a>
-<a class="sourceLine" id="cb28-3" data-line-number="3">    <span class="kw">scroll-snap-type</span>: mandatory;</a>
-<a class="sourceLine" id="cb28-4" data-line-number="4">    scroll-snap-points-y: repeat(<span class="dv">100vh</span>);</a>
-<a class="sourceLine" id="cb28-5" data-line-number="5">}</a></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode css"><code class="sourceCode css"><a class="sourceLine" id="cb36-1" data-line-number="1">body {</a>
+<a class="sourceLine" id="cb36-2" data-line-number="2">    <span class="kw">scroll-behavior</span>: smooth;</a>
+<a class="sourceLine" id="cb36-3" data-line-number="3">    <span class="kw">scroll-snap-type</span>: mandatory;</a>
+<a class="sourceLine" id="cb36-4" data-line-number="4">    scroll-snap-points-y: repeat(<span class="dv">100vh</span>);</a>
+<a class="sourceLine" id="cb36-5" data-line-number="5">}</a></code></pre></div>
 <iframe src="e/scroll-behavior/index.html"></iframe>
 
 <hr />
 </section>
 <section id="overscroll-behavior" class="level1">
 <h1><code>overscroll-behavior</code></h1>
-<div class="sourceCode" id="cb29"><pre class="sourceCode css"><code class="sourceCode css"><a class="sourceLine" id="cb29-1" data-line-number="1">body {</a>
-<a class="sourceLine" id="cb29-2" data-line-number="2">    overscroll-behavior: <span class="dv">none</span>;</a>
-<a class="sourceLine" id="cb29-3" data-line-number="3">}</a></code></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode css"><code class="sourceCode css"><a class="sourceLine" id="cb37-1" data-line-number="1">body { overscroll-behavior: <span class="dv">none</span>; }</a></code></pre></div>
 <p>Disable native overscroll behavior</p>
 <div class="box">
 <div style="display: flex; width: 100%;">
@@ -526,9 +711,11 @@ Call me Ishmael. Some years ago—never mind how long precisely—having little 
 <h1>Hammer, nail, etc.</h1>
 <hr />
 </section>
-<section id="links" class="level1">
-<h1>Links</h1>
-<p><a href="https://developer.mozilla.org/en-US/docs/Web/Demos_of_open_web_technologies#CSS" class="uri">https://developer.mozilla.org/en-US/docs/Web/Demos_of_open_web_technologies#CSS</a> <a href="http://www.voxelcss.com/" class="uri">http://www.voxelcss.com/</a> <a href="https://a.singlediv.com/" class="uri">https://a.singlediv.com/</a></p>
+<section id="everything-is-here" class="level1">
+<h1>Everything is here</h1>
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/Demos_of_open_web_technologies#CSS" class="uri">https://developer.mozilla.org/en-US/docs/Web/Demos_of_open_web_technologies#CSS</a></li>
+</ul>
 </section>
 </body>
 </html>
