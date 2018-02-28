@@ -586,6 +586,16 @@ SVG filters can be applied to HTML
 
 ---
 
+# Filter composition
+
+* Can be combined in very creative ways
+* `blur` + `contrast`
+
+<iframe height='265' scrolling='no' title='svg goo effect demonstration' src='//codepen.io/lbebber/embed/OPjxZL/?height=265&theme-id=0&default-tab=css,result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='https://codepen.io/lbebber/pen/OPjxZL/'>svg goo effect demonstration</a> by Lucas Bebber (<a href='https://codepen.io/lbebber'>@lbebber</a>) on <a href='https://codepen.io'>CodePen</a>.
+</iframe>
+
+---
+
 # SVG rules
 
 * Whole bunch of SVG-only CSS rules
@@ -743,12 +753,6 @@ Disable native overscroll behavior
 </div>
 
 [Chrome article on `overscroll-behavior`](https://developers.google.com/web/updates/2017/11/overscroll-behavior)
-
----
-
-# Every rule is a good rule
-
-These rules are already in your toolbox
 
 ---
 
