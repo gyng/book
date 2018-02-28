@@ -1,6 +1,20 @@
 <html>
     <body>
         <style>
+            html, body {
+                width: 100%;
+                height: 100%;
+                padding: 0;
+                margin: 0;
+            }
+
+            video {
+                height: 100%;
+                width: 100%;
+                margin: 0 auto;
+                object-fit: cover;
+            }
+
             video::cue {
                 font-size: 36px;
             }
@@ -10,7 +24,7 @@
             }
         </style>
 
-        <video src="../../res/vid.webm" autoplay>
+        <video src="../../res/vid.webm" autoplay loop controls>
             <track default src="sub.vtt">
         </video>
     </body>
