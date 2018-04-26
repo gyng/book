@@ -548,7 +548,9 @@ http://unicode.org/reports/tr51/
 
 ---
 
-![](i/emoji.png)
+![](i/emojigun2.jpg)
+
+https://blog.emojipedia.org/google-updates-gun-emoji/
 
 ---
 
