@@ -1,4 +1,4 @@
-# Geotagging photos with exiftool
+# Guide to geotagging photos with Google location history and exiftool
 
 I use Google Photos to upload selected photos I take on my vacations, and I very much like how it geotags my photos and links it to Google Maps. The ability to record where I took a photo is a nice perk to have.
 

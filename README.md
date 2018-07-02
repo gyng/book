@@ -6,7 +6,7 @@ Bits I have committed to bytes
 
 * [A New Approach To Fizzbuzz](slides/sleep/sleep.pdf)
 * [Uncommon CSS](slides/uncommon-css)
-* [Geotagging photos with exiftool](articles/geotag/geotag.md)
+* [Guide to geotagging photos with Google location history and exiftool](articles/geotag/geotag.md)
 
 ## 2017
 
