@@ -30,7 +30,7 @@ Because all my photos are taken in UTC I run the following command to tag my pho
 exiftool -geotag Location\ History.kml '-geotime<${DateTimeOriginal}+00:00' . -api GeoMaxIntSecs=108000
 ```
 
-The location history obtained from Google is all in UTC, so timezones are irrelevent here. Super convenient when photos span different timezones.
+The location history obtained from Google is all in UTC. That matches my camera clock so timezones are irrelevent. Super convenient when photos span different timezones.
 
 If, somehow, the photos are in local time change the timezone offset in that command (eg, for California, which is -7 UTC)
 
