@@ -30,9 +30,9 @@ Because all my photos are taken in UTC I run the following command to tag my pho
 exiftool -geotag Location\ History.kml '-geotime<${DateTimeOriginal}+00:00' . -api GeoMaxIntSecs=108000
 ```
 
-The location history obtained from Google is all in UTC. That matches my camera clock so timezones are irrelevent. Super convenient when photos span different timezones.
+The location history obtained from Google is all in UTC. That matches my camera clock so there's no need to calculate and apply timezone offsets. Super convenient when photos span different timezones.
 
-If, somehow, the photos are in local time change the timezone offset in that command (eg, for California, which is -7 UTC)
+If, somehow, the photos are in local time then change the timezone offset in that command (eg, for California, which is -7 UTC)
 
 ```
 exiftool -geotag Location\ History.kml '-geotime<${DateTimeOriginal}-07:00' . -api GeoMaxIntSecs=108000
@@ -53,11 +53,11 @@ rm *_original
 
 ## Timestamps
 
-The EXIF standard does not specify a timezone field, and so most people set the camera's clock to the local time as needed. Obviously, this is a giant PITA due to timezones (and DST!), so I leave my camera's clock set to UTC and adjust the files on a desktop instead.
+The EXIF standard does not specify a timezone field, and so most people set the camera's clock to the local time as needed. Obviously, this is a giant PITA due to my forgetfulness and timezones (and DST!), so I leave my camera's clock set to UTC and adjust the files on a desktop instead.
 
-What's really helpful when taking this approach is to take at least one picture of a clock, or of road signage to make it easy to verify geotags or timestamps later on.
+What's really useful when taking this approach is to take at least one picture of a clock, or of road signage to make it easy to verify geotags or timestamps later on.
 
-You can leave your timestamps in UTC. However, I change the timestamps into local time so they sort properly in Google Photos.
+You can leave your timestamps in UTC. However, I change the timestamps into local time before uploading to Google Photos so they sort properly when mixed with photos taken on my phone (with local timestamps).
 
 For photos taken in New York in July (UTC-4), I might run this command while in a directory with all the photos I want to edit
 
