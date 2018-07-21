@@ -1,10 +1,10 @@
 # Guide to geotagging photos with Google location history and exiftool
 
-I use Google Photos to upload selected photos taken on vacation, and very much like how it links to Google Maps. Indeed, the ability to record where I took a photo is a nice perk to have.
+I use Google Photos to upload selected photos taken on vacation, and very much like how it links to Google Maps.
 
-And as much as I like my dedicated camera, it has rubbish UX for geotagging photos! While it does have an on-board geotagging feature, that requires a paired wireless connection to an app installed on my phone. Not only does this setup gobble up battery on both the camera and the phone, it also denies my phone of a wireless connection (useful while travelling).
+And, as much as I like my dedicated camera, it has *rubbish* UX for geotagging photos. The on-board geotagging feature requires a paired wireless connection to an app installed on my phone. I then have to turn on the wireless hotspot on my camera and have my phone connect to it. Not only does this suck up battery on both camera and phone, it also denies my phone of a wireless connection!
 
-So, to tag my photos, I've been doing the following
+So, to tag my photos, I've been doing the following instead
 
 1. Leave location tracking on my Android phone active
 2. Set my camera's clock to UTC
