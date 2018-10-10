@@ -27,7 +27,7 @@ I use [exiftool](https://www.sno.phy.queensu.ca/~phil/exiftool/), a nifty metada
 Because all my photos are taken in UTC I run the following command to tag my photos
 
 ```
-exiftool -geotag Location\ History.kml '-geotime<${DateTimeOriginal}+00:00' . -api GeoMaxIntSecs=1800
+exiftool -geotag '.\Location History.kml' '-geotime<${DateTimeOriginal}+00:00' . -api GeoMaxIntSecs=1800
 ```
 
 The location history obtained from Google is all in UTC. That matches my camera clock so there's no need to calculate and apply timezone offsets. Super convenient when photos span different timezones.
@@ -35,7 +35,7 @@ The location history obtained from Google is all in UTC. That matches my camera 
 If, somehow, the photos are in local time then change the timezone offset in that command (eg, for California, which is -7 UTC)
 
 ```
-exiftool -geotag Location\ History.kml '-geotime<${DateTimeOriginal}-07:00' . -api GeoMaxIntSecs=1800
+exiftool -geotag '.\Location History.kml' '-geotime<${DateTimeOriginal}-07:00' . -api GeoMaxIntSecs=1800
 ```
 
 `-api GeoMaxIntSecs=1800` sets the interpolation to 1800 seconds, or 30 minutes.
