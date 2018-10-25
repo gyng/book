@@ -485,6 +485,26 @@ https://support.microsoft.com/en-us/help/170559/prb-conversion-problem-between-s
 
 ---
 
+## Rendering issues
+
+### What could possibly go wrong?
+
+`lang="zh"`
+
+![](i/lang-zh2.png)
+
+---
+
+## Rendering issues
+
+### Blank characters, mixed fonts, wrong glyphs
+
+`lang="en"`
+
+![](i/lang-en.png)
+
+---
+
 ## Han unification
 
 * Can use Unicode variation selectors
