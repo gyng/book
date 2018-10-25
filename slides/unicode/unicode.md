@@ -6,7 +6,7 @@
 
 # Unicode and its 🕳🍁s: normalisation, Han unification and m͢ore
 
-###### 2017
+###### 2018
 
 ###### https://github.com/gyng/book/tree/master/slides/unicode
 
@@ -14,7 +14,7 @@
 
 # Unicode and its 糞香s: normalisation, Han unification and mﾍ｢ore
 
-###### 2017 (Shift-JIS edition)
+###### 2018 (Shift-JIS edition)
 
 ###### https://github.com/gyng/book/tree/master/slides/unicode
 
