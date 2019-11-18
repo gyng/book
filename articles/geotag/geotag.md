@@ -40,11 +40,6 @@ exiftool -geotag '.\Location History.kml' '-geotime<${DateTimeOriginal}-07:00' .
 
 `-api GeoMaxIntSecs=1800` sets the interpolation to 1800 seconds, or 30 minutes.
 
->|||
->|-|-|
->Latitude|`37,49.0876N`
->Longitude|`122,28.9866W`
-
 Check the EXIF, and once satisfied, remove the originals. Google shows me the location if I [search for `34.6098346210444N, 135.027243317231E`](https://www.google.com/search?q=37+49.0876N%2C+122+28.9866W).
 
 ```
