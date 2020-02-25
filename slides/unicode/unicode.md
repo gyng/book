@@ -6,7 +6,7 @@ marp: true
 
 <!-- page_number: true -->
 
-# Unicode and its 🕳🍁s: normalisation, Han unification and m͢ore
+# Unicode and its 🕳🍁s: programmer essentials and m͢ore
 
 ###### Updated 2020
 
@@ -14,9 +14,9 @@ marp: true
 
 ---
 
-# Unicode and its  糞  香 s: normalisation, Han unification and m ﾍ｢ore
+# Unicode and its  糞  香 s: programmer essentials and m ﾍ｢ore
 
-###### 2018 (Shift-JIS edition)
+###### Shift-JIS edition
 
 ###### https://github.com/gyng/book/tree/master/slides/unicode
 
@@ -63,7 +63,7 @@ Encoding is the process of converting data from one form to another. -->
 
 ---
 
-![](i/Computer_generated_render_of_the_"Stanford_Bunny".jpg)
+![](i/Computer_generated_render_of_the_Stanford_Bunny.jpg)
 
 <!-- Encodings don't have to be text, it's generally used for any information -->
 
@@ -95,6 +95,14 @@ EGL  EWS
 
 <!-- Same characters, different encodings, different lengths
 The **_code point_** (電 $=$ 7193) is not the **_encoding_** (morse) -->
+
+---
+
+* Character: `a`, `e`, `1`, `電`, etc.
+
+* Codepoint: mapping of a character to some value
+
+* Encoding: A collection of codepoints
 
 ---
 
@@ -232,7 +240,7 @@ ASCII
 - ???
 - ???
 - ???
-- Xerox Character Code Standard (XCCS), 1980
+- ???
 
 ---
 
@@ -286,21 +294,19 @@ http://www.unicode.org/history/movie/UniMovie-large.mov
 
 ---
 
-## Unicode 10.0 (2017 June 20)
+## Unicode 13.0 (2020 March 10)
 
-> Unicode 10.0 adds 8,518 characters, for a total of 136,690 characters
+> Unicode 13.0 adds 5,930 characters, for a total of 143,859 characters.
 
-http://www.unicode.org/versions/Unicode10.0.0/
+https://unicode.org/versions/Unicode13.0.0/
 
-> 56 emoji (2,666 total)
+> 55 new emoji characters
 
 http://www.unicode.org/reports/tr51/tr51-12.html#Emoji_Counts
 
-> Bitcoin sign
-
 _&hellip;and more_
 
-<!-- Unicode is a human process, and anyone can submit proposals, you can check them out on the website -->
+<!-- Unicode is a living, human process, and anyone can submit proposals, you can check them out on the website -->
 
 ---
 
@@ -327,6 +333,8 @@ Unicode
 ## Encoding
 
 UTF-8, UTF-16, UTF-32, UCS-2, UCS-4
+
+(UTF = Unicode Transformation Format)
 
 ---
 
@@ -386,6 +394,12 @@ http://www.unicode.org/reports/tr6/
 
 ## UTF-8
 
+(The good one)
+
+---
+
+## UTF-8
+
 - Multi-byte
   ```
   1110aaaa 10bbbbbb 10cccccc
@@ -400,44 +414,51 @@ http://www.unicode.org/reports/tr6/
 
 ---
 
-## Private use areas
-
-- `U+E000..U+F8FF`, `U+F0000..U+FFFFD`, `U+100000..U+10FFFD`
-- Suggested for internal use
-  - data processing
-  - artificial scripts
-  - ancient scripts
--  `U+F8FF` (`⇧`-`⌥`-`k`)
-- Ubuntu has `U+E0FF` and `U+F200`
-  ![](i/ubuntu.png)
+# Unicode features
 
 ---
 
 ## Combining characters
 
 - Modify other characters
-  `e` $+$ `` $=$ `é`
+  `e` $+$ `́ ` $=$ `é`
 
   `<e U+0065 LATIN SMALL LETTER E,`
   `U+0301 COMBINING ACUTE ACCENT>`
-
-- Precomposed `é`
-  `é U+00E9 LATIN SMALL LETTER E WITH ACUTE`
 
 - Modifiers come after base character
 
 ---
 
+## Combining characters
+
+- Precomposed `é`
+  `é U+00E9 LATIN SMALL LETTER E WITH ACUTE`
+
+
+`é` $\neq$ `é`?
+
+`é` $=$ `é`?
+
+<!-- Are these the same? Turns out, it's complicated. -->
+
+---
+
 ## Unicode normalisation
 
-- Some combined characters are sort of the same
+- Some combined characters are the same, sometimes
+
+---
+## Unicode normalisation mumbo jumbo
+
 - Equivalence criteria
   - canonical (NF)
   - compatibility (NFK)
 - `ﬃ` `U+FB03 LATIN SMALL LIGATURE FFI` vs `f` `f` `i`
   - not equivalent under canonical (NF)
   - equivalent under NFK compatiability (NFK)
-- NF is used to canonicalise combining characters
+
+<!-- Don't worry about this slide -->
 
 ---
 
@@ -448,96 +469,9 @@ http://www.unicode.org/reports/tr6/
 - NFKD _Normalization Form Compatibility Decomposition_
 - NFKC _Normalization Form Compatibility Composition_
 
----
+NF is used to canonicalise combining characters
 
-## Han unification
-
-- Maps common Chinese, Japanese, Korean (CJK) characters into unified set
-  ![](i/diff.png)
-- Different countries have different standards
-
----
-
-## Han unification
-
-- Variants can be significant (names)
-  <ruby>`芦`<rt>ashi</rt></ruby> Ashi·da, given name vs Ashi·ya, old place name
-  ![](i/sentence.png)
-- Educational software
-- People get 😡 over the differences
-
----
-
-## Han unification
-
-> CJK Extension F contains mostly rare characters, but also includes a number of personal and placename characters important for government specifications in Japan, in particular.
-
-CJK Extension F was added in Unicode 10.0 (2017)
-
----
-
-## Han unification
-
-- Lose round-trip conversion compatibility with character sets which have variants
-
-https://support.microsoft.com/en-us/help/170559/prb-conversion-problem-between-shift-jis-and-unicode
-
----
-
-## Rendering issues
-
-### What could possibly go wrong?
-
-`lang="zh"`
-
-![](i/lang-zh2.png)
-
----
-
-## Rendering issues
-
-### Blank characters, mixed fonts, wrong glyphs
-
-`lang="en"`
-
-![](i/lang-en.png)
-
----
-
-## Han unification
-
-- Can use Unicode variation selectors
-
-  `U+E0101 VARIATION-SELECTOR-18`
-
-  ![](i/vs.png)
-
-http://www.unicode.org/ivd/
-http://unicode.org/reports/tr37/
-
----
-
-## Control sequences and vertical text
-
-- Vertical text
-- RTL mark
-  ![](i/rl.png)
-
-_Unicode Bidirectional Algorithm_ @ http://unicode.org/reports/tr9/
-_Unicode Vertical Text Layout_ @ http://www.unicode.org/reports/tr50/
-
----
-
-## Ligatures
-
-> Unicode maintains that ligaturing is a presentation issue rather than a character definition issue
-
-- But! There are some predefined ligatures
-  `ﬄ U+FB04 LATIN SMALL LIGATURE FFL`
-  `Ꜹ U+A738 LATIN CAPITAL LETTER AV`
-  `æ U+00E6 LATIN SMALL LETTER AE`
-
-- Similar issue with subscript and superscript
+<!-- Just know that there are two ways to normalise -->
 
 ---
 
@@ -557,7 +491,7 @@ http://unicode.org/reports/tr51/
 
 ![](i/emoji-examples.png)
 
-- This is a problem
+<!-- This is a problem -->
 
 ---
 
@@ -613,6 +547,119 @@ http://unicode.org/faq/vs.html
 
 ---
 
+## Private use areas
+
+- `U+E000..U+F8FF`, `U+F0000..U+FFFFD`, `U+100000..U+10FFFD`
+- Suggested for internal use
+  - data processing
+  - artificial scripts
+  - ancient scripts
+-  `U+F8FF` (`⇧`-`⌥`-`k`)
+- Ubuntu has `U+E0FF` and `U+F200`
+  ![](i/ubuntu.png)
+
+---
+
+## Han unification
+
+- Maps common Chinese, Japanese, Korean (CJK) characters into unified set
+  ![](i/diff.png)
+- Different countries have different standards
+
+---
+
+## Han unification
+
+- Variants can be significant (names)
+  <ruby>`芦`<rt>あし</rt></ruby> Ashi·da, given name vs Ashi·ya, old place name
+  ![](i/sentence.png)
+
+<!-- 
+- Educational software
+- People get 😡 over the differences
+-->
+
+---
+
+## Han unification
+
+> CJK Extension F contains mostly rare characters, but also includes a number of personal and placename characters important for government specifications in Japan, in particular.
+
+CJK Extension F was added in Unicode 10.0 (2017)
+
+---
+
+## Han unification
+
+- Lose round-trip conversion compatibility with character sets which have variants
+
+https://support.microsoft.com/en-us/help/170559/prb-conversion-problem-between-shift-jis-and-unicode
+
+---
+
+## Rendering issues
+
+### What could possibly go wrong?
+
+`lang="zh"`
+
+![](i/lang-zh2.png)
+
+---
+
+## Rendering issues
+
+### Blank characters, mixed fonts, wrong glyphs
+
+`lang="en"`
+
+![](i/lang-en.png)
+
+<!-- Language detection failed causing Firefox to pick the wrong font based off the language
+The default font didn't have glyphs for some CJK characters, and the fallback stack didn't have the right glyphs either.
+-->
+
+---
+
+## Variation selectors
+
+- Can use Unicode variation selectors
+
+  `U+E0101 VARIATION-SELECTOR-18`
+
+  ![](i/vs.png)
+
+http://www.unicode.org/ivd/
+http://unicode.org/reports/tr37/
+
+<!-- This is also how your different-coloured emoji work -->
+
+---
+
+## Ligatures
+
+> Unicode maintains that ligaturing is a presentation issue rather than a character definition issue
+
+- But! There are some predefined ligatures
+  `ﬄ U+FB04 LATIN SMALL LIGATURE FFL`
+  `Ꜹ U+A738 LATIN CAPITAL LETTER AV`
+  `æ U+00E6 LATIN SMALL LETTER AE`
+
+- Similar issue with subscript and superscript
+
+---
+
+## Control sequences and vertical text
+
+- Vertical text
+- RTL mark
+  ![](i/rl.png)
+
+_Unicode Bidirectional Algorithm_ @ http://unicode.org/reports/tr9/
+_Unicode Vertical Text Layout_ @ http://www.unicode.org/reports/tr50/
+
+---
+
 [EarthWeb commercial, 2001](i/EarthwebCommercial.avi)
 http://www.unicode.org/history/EarthwebCommercial.avi
 
@@ -630,14 +677,20 @@ http://www.unicode.org/history/EarthwebCommercial.avi
 
 ---
 
-## Why should I care?
+<div style="display: grid; grid-template-columns: 1fr 1fr 1fr; height: 100%; font-size: 128px; text-align: center">
+<div>🦋</div>
+<div>🐛</div>
+<div>🐝</div>
+<div>🐞</div>
+<div>🐜</div>
+<div>🕷</div>
+<div>🦂</div>
+<div>🦗</div>
+<div>🦟</div>
+</div>
 
----
 
-| 🦋  | 🐛  | 🐝  |
-| --- | --- | --- |
-| 🐞  | 🐜  | 🕷   |
-| 🦂  | 🦗  | 🦟  |
+<!-- Why should I care? -->
 
 ---
 
@@ -648,6 +701,10 @@ http://www.unicode.org/history/EarthwebCommercial.avi
 1. Type "Bush hid the facts"
 2. Save the file
 3. Open the file
+
+https://en.wikipedia.org/wiki/Bush_hid_the_facts
+
+<!-- Was a thing 15 years ago -->
 
 ---
 
@@ -674,10 +731,13 @@ http://www.unicode.org/history/EarthwebCommercial.avi
 
 ---
 
-## Use UTF-8 for all source code
+## Use UTF-8 for all source code if possible
 
 - Configure your text editor
-- Magic comments for some languages
+
+---
+
+## Magic comments for some older languages
 
 ### 💎 Ruby $\leq$ 1.9.x
 
@@ -691,23 +751,76 @@ http://www.unicode.org/history/EarthwebCommercial.avi
 # -*- coding: utf-8 -*-
 ```
 
+---
+
 ### 💾 C $\leq$ C99
 
 ```
 /* Dear future programmer: Good luck 👍 */
 ```
 
+(Use a library, utf8proc seems to be popular)
+
 ---
 
 ## Text processing
 
-- Treat input as bytes
-- Treat text as strings (and not byte arrays)
+- Treat input as bytes (if possible)
+
+---
+
+## Text processing
+
+- Treat output as strings (and not byte arrays)
+
+---
+
+## Text processing
+
 - Use UTF-8 wherever possible
-  - unless you know what you are doing
+
+---
+
+## Text processing
+
 - Decide what to do with invalid bytes
   - discard or substitute?
 - Do not self-roll your own text encoding library
+
+---
+
+## Log streaming
+
+```py
+with open("mobydick-emoji-edition-🐋.utf8.txt", "rb") as input:
+    while True:
+        output_chunk = input.read(4096)
+        if not output_chunk:
+            #  EOF
+            break
+        #  Yield each chunk
+        yield output_chunk
+```
+
+Where's the bug?
+
+---
+
+## Log streaming
+
+```py
+with open("mobydick-emoji-edition-🐋.utf8.txt", "rb") as input:  # 🐞
+    while True:
+        output_chunk = input.read(4096)  # 🐞
+        if not output_chunk:
+            #  EOF
+            break
+        #  yield each chunk
+        yield output_chunk
+```
+
+<!-- A multibyte character at the chunk boundary could get cut off -->
+
 
 ---
 
@@ -724,6 +837,8 @@ doc = Nokogiri.XML(html, nil, 'EUC-JP')
 # Beautiful Soup
 soup = BeautifulSoup(html, fromEncoding='Shift_JIS')
 ```
+
+<!-- watch out when web scraping -->
 
 ---
 
@@ -755,6 +870,16 @@ soup = BeautifulSoup(html, fromEncoding='Shift_JIS')
 ```
 
 ![](i/unification.png)
+
+---
+
+## Use `accept-charset` in forms as needed
+
+```html
+<form action="myform" accept-charset="UTF-8">
+```
+
+Uses document charset by default
 
 ---
 
@@ -807,6 +932,7 @@ soup = BeautifulSoup(html, fromEncoding='Shift_JIS')
 
 ## Case conversion
 
+- 🇩🇪 German
 - `ß` upcases to `SS`
 - …or `U+1E9E ẞ LATIN CAPITAL LETTER SHARP S`
 
@@ -826,7 +952,14 @@ http://unicode.org/faq/casemap_charprop.html
 
 ```javascript
 >> 'ß'.toLocaleUpperCase('de-DE');
-'ß'
+'ß' // (unchanged)
+```
+
+### 🔥 JavaScript (Firefox 73)
+
+```javascript
+>> 'ß'.toLocaleUpperCase('de-DE');
+'SS'
 ```
 
 ### 🔮 JavaScript (Chrome 59)
@@ -838,13 +971,11 @@ http://unicode.org/faq/casemap_charprop.html
 
 ---
 
-## Does your favourite programming language work?
-
 ### 🐍² Python 2
 
 ```python
 >>> u'ß'.upper()
-u'\xdf' # ß
+u'\xdf'  # ß (unchanged)
 ```
 
 ### 🐍³ Python 3
@@ -856,13 +987,11 @@ u'\xdf' # ß
 
 ---
 
-## Does your favourite programming language work?
-
 ### 💎 Ruby 2.3
 
 ```ruby
 > "\u{00df}".upcase
-=> "ß"
+=> "ß" # (unchanged)
 ```
 
 ### 💎 Ruby 2.4
@@ -874,7 +1003,28 @@ u'\xdf' # ß
 
 ---
 
-## Does your favourite programming language work?
+### 🐻 Go
+
+```go
+package main
+
+import (
+	"fmt"
+	"golang.org/x/text/cases"
+	"golang.org/x/text/language"
+)
+
+func main() {
+	c := cases.Upper(language.German)
+	fmt.Println(c.String("ß"))
+}
+
+SS
+```
+
+<!-- If you have a better way of doing this, please let me know -->
+
+---
 
 ### ☕ Java
 
@@ -888,13 +1038,19 @@ public class UppercaseThis {
 SS
 ```
 
+---
+
 ### ⚙️ Rust
 
 ```rust
-fn main() { println!("{}", "ß".to_uppercase()); }
+fn main() {
+    println!("{}", "ß".to_uppercase());
+}
 
 SS
 ```
+
+<!-- The good news is modern versions handle this well -->
 
 ---
 
@@ -938,10 +1094,6 @@ https://helpx.adobe.com/photoshop/user-guide.html?topic=/photoshop/morehelp/text
 
 ---
 
-![](i/dbs.jpg)
-
----
-
 ## Unencoded characters
 
 How can I display (CJK/my own) characters not encoded in Unicode?
@@ -959,11 +1111,13 @@ _biáng_, from _biángbiáng 面_, a noodle dish from Shaanxi, China
 - Use an image
 - Use Ideographic Description Sequences
   `⿰⿱⿲⿳⿴⿵⿶⿷⿸⿹⿺⿻ U+2FF0..U+2FFF`
-  `⿰書史` for <img src="i/100px-Saw_sawndip.svg.png" style="transform: translateY(7px)" height="32px" />
+  `⿰書史` for <img src="i/100px-Saw_sawndip.svg.png" style="transform: translateY(7px)" height="32px" />, a character of a dialect in China
 - Use fonts which have the unencoded glyph either
   - as an existing character (Wingdings 🕴👽👓✇)
   - in Private Use Area
   - as a combined sequence
+
+<!-- Sawndip, a dialect in China -->
 
 ---
 
@@ -1001,6 +1155,20 @@ What _⿺ 辶 ⿳ 穴 ⿲ 月 ⿱⿲ 幺言幺 ⿲ 長馬長刂心 ⿺ 辶 ⿳ �
 
 ## String sorting
 
+```javascript
+  >> 'e' > 'f'
+  true
+
+  >> 'f' > 'e'
+  false
+```
+
+String comparison done in lexicographical order in JavaScript
+
+---
+
+## String sorting
+
 - Sorting strings is hard!
   ```javascript
   >> 'é' > 'f'
@@ -1011,7 +1179,7 @@ What _⿺ 辶 ⿳ 穴 ⿲ 月 ⿱⿲ 幺言幺 ⿲ 長馬長刂心 ⿺ 辶 ⿳ �
 
 ## String sorting
 
-- A-ha! Can we use normalisation for this?
+- The solution: normalisation
 
   ```javascript
   >> 'café'.normalize('NFKD')
@@ -1030,6 +1198,10 @@ What _⿺ 辶 ⿳ 穴 ⿲ 月 ⿱⿲ 幺言幺 ⿲ 長馬長刂心 ⿺ 辶 ⿳ �
   ```
 
 [MDN: String.prototype.normalize()](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String/normalize)
+
+https://unicode.org/reports/tr10/#Hangul_Collation
+
+<!-- I can't read Hangul, but according to the boffins this is not right. TLDR: edge cases -->
 
 ---
 
@@ -1073,6 +1245,14 @@ What _⿺ 辶 ⿳ 穴 ⿲ 月 ⿱⿲ 幺言幺 ⿲ 長馬長刂心 ⿺ 辶 ⿳ �
 
 ---
 
+## Concise bedtime reading
+
+>The essential problem results from the fact that Hangul syllables can also be represented with a sequence of conjoining jamo characters and because syllables represented that way may be of different lengths, with or without a trailing consonant jamo. 
+
+<!-- Takeaway is that it's not easy to do it right -->
+
+---
+
 ## Asymmetric searching
 
 | query  | matches                                           |
@@ -1083,7 +1263,7 @@ What _⿺ 辶 ⿳ 穴 ⿲ 月 ⿱⿲ 幺言幺 ⿲ 長馬長刂心 ⿺ 辶 ⿳ �
 
 ---
 
-## String length &mdash; combined characters
+## String length
 
 What's the length of `café`?
 
@@ -1140,6 +1320,8 @@ What's the length of `💩 U+1F4A9 PILE OF POO`?
 1
 ```
 
+---
+
 ### 🐍² Python 2
 
 ```python
@@ -1156,6 +1338,16 @@ What's the length of `💩 U+1F4A9 PILE OF POO`?
 
 ---
 
+### 🐻 Go
+
+```go
+fmt.Println(len("💩")) // 4
+
+fmt.Println(len([]rune("💩"))) // 1
+```
+
+---
+
 ### 💎 Ruby
 
 ```ruby
@@ -1163,15 +1355,7 @@ What's the length of `💩 U+1F4A9 PILE OF POO`?
 1
 ```
 
-### ☕ Java
-
-```java
-System.out.println("💩".length());
-// 2
-
-// This margin is too small to contain the solution
-// Use java.text.BreakIterator
-```
+---
 
 ### ⚙️ Rust
 
@@ -1182,6 +1366,21 @@ println!("{}", "💩".len());
 println!("{}", "💩".chars().count());
 // 1
 ```
+
+---
+
+### ☕ Java
+
+```java
+System.out.println("💩".length());
+// 2
+
+String s = "💩";
+System.out.print(s.codePointCount(0, s.length()));
+// 1
+```
+
+<!-- You can infer the internal representation of strings through length() -->
 
 ---
 
@@ -1219,6 +1418,8 @@ println!("{}", "💩".chars().count());
   ```
 
 http://www.unicode.org/reports/tr18/
+
+<!-- Generally you won't need this, but it's good to know :+1: -->
 
 ---
 
@@ -1259,9 +1460,25 @@ https://blog.emojipedia.org/google-fixes-burger-emoji/
 
 ## Developing for Unicode
 
-If you ever need to develop Unicode parsing and processing, use the CLDR database:
+If you ever need to develop Unicode parsing and processing, use the CLDR database, and read the reports
 
 http://cldr.unicode.org/
+
+---
+
+## Email
+
+Set the MIME needed for Unicode if your library doesn't handle it for you
+
+```py
+msg = MIMEText('€10'.encode('utf-8'), _charset='utf-8')
+```
+
+https://docs.python.org/3.1/library/email.mime.html#email.mime.text.MIMEText
+
+https://en.wikipedia.org/wiki/Unicode_and_email
+
+<!-- No discussion is complete without email -->
 
 ---
 
@@ -1279,17 +1496,38 @@ Read _Unicode Security Considerations_
 - Equivalent characters
   `e` $+$ `` $\neq$ `é`
 - Basic authentication can fail in different browsers
+- Keyboard issues
 
 ---
 
 ## Sanitise text input
 
-- Difficult problem
+- How would you do it?
+
+---
+
+## Sanitise text input
+
+- 𝕯𝖎𝖋𝖋𝖎𝖈𝖚𝖑𝖙 𝖕𝖗𝖔𝖇𝖑𝖊𝖒.
+
+---
+
+## 𝓓𝓲𝓯𝓯𝓲𝓬𝓾𝓵𝓽 𝓹𝓻𝓸𝓫𝓵𝓮𝓶.
+
+![](i/rtl-google.png)
+
+<!-- Even google doesn't quite do it -->
+
+---
+
+## Sanitise text input
+
 - “Unicode injection”: RTL, combining characters, wide characters
 - `﷽` is one (1!) character
   `U+FDFD ARABIC LIGATURE BISMILLAH AR-RAHMAN AR-RAHEEM`
 - Z̤̲̙̙͎̥̝A͎̣͔̙͘L̥̻̗̳̻̳̳͢G͉̖̯͓̞̩̦O̹̹̺!̙͈͎̞̬
 - 25 different whitespace characters
+- Non-printing characters
 
 https://github.com/minimaxir/big-list-of-naughty-strings
 
@@ -1387,15 +1625,13 @@ FREE 🍕!
 
 ---
 
-Company: GitHub
-
-Vulnerability: Password reset emails delıvered to the wrong address.
-
-Cause: Forgot password emails validated against lowercase value on file, but sent the provided email.
+>Company: GitHub
+>
+>Vulnerability: Password reset emails delıvered to the wrong address.
+>
+>Cause: Forgot password emails validated against lowercase value on file, but sent the provided email.
 
 ---
-
-## Unicode in email addresses
 
 ```js
 // Note the Turkish dotless i
@@ -1406,7 +1642,9 @@ https://eng.getwisdom.io/hacking-github-with-unicode-dotless-i/
 
 ---
 
->GitHub's forgot password feature could be compromised because the system lowercased the provided email address and compared it to the email address stored in the user database. If there was a match, GitHub would send the reset password link to the email address provided by the attacker- which was technically speaking, not the same email address. I'll let the GitHub Security team explain further.
+>GitHub's forgot password feature could be compromised because the system lowercased the provided email address and compared it to the email address stored in the user database.
+
+<!-- Ironically, doing lowercase right gave them problems! -->
 
 ---
 
@@ -1451,6 +1689,14 @@ Be careful when normalising or transforming unique identifiers!
   In MySQL, use `utfmb4` ($\geq$ 5.5.3, 2010)
 
 https://mathiasbynens.be/notes/mysql-utf8mb4
+
+---
+
+## 
+
+<div style="font-size: 200px">👽</div>
+
+4 bytes long! `0xF0 0x9F 0x91 0xBD`
 
 ---
 
@@ -1533,13 +1779,40 @@ https://msdn.microsoft.com/en-us/library/dd374047(v=vs.85).aspx
 
 `; U+037E GREEK QUESTION MARK`
 
-[A list of similar characters](https://github.com/rust-lang/rust/blob/master/src/libsyntax/parse/lexer/unicode_chars.rs)
+<!-- Takeways
+
+1. Unicode is COMPLICATED
+2. Strings are HARD
+3. Be AWARE and ask yourself whenever you're doing something with strings
+
+-->
+
+---
+
+# Rust shilling
+
+```
+error: unknown start of token: \u{37e}
+ --> src/lib.rs:1:14
+  |
+1 | let x = 1 + 1;
+  |              ^
+  |
+help: Unicode character ';' (Greek Question Mark) looks like ';' (Semicolon), but it is not
+  |
+1 | let x = 1 + 1;
+  |              ^                 ^
+```
+
+[A list of similar characters](https://github.com/rust-lang/rust/blob/master/src/librustc_parse/lexer/unicode_chars.rs)
 
 ---
 
 ## Resources
 
-- [The Unicode Standard, v10.0 &ndash; Core Specification](http://www.unicode.org/versions/Unicode10.0.0/UnicodeStandard-10.0.pdf)
+<small>
+
+- [The Unicode Standard (latest)](http://www.unicode.org/versions/latest/)
 - [Unicode publications](http://www.unicode.org/publications/)
 - [Unicode technical reports](http://www.unicode.org/reports/)
 - [Unicode data files](http://www.unicode.org/onlinedat/online.html)
@@ -1552,3 +1825,5 @@ https://msdn.microsoft.com/en-us/library/dd374047(v=vs.85).aspx
 - [Personal names around the world](https://www.w3.org/International/questions/qa-personal-names)
 - [Falsehoods Programmers Believe About Phone Numbers](https://github.com/googlei18n/libphonenumber/blob/master/FALSEHOODS.md)
 - _Unicode Demystified: A Practical Programmer's Guide to the Encoding Standard_ by Richard Gillam
+
+</small>
