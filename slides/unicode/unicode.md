@@ -1157,10 +1157,10 @@ What _⿺ 辶 ⿳ 穴 ⿲ 月 ⿱⿲ 幺言幺 ⿲ 長馬長刂心 ⿺ 辶 ⿳ �
 
 ```javascript
   >> 'e' > 'f'
-  true
+  false
 
   >> 'f' > 'e'
-  false
+  true
 ```
 
 String comparison done in lexicographical order in JavaScript
@@ -1381,6 +1381,33 @@ System.out.print(s.codePointCount(0, s.length()));
 ```
 
 <!-- You can infer the internal representation of strings through length() -->
+
+---
+
+## String lengths
+
+* What is the definition of the length of a string?
+* What is a character?
+
+---
+
+## String lengths
+
+* Bytes
+* Codepoints
+* Normalised codepoints
+* ~~Characters~~
+
+```go
+fmt.Println(len([]rune("🏴‍☠️")))  // => 4
+```
+
+---
+
+## Characters
+
+* Do not think about strings in terms of characters
+* Characters are not your friends
 
 ---
 
@@ -1741,16 +1768,6 @@ Solution: use languages/libraries which handle Unicode right
   ```
 
 Solution: use languages/libraries which handle Unicode right
-
----
-
-## CoreText (Mac/iOS) bugs
-
-![](i/ios-unicode.jpg)
-
-In 2015, receiving this would crash your iPhone or Mac
-
-* https://web.archive.org/web/20150530031922/https://support.apple.com/en-us/HT204897
 
 ---
 
