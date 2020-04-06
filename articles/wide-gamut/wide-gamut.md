@@ -24,13 +24,19 @@ As of April 2020, Windows 10 is still poorly colour managed.
 * Set up ICC profiles as needed (Control Panel > Colour Management)
 * Turn on HD colour settings as needed (Display Settings > Windows HD Color settings)
 
-## 10-bit support
+### 10-bit support
 
-### Nvidia/Windows
+#### Nvidia/Windows
 
 NVIDIA Control Panel > Display > Change resolution > Use NVIDIA color settings
 
-## Application settings
+## Mac OS
+
+* https://support.apple.com/en-us/guide/mac-help/mchlf3ddc60d/mac
+
+## Application settings 
+
+Mostly for Windows, since colour management on Mac OS has 
 
 ### Firefox
 
