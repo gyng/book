@@ -46,7 +46,7 @@ As of April 2020, Firefox does not manage colour fully. The first bug was opened
 * [1615404 - Images copied to clipboard should not color managed directly](https://bugzilla.mozilla.org/show_bug.cgi?id=1615404)
 * [ICC color correction in Firefox](https://developer.mozilla.org/en-US/docs/Mozilla/Firefox/Releases/3.5/ICC_color_correction_in_Firefox)
 
-You can force better colour management in `about:settings`.
+You can force better colour management in `about:config`.
 
 Set the following
 
