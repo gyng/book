@@ -12,3 +12,5 @@ Disabling the 802.11g/b band in the drivers seemed to help.
 4. Properties
 5. Advanced > Disable bands
 6. Value: Disable 802.11g/b
+
+There's also a "Band preference" setting, but I didn't bother with that.
