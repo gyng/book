@@ -7,6 +7,7 @@ Bits I have committed to bytes
 ## 2020
 
 * [Wide gamut monitor setup](articles/wide-gamut/wide-gamut.md)
+* [Web typography basics](slides/webtypo/webtypo.pdf)
 
 ## 2018
 
