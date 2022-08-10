@@ -1,8 +1,8 @@
 # book
 
-[About me](https://gyng.github.io)
+Bits committed to bytes
 
-Bits I have committed to bytes
+[About the author](https://gyng.github.io)
 
 *roughly ordered by first created at date*
 
