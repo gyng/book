@@ -4,6 +4,10 @@ Bits I have committed to bytes
 
 *roughly ordered by first created at date*
 
+## 2021
+
+* [A taste of Rust: introductory Rust workshop](https://github.com/gyng/rust-primer)
+
 ## 2020
 
 * [Wide gamut monitor setup](articles/wide-gamut/wide-gamut.md)
