@@ -1,5 +1,7 @@
 # book
 
+[About me](https://gyng.github.io)
+
 Bits I have committed to bytes
 
 *roughly ordered by first created at date*
