@@ -17,16 +17,6 @@ I use [exiftool](https://www.sno.phy.queensu.ca/~phil/exiftool/), a nifty metada
 
 ## Grab your location history
 
-<details>
-<summary>Old method, KML</summary>
-  
-1. Go to [Google Takeout](https://takeout.google.com/settings/takeout)
-2. Select just your location history and change it to KML
-  ![Download location history in KML](./kml.png)
-3. Download and uncompress it somewhere (I put it alongside the photos to be edited)
-  
-</details>
-
 1. Go to [Google Takeout](https://takeout.google.com/settings/takeout)
 2. Select just your location history
 3. Export, and wait for the scheduled export to run
@@ -36,6 +26,16 @@ I use [exiftool](https://www.sno.phy.queensu.ca/~phil/exiftool/), a nifty metada
    $ python3 extract Records.json Records.kml
    ```
 6. Put the converted KML somewhere (I put it alongside the photos to be edited)
+
+<details>
+<summary>Old method, KML</summary>
+  
+1. Go to [Google Takeout](https://takeout.google.com/settings/takeout)
+2. Select just your location history and change it to KML
+  ![Download location history in KML](./kml.png)
+3. Download and uncompress it somewhere (I put it alongside the photos to be edited)
+  
+</details>
 
 ## Geotag
 
