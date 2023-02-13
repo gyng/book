@@ -32,7 +32,7 @@ graph LR
     Subwoofer -->|xlr| SpeakerL
     Subwoofer -->|xlr| SpeakerR
     Desktop -->|spdif| DAC
-    DAC -->|xlr| Subwoofer
+    DAC -->|3.5mm > xlr| Subwoofer
     Desktop -->|usb| IfRecord
     Desktop -.->|bt| Buds
     IfRecord -->|xlr| Microphone
