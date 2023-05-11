@@ -45,6 +45,7 @@ As of April 2020, Firefox does not manage colour fully. The first bug was opened
 * [455077 - Enable full color_management by default (i.e. set gfx.color_management.mode = 1)](https://bugzilla.mozilla.org/show_bug.cgi?id=455077)
 * [1615404 - Images copied to clipboard should not color managed directly](https://bugzilla.mozilla.org/show_bug.cgi?id=1615404)
 * [ICC color correction in Firefox](https://developer.mozilla.org/en-US/docs/Mozilla/Firefox/Releases/3.5/ICC_color_correction_in_Firefox)
+* [Color management \[with installed display color profile\] broken in version 113.0](https://bugzilla.mozilla.org/show_bug.cgi?id=1832215)
 
 You can force better colour management in `about:config`.
 
@@ -52,6 +53,7 @@ Set the following
 
 * `gfx.color_management.mode` to `1` to force all content with no profiles to sRGB. This fixes oversaturation of web content, most noticably in reds.
 * `gfx.color_management.enablev4` to `true` to force ICCv4 support
+* `gfx.color_management.native_srgb` to `false` in Firefox 113.0 (other versions might be affected)
 
 ### WebKit/Chrome
 
