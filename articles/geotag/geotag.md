@@ -22,7 +22,7 @@ To make things easy, do the following
    ```bash
    $ cd takeout
    $ curl https://github.com/rickprice/location-history-json-converter/raw/master/location_history_json_converter.py
-   $ python location_history_json_converter.py Records.json Records.kml
+   $ python3 location_history_json_converter.py Records.json Records.kml
    ```
 6. Put the converted KML somewhere (I put it alongside the photos to be edited)
 
