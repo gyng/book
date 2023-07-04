@@ -58,7 +58,7 @@ $ rm Records.json Records.kml location_history_json_converter.py
 
 The EXIF standard does not specify a timezone field and so most people set the camera's clock to the local time as needed. This is a giant PITA due to forgetfulness and timezones (and DST!), so it's easier to leave the camera's clock set to UTC and adjust the files on a desktop instead.
 
-You can leave your timestamps in UTC. However, I change the timestamps into local time before uploading to Google Photos so they sort properly when mixed with photos taken on my phone (which have local timestamps).
+You can leave your timestamps in UTC. ~~However, I change the timestamps into local time before uploading to Google Photos so they sort properly when mixed with photos taken on my phone (which have local timestamps).~~ 2023: It seems like Google Photos is smart enough to autoconvert geotagged photos to the correct timezone: photos in UTC uploaded to Google Photos seem to have the correct timezone applied!
 
 What's really useful when taking this approach is to take at least one picture of a clock, or of road signage to make it easy to verify geotags or timestamps later on.
 
