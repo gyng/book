@@ -1,80 +1,70 @@
 # Guide to geotagging photos with Google location history and exiftool
 
-I use Google Photos to upload selected photos taken on vacation, and very much like how it links to Google Maps.
-
-And, as much as I like my dedicated camera, it has *rubbish* UX for geotagging photos. The on-board geotagging feature requires a paired wireless connection to an app installed on my phone. I then have to turn on the wireless hotspot on my camera and have my phone connect to it. Not only does this suck up battery on both camera and phone, it also denies my phone of a wireless connection!
-
-So, to tag my photos, I've been doing the following instead
+To make things easy, do the following
 
 1. Leave location tracking on my Android phone active
-2. Set my camera's clock to UTC
-3. Take my photos
-4. Download the photos, and my location history from Google Takeout
-5. Geotag photos
-6. Fix timezones
+2. Set camera's clock to UTC
+3. Take photos
+4. Copy photos to your machine
+5. Obtain location history from Google Takeout
+6. Geotag photos
+7. Fix timezones, if needed
 
-I use [exiftool](https://www.sno.phy.queensu.ca/~phil/exiftool/), a nifty metadata manipulation tool to fix timezones (and geotag as well).
+[exiftool](https://www.sno.phy.queensu.ca/~phil/exiftool/) is used to fix timezones and add geotag information.
 
 ## Grab your location history
 
 1. Go to [Google Takeout](https://takeout.google.com/settings/takeout)
-2. Select just your location history
-3. Export, and wait for the scheduled export to run
-4. Download, uncompress it somewhere
-5. Convert Records.json into KML using https://github.com/rickprice/location-history-json-converter
-   ```
-   $ python3 extract Records.json Records.kml
+2. Select just your location history<br /><img src="https://github.com/gyng/book/assets/370496/54c47abe-0217-4a6d-9384-09bf27c64951" width="440px" />
+3. Click "Next step, "Export", and wait for the scheduled export to run. This usually takes a day or two.
+4. Download and uncompress your takeout somewhere
+5. Convert `Records.json` into KML using [rickprice/location-history-json-converter](https://github.com/rickprice/location-history-json-converter)
+   ```bash
+   $ cd takeout
+   $ curl https://github.com/rickprice/location-history-json-converter/raw/master/location_history_json_converter.py
+   $ python location_history_json_converter.py Records.json Records.kml
    ```
 6. Put the converted KML somewhere (I put it alongside the photos to be edited)
-
-<details>
-<summary>Old method, KML</summary>
-  
-1. Go to [Google Takeout](https://takeout.google.com/settings/takeout)
-2. Select just your location history and change it to KML
-  ![Download location history in KML](./kml.png)
-3. Download and uncompress it somewhere (I put it alongside the photos to be edited)
-  
-</details>
 
 ## Geotag
 
 Because all my photos are taken in UTC I run the following command to tag my photos
 
-```
-exiftool -geotag '.\Location History.kml' '-geotime<${DateTimeOriginal}+00:00' . -api GeoMaxIntSecs=1800
+```sh
+exiftool -geotag '.\Records.kml' '-geotime<${DateTimeOriginal}+00:00' . -api GeoMaxIntSecs=1800
 ```
 
 The location history obtained from Google is all in UTC. That matches my camera clock so there's no need to calculate and apply timezone offsets. Super convenient when photos span different timezones.
 
 If, somehow, the photos are in local time then change the timezone offset in that command (eg, for California, which is -7 UTC)
 
-```
-exiftool -geotag '.\Location History.kml' '-geotime<${DateTimeOriginal}-07:00' . -api GeoMaxIntSecs=1800
+```sh
+exiftool -geotag '.\Records.kml' '-geotime<${DateTimeOriginal}-07:00' . -api GeoMaxIntSecs=1800
 ```
 
 `-api GeoMaxIntSecs=1800` sets the interpolation to 1800 seconds, or 30 minutes.
 
 Check the EXIF, and once satisfied, remove the originals. Google shows me the location if I [search for `34.6098346210444N, 135.027243317231E`](https://www.google.com/search?q=34.6098346210444N%2C+135.027243317231E).
 
-```
+```sh
 $ exiftool -filename -gpslatitude -gpslongitude -n .\DSCF0244.RAF
 File Name                       : DSCF0244.RAF
 GPS Latitude                    : 34.6098346210444
 GPS Longitude                   : 135.027243317231
 
 $ rm *_original
+$ rm Records.json Records.kml location_history_json_converter.py
 ```
 
 ## Timestamps
 
-The EXIF standard does not specify a timezone field, and so most people set the camera's clock to the local time as needed. Obviously, this is a giant PITA due to my forgetfulness and timezones (and DST!), so I leave my camera's clock set to UTC and adjust the files on a desktop instead.
+The EXIF standard does not specify a timezone field and so most people set the camera's clock to the local time as needed. This is a giant PITA due to forgetfulness and timezones (and DST!), so it's easier to leave the camera's clock set to UTC and adjust the files on a desktop instead.
+
+You can leave your timestamps in UTC. However, I change the timestamps into local time before uploading to Google Photos so they sort properly when mixed with photos taken on my phone (which have local timestamps).
 
 What's really useful when taking this approach is to take at least one picture of a clock, or of road signage to make it easy to verify geotags or timestamps later on.
 
-You can leave your timestamps in UTC. However, I change the timestamps into local time before uploading to Google Photos so they sort properly when mixed with photos taken on my phone (with local timestamps).
-
-For photos taken in New York in July (UTC-4), I might run this command while in a directory with all the photos I want to edit
+For photos taken in New York in July (UTC-4), I run this command while in a directory with all the photos I want to edit to fix the timezones
 
 ```
 exiftool "-DateTimeOriginal-=0:0:0 4:0:0" *
@@ -108,6 +98,8 @@ I used to use Lightroom and GPicSync, but never could get them to work without s
 
 1. [Install exiftool](https://www.sno.phy.queensu.ca/~phil/exiftool/)
 2. Download "Location History" in KML from [Google Takeout](https://takeout.google.com/settings/takeout)
-3. `exiftool -geotag Location\ History.kml '-geotime<${DateTimeOriginal}+00:00' . -api GeoMaxIntSecs=108000`
-4. `exiftool "-DateTimeOriginal+=0:0:0 8:0:0" *`
-5. `rm *_original`
+3. `curl https://github.com/rickprice/location-history-json-converter/raw/master/location_history_json_converter.py`
+4. `python location_history_json_converter.py Records.json Records.kml`
+5. `exiftool -geotag Location\ History.kml '-geotime<${DateTimeOriginal}+00:00' . -api GeoMaxIntSecs=108000`
+6. `exiftool "-DateTimeOriginal+=0:0:0 8:0:0" *`
+7. `rm *_original Records.json Records.kml location_history_json_converter.py`
