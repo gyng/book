@@ -1,14 +1,11 @@
 # Guide to geotagging photos with Google location history and exiftool
 
+If you have a camera without GPS you can use your Android phone as a budget GPS tracker and tag your photos afterwards.
+
 To make things easy, do the following
 
 1. Leave location tracking on my Android phone active
 2. Set camera's clock to UTC
-3. Take photos
-4. Copy photos to your machine
-5. Obtain location history from Google Takeout
-6. Geotag photos
-7. Fix timezones, if needed
 
 [exiftool](https://www.sno.phy.queensu.ca/~phil/exiftool/) is used to fix timezones and add geotag information.
 
@@ -21,7 +18,7 @@ To make things easy, do the following
 5. Convert `Records.json` into KML using [rickprice/location-history-json-converter](https://github.com/rickprice/location-history-json-converter)
    ```bash
    $ cd takeout
-   $ curl https://github.com/rickprice/location-history-json-converter/raw/master/location_history_json_converter.py
+   $ wget https://github.com/rickprice/location-history-json-converter/raw/master/location_history_json_converter.py
    $ python3 location_history_json_converter.py Records.json Records.kml
    ```
 6. Put the converted KML somewhere (I put it alongside the photos to be edited)
@@ -80,9 +77,9 @@ exiftool "-DateTimeOriginal+=0:0:0 8:0:0" *
 
 Note the `+=` and `-=` to shift times around.
 
->|||
->|-|-|
->DateTimeOriginal|`15/06/2018 00:05:12`
+> |                  |                       |
+> | ---------------- | --------------------- |
+> | DateTimeOriginal | `15/06/2018 00:05:12` |
 
 Once that's done, do a quick check of the EXIF, and then delete the originals once satisfied
 
