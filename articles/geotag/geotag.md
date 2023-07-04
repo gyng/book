@@ -6,6 +6,7 @@ To make things easy, do the following
 
 1. Leave location tracking on your Android phone active
 2. Set your camera's clock to UTC
+3. Do a Google Takeout of your location data at the end of your trip
 
 [exiftool](https://www.sno.phy.queensu.ca/~phil/exiftool/) is used to fix timezones and add geotag information.
 
