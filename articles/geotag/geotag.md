@@ -4,8 +4,8 @@ If you have a camera without GPS you can use your Android phone as a budget GPS 
 
 To make things easy, do the following
 
-1. Leave location tracking on my Android phone active
-2. Set camera's clock to UTC
+1. Leave location tracking on your Android phone active
+2. Set your camera's clock to UTC
 
 [exiftool](https://www.sno.phy.queensu.ca/~phil/exiftool/) is used to fix timezones and add geotag information.
 
