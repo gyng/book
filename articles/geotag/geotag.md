@@ -28,7 +28,7 @@ To make things easy, do the following
 Because all my photos are taken in UTC I run the following command to tag my photos
 
 ```sh
-exiftool -geotag '.\Records.kml' '-geotime<${DateTimeOriginal}+00:00' . -api GeoMaxIntSecs=1800
+exiftool -geotag Records.kml '-geotime<${DateTimeOriginal}+00:00' . -api GeoMaxIntSecs=1800
 ```
 
 The location history obtained from Google is all in UTC. That matches my camera clock so there's no need to calculate and apply timezone offsets. Super convenient when photos span different timezones.
@@ -36,7 +36,7 @@ The location history obtained from Google is all in UTC. That matches my camera 
 If, somehow, the photos are in local time then change the timezone offset in that command (eg, for California, which is -7 UTC)
 
 ```sh
-exiftool -geotag '.\Records.kml' '-geotime<${DateTimeOriginal}-07:00' . -api GeoMaxIntSecs=1800
+exiftool -geotag Records.kml '-geotime<${DateTimeOriginal}-07:00' . -api GeoMaxIntSecs=1800
 ```
 
 `-api GeoMaxIntSecs=1800` sets the interpolation to 1800 seconds, or 30 minutes.
@@ -97,6 +97,6 @@ I used to use Lightroom and GPicSync, but never could get them to work without s
 2. Download "Location History" in KML from [Google Takeout](https://takeout.google.com/settings/takeout)
 3. `curl https://github.com/rickprice/location-history-json-converter/raw/master/location_history_json_converter.py`
 4. `python location_history_json_converter.py Records.json Records.kml`
-5. `exiftool -geotag Location\ History.kml '-geotime<${DateTimeOriginal}+00:00' . -api GeoMaxIntSecs=108000`
+5. `exiftool -geotag Records.kml '-geotime<${DateTimeOriginal}+00:00' . -api GeoMaxIntSecs=108000`
 6. `exiftool "-DateTimeOriginal+=0:0:0 8:0:0" *`
 7. `rm *_original Records.json Records.kml location_history_json_converter.py`
