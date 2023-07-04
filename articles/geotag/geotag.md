@@ -98,5 +98,5 @@ I used to use Lightroom and GPicSync, but never could get them to work without s
 3. `wget https://github.com/rickprice/location-history-json-converter/raw/master/location_history_json_converter.py`
 4. `python3 location_history_json_converter.py Records.json Records.kml`
 5. `exiftool -geotag Records.kml '-geotime<${DateTimeOriginal}+00:00' . -api GeoMaxIntSecs=108000`
-6. `exiftool "-DateTimeOriginal+=0:0:0 8:0:0" *`
+6. Optional timezone fix: `exiftool "-DateTimeOriginal+=0:0:0 8:0:0" *`
 7. `rm *_original Records.json Records.kml location_history_json_converter.py`
