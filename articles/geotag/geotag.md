@@ -19,6 +19,8 @@ To make things easy, do the following
 5. Convert `Records.json` into KML using [rickprice/location-history-json-converter](https://github.com/rickprice/location-history-json-converter)
    ```bash
    $ cd takeout
+   # if an error with `ModuleNotFoundError: No module named 'dateutil'` shows up
+   $ pip3 install python-dateutil
    $ wget https://github.com/rickprice/location-history-json-converter/raw/master/location_history_json_converter.py
    $ python3 location_history_json_converter.py Records.json Records.kml
    ```
