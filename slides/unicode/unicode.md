@@ -8,9 +8,18 @@ marp: true
 
 # Unicode and its 🕳🍁s: programmer essentials and m͢ore
 
-###### Updated 2020
+###### Updated 2023
 
 ###### https://github.com/gyng/book/tree/master/slides/unicode
+
+---
+
+## Changelog
+
+2023: Graphemes and `Intl.Segmenter`
+2020: Add more examples
+2018: Add searching, Unihan examples, Unicode filenames
+2017: Initial slides
 
 ---
 
@@ -93,16 +102,22 @@ EGL  EWS
 . --. .-.. / . .-- ...
 ```
 
-<!-- Same characters, different encodings, different lengths
+<!-- Same look, different encodings, different lengths
 The **_code point_** (電 $=$ 7193) is not the **_encoding_** (morse) -->
 
 ---
 
-* Character: `a`, `e`, `1`, `電`, etc.
+# Don't use `character` when discussing Unicode
 
-* Codepoint: mapping of a character to some value
+- ~~Character: `a`, `e`, `1`, `電`, etc.~~
 
-* Encoding: A collection of codepoints
+- Grapheme: a horizontally segmentable unit of text
+
+- Codepoint: mapping of a character to some value
+
+- Encoding: a collection of codepoints
+
+- Glyph: visual representation
 
 ---
 
@@ -435,7 +450,6 @@ http://www.unicode.org/reports/tr6/
 - Precomposed `é`
   `é U+00E9 LATIN SMALL LETTER E WITH ACUTE`
 
-
 `é` $\neq$ `é`?
 
 `é` $=$ `é`?
@@ -448,7 +462,16 @@ http://www.unicode.org/reports/tr6/
 
 - Some combined characters are the same, sometimes
 
+```js
+()"e" + "́") === "é"
+// => false
+
+("e" + "́").normalize() === "é"
+// => true
+```
+
 ---
+
 ## Unicode normalisation mumbo jumbo
 
 - Equivalence criteria
@@ -472,6 +495,12 @@ http://www.unicode.org/reports/tr6/
 NF is used to canonicalise combining characters
 
 <!-- Just know that there are two ways to normalise -->
+
+---
+
+## Unicode normalisation is not the complete solution
+
+# ✋ ✋🏻 ✋🏻 ✋🏿
 
 ---
 
@@ -562,6 +591,8 @@ http://unicode.org/faq/vs.html
 
 ## Han unification
 
+- aka. Unihan 數據庫, Unihan
+
 - Maps common Chinese, Japanese, Korean (CJK) characters into unified set
   ![](i/diff.png)
 - Different countries have different standards
@@ -574,7 +605,7 @@ http://unicode.org/faq/vs.html
   <ruby>`芦`<rt>あし</rt></ruby> Ashi·da, given name vs Ashi·ya, old place name
   ![](i/sentence.png)
 
-<!-- 
+<!--
 - Educational software
 - People get 😡 over the differences
 -->
@@ -688,7 +719,6 @@ http://www.unicode.org/history/EarthwebCommercial.avi
 <div>🦗</div>
 <div>🦟</div>
 </div>
-
 
 <!-- Why should I care? -->
 
@@ -821,7 +851,6 @@ with open("mobydick-emoji-edition-🐋.utf8.txt", "rb") as input:  # 🐞
 
 <!-- A multibyte character at the chunk boundary could get cut off -->
 
-
 ---
 
 ## Read in text with the right encoding
@@ -876,7 +905,7 @@ soup = BeautifulSoup(html, fromEncoding='Shift_JIS')
 ## Use `accept-charset` in forms as needed
 
 ```html
-<form action="myform" accept-charset="UTF-8">
+<form action="myform" accept-charset="UTF-8"></form>
 ```
 
 Uses document charset by default
@@ -1247,7 +1276,7 @@ https://unicode.org/reports/tr10/#Hangul_Collation
 
 ## Concise bedtime reading
 
->The essential problem results from the fact that Hangul syllables can also be represented with a sequence of conjoining jamo characters and because syllables represented that way may be of different lengths, with or without a trailing consonant jamo. 
+> The essential problem results from the fact that Hangul syllables can also be represented with a sequence of conjoining jamo characters and because syllables represented that way may be of different lengths, with or without a trailing consonant jamo.
 
 <!-- Takeaway is that it's not easy to do it right -->
 
@@ -1295,8 +1324,6 @@ Problems arise when your string contains
 >> 'ユニコート\u3099'.normalize().length
 5
 ```
-
-Should generally work for combined characters 🎉
 
 ---
 
@@ -1386,17 +1413,17 @@ System.out.print(s.codePointCount(0, s.length()));
 
 ## String lengths
 
-* What is the definition of the length of a string?
-* What is a character?
+- What is the definition of the length of a string?
+- What is a character?
 
 ---
 
 ## String lengths
 
-* Bytes
-* Codepoints
-* Normalised codepoints
-* ~~Characters~~
+- Bytes
+- Codepoints
+- Normalised codepoints
+- ~~Characters~~
 
 ```go
 fmt.Println(len([]rune("🏴‍☠️")))  // => 4
@@ -1404,10 +1431,89 @@ fmt.Println(len([]rune("🏴‍☠️")))  // => 4
 
 ---
 
+## String length: graphemes
+
+```js
+// rich text formatting
+{
+  value: "a𫝜👍🏽c",
+  annotations: [
+    {
+      index: 1,
+      length: 1,
+      name: "strikethrough"
+    }
+  ]
+}
+```
+
+Expected output: a~~𫝜~~c
+
+What does `length: 1` even mean?
+
+---
+
+## String length: graphemes
+
+"a 𫝜 👍🏽c".length
+`// => 8`
+
+[..."a 𫝜 👍🏽c"].length
+`// => 5`
+
+Wait, what?
+Remember: combining characters
+
+---
+
+## String length: graphemes
+
+Don't use "character" length!
+
+Use _grapheme clusters_
+
+grapheme cluster: a user-perceived character
+
+https://unicode.org/reports/tr29/
+
+---
+
+### 🔥 JavaScript
+
+```js
+const segmenter = new Intl.Segmenter("en", { granularity: "grapheme" });
+const str = "a𫝜👍🏽c";
+[...segmenter.segment(str)].length;
+// 4
+```
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Segmenter
+
+---
+
+## String length: graphemes
+
+### ⚙️ Rust
+
+```rs
+use unicode_segmentation::UnicodeSegmentation;
+
+fn main() {
+    let graphemes = "a𫝜👍🏽c".graphemes(true).collect::<Vec<&str>>();
+    assert_eq!(g.count(), 4);
+}
+
+```
+
+https://github.com/unicode-rs/unicode-segmentation
+
+---
+
 ## Characters
 
-* Do not think about strings in terms of characters
-* Characters are not your friends
+- Do not think about strings in terms of characters
+- Characters are not your friends
+- Use byte, grapheme cluster, codepoint&hellip;
 
 ---
 
@@ -1474,7 +1580,6 @@ http://www.unicode.org/reports/tr18/
 
 ![](i/emojione.png)
 
-
 ---
 
 ## Emoji bugs
@@ -1521,7 +1626,7 @@ Read _Unicode Security Considerations_
 - For logistical reasons (customer support)
 - Unicode normalisation of passwords can cause problems
 - Equivalent characters
-  `e` $+$ `` $\neq$ `é`
+  `e` $+$ ``$\neq$`é`
 - Basic authentication can fail in different browsers
 - Keyboard issues
 
@@ -1618,7 +1723,7 @@ To: You
 
 Happy Friday!
 
-Visit https://tech.gov.sg⁄free.pizza to claim a FREE 🍕!
+Visit https://mom.gov.sg⁄free.pizza to claim a FREE 🍕!
 
 FYNAP
 - HR
@@ -1633,7 +1738,7 @@ This message could be a scam. [Report] [Ignore]
 `⁄ U+2044 FRACTION SLASH`
 
 ```text
-Visit https://tech.gov.sg⁄free.pizza to claim a FREE 🍕!
+Visit https://mom.gov.sg⁄free.pizza to claim a FREE 🍕!
                          👆
 ```
 
@@ -1646,30 +1751,34 @@ Visit https://tech.gov.sg⁄free.pizza to claim a FREE 🍕!
 Solution: Use Punycode where/when it makes sense to
 
 ```text
-Visit https://tech.gov.xn--sgfree-qq0c.pizza to claim a
+Visit https://mom.gov.xn--sgfree-qq0c.pizza to claim a
 FREE 🍕!
 ```
 
 ---
 
->Company: GitHub
+> Company: GitHub
 >
->Vulnerability: Password reset emails delıvered to the wrong address.
+> Vulnerability: Password reset emails delıvered to the wrong address.
 >
->Cause: Forgot password emails validated against lowercase value on file, but sent the provided email.
+> Cause: Forgot password emails validated against lowercase value on file, but sent the provided email.
+
+https://dev.to/jagracey/hacking-github-s-auth-with-unicode-s-turkish-dotless-i-460n
 
 ---
 
 ```js
 // Note the Turkish dotless i
-'John@Gıthub.com'.toUpperCase() === 'John@Github.com'.toUpperCase()
+"John@Gıthub.com".toUpperCase() === "John@Github.com".toUpperCase();
 ```
 
-https://eng.getwisdom.io/hacking-github-with-unicode-dotless-i/
+https://bounty.github.com/researchers/jagracey.html
 
 ---
 
->GitHub's forgot password feature could be compromised because the system lowercased the provided email address and compared it to the email address stored in the user database.
+> GitHub's forgot password feature could be compromised because the system lowercased the provided email address and compared it to the email address stored in the user database.
+
+But they sent emails to the un-normalisedtransformed email!
 
 <!-- Ironically, doing lowercase right gave them problems! -->
 
@@ -1680,9 +1789,11 @@ Be careful when normalising or transforming unique identifiers!
 ### 🐍³ Python 3
 
 ```python
->>> "John@Gıthub.com".lower()
-'john@g\xc4\xb1thub.com'
+>>> "John@Gıthub.com".upper() == 'JOHN@GITHUB.COM'
+True
 ```
+
+`ı U+0131 LATIN SMALL LETTER DOTLESS I`
 
 ---
 
@@ -1719,7 +1830,7 @@ https://mathiasbynens.be/notes/mysql-utf8mb4
 
 ---
 
-## 
+##
 
 <div style="font-size: 200px">👽</div>
 
@@ -1806,7 +1917,7 @@ https://msdn.microsoft.com/en-us/library/dd374047(v=vs.85).aspx
 
 ---
 
-# Rust shilling
+# Rust
 
 ```
 error: unknown start of token: \u{37e}
