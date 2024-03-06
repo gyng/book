@@ -12,6 +12,10 @@ To make things easy, do the following
 
 ## Grab your location history
 
+You have two options here:
+
+### Google Takeout
+
 1. Go to [Google Takeout](https://takeout.google.com/settings/takeout)
 2. Select just your location history<br /><img src="https://github.com/gyng/book/assets/370496/54c47abe-0217-4a6d-9384-09bf27c64951" width="440px" />
 3. Click "Next step, "Export", and wait for the scheduled export to run. This usually takes a day or two.
@@ -25,6 +29,25 @@ To make things easy, do the following
    $ python3 location_history_json_converter.py Records.json Records.kml
    ```
 6. Put the converted KML somewhere (I put it alongside the photos to be edited)
+
+### Manual download from browser
+
+If you can't wait for Google Takeout or if the export is bugged and not running, you can manually obtain location data (split by day) from the browser
+
+```js
+function makeUrlForDate(year, month, day) {
+  // month is 0-indexed ie, Jan = 0
+  // Google only returns one day's worth of data even if more is requested
+  return `https://www.google.com/maps/timeline/kml?authuser=0&pb=!1m8!1m3!1i${year}!2i${month}!3i${day}!2m3!1i${year}!2i${month}!3i${day}`;
+}
+```
+
+Some additional automation: https://gist.github.com/gyng/e0f7eac4445793ef3b4d59ca0b0fa6b4
+
+#### Some tooling for dealing with KML (not a sign of endorsement)
+
+- https://www.gpsbabel.org/
+- https://kmlmerger.com/
 
 ## Geotag
 
