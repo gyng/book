@@ -6,6 +6,10 @@ Bits committed to bytes
 
 *roughly ordered by first created at date*
 
+## 2024
+
+* [Setting up AirGradient ONE v9 with ESPHome to export Prometheus metrics](https://gist.github.com/gyng/32762088c9c40a9293957a14801bae2b)
+
 ## 2021
 
 * [A taste of Rust: introductory Rust workshop](https://github.com/gyng/rust-primer)
