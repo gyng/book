@@ -20,15 +20,13 @@ You have two options here:
 2. Select just your location history<br /><img src="https://github.com/gyng/book/assets/370496/54c47abe-0217-4a6d-9384-09bf27c64951" width="440px" />
 3. Click "Next step, "Export", and wait for the scheduled export to run. This usually takes a day or two.
 4. Download and uncompress your takeout somewhere
-5. Convert `Records.json` into KML using [rickprice/location-history-json-converter](https://github.com/rickprice/location-history-json-converter)
+5. Convert `Records.json` into GPX/KML using [gpsbabel](https://www.gpsbabel.org/htmldoc-1.9.0/fmt_googletakeout.html)
+6. 
    ```bash
    $ cd takeout
-   # if an error with `ModuleNotFoundError: No module named 'dateutil'` shows up
-   $ pip3 install python-dateutil
-   $ wget https://github.com/rickprice/location-history-json-converter/raw/master/location_history_json_converter.py
-   $ python3 location_history_json_converter.py Records.json Records.kml
+   $ gpsbabel -i googletakeout -f Records.json -o gpx -F Records.gpx
    ```
-6. Put the converted KML somewhere (I put it alongside the photos to be edited)
+7. Put the converted file somewhere (I put it alongside the photos to be edited)
 
 ### Manual download from browser
 
