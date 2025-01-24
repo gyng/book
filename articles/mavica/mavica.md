@@ -7,11 +7,12 @@ These are thumbnail files. I've had luck using [XnConvert](https://www.xnview.co
 ## Field vs frame
 
 Field: slightly worse image, no interlacing artefacts
+
 Frame: slightly better image, interlacing artefacts (moving things get shredded)
 
 ## Battery stuck
 
-Put a ribbon or floss around the battery first
+Put a ribbon or floss around the battery first so you can pull it out later.
 
 ## Applying EXIF
 
