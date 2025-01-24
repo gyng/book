@@ -2,7 +2,7 @@
 
 ## Converting .411 files
 
-These are thumbnail files
+These are thumbnail files. I've had luck using [XnConvert](https://www.xnview.com/en/xnconvert/) to do the conversion.
 
 ## Field vs frame
 
