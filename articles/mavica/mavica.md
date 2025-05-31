@@ -46,7 +46,7 @@ Format complete.
 Volume Serial Number is 0A42-5677
 ```
 
-274432B of bad sectors is really bad!
+274,432B of bad sectors is really bad! It went down to 36,352 after the second format.
 
 Other things to try
 
