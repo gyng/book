@@ -10,9 +10,51 @@ Field: slightly worse image, no interlacing artefacts
 
 Frame: slightly better image, interlacing artefacts (moving things get shredded)
 
-## Battery stuck
+## Battery is stuck or won't go into the battery bay
 
-Put a ribbon or floss around the battery first so you can pull it out later.
+Put a ribbon or floss around the battery first so you can pull it out later. If it's already stuck inside, take glue and stick a ribbon on it, then pull it out.
+
+The ribbon is really annoying so I filed the batteries down to size.
+
+## Checking and fixing floppy disks
+
+On Windows
+
+```
+format a: /u
+```
+
+Use `/u` for unconditional format. After a couple of minutes
+
+```
+Insert new disk for drive A:
+and press ENTER when ready...
+The type of the file system is FAT.
+Verifying 1.44M
+Initializing the File Allocation Table (FAT)...
+Volume label (11 characters, ENTER for none)?
+Format complete.
+       1.4 MB total disk space.
+      274,432 bytes in bad sectors.
+       1.1 MB are available.
+
+          512 bytes in each allocation unit.
+        2,311 allocation units available on disk.
+
+           12 bits in each FAT entry.
+
+Volume Serial Number is 0A42-5677
+```
+
+274432B of bad sectors is really bad!
+
+Other things to try
+
+- erasing with ImageDisk first
+- manually resetting/wiping floppy with a strong magnet (eg, dead HDD magnet)
+- use a different floppy disk drive
+
+See: https://www.vogons.org/viewtopic.php?t=84771
 
 ## Applying EXIF
 
