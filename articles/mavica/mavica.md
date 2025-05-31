@@ -53,6 +53,7 @@ Other things to try
 - erasing with ImageDisk first
 - manually resetting/wiping floppy with a strong magnet (eg, dead HDD magnet)
 - use a different floppy disk drive
+- take photos multiple times
 
 See: https://www.vogons.org/viewtopic.php?t=84771
 
