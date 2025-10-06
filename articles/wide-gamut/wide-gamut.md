@@ -22,8 +22,8 @@ Software
 As of April 2020, Windows 10 is still poorly colour managed.
 
 * Set up ICC profiles as needed (Control Panel > Colour Management)
-* Turn on HD colour settings as needed (Display Settings > Windows HD Color settings)
   * For my Dell monitors, the driver install added the correct ICC profiles to Windows
+* Turn on HD colour settings as needed (Display Settings > Windows HD Color settings)
 
 ### 10-bit support
 
